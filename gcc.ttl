@@ -1,0 +1,3388 @@
+@prefix : <#> .
+@prefix exp: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/example_instance.xml#> .
+@prefix gcc: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#NumberedBody
+<http://www.co-ode.org/ontologies/ont.owl#NumberedBody> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P0
+gcc:P0 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ,
+                   gcc:statement_list ,
+                   gcc:tree_vec ;
+       rdfs:range gcc: ,
+                  gcc:addr_expr ,
+                  gcc:array_ref ,
+                  gcc:call_expr ,
+                  gcc:case_label_expr ,
+                  gcc:cast_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:convert_expr ,
+                  gcc:ctor_initializer ,
+                  gcc:do_stmt ,
+                  gcc:enumeral_type ,
+                  gcc:eq_expr ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:gt_expr ,
+                  gcc:if_stmt ,
+                  gcc:indirect_ref ,
+                  gcc:loop_expr ,
+                  gcc:lt_expr ,
+                  gcc:minus_expr ,
+                  gcc:mult_expr ,
+                  gcc:ne_expr ,
+                  gcc:non_lvalue_expr ,
+                  gcc:nop_expr ,
+                  gcc:plus_expr ,
+                  gcc:preincrement_expr ,
+                  gcc:scope_ref ,
+                  gcc:sizeof_expr ,
+                  gcc:string_cst ,
+                  gcc:switch_expr ,
+                  gcc:target_expr ,
+                  gcc:template_parm_index ,
+                  gcc:template_type_parm ,
+                  gcc:truth_andif_expr ,
+                  gcc:typename_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P1
+gcc:P1 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ,
+                   gcc:statement_list ,
+                   gcc:tree_vec ;
+       rdfs:range gcc:addr_expr ,
+                  gcc:array_ref ,
+                  gcc:bit_and_expr ,
+                  gcc:call_expr ,
+                  gcc:case_label_expr ,
+                  gcc:cast_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:convert_expr ,
+                  gcc:ctor_initializer ,
+                  gcc:do_stmt ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:indirect_ref ,
+                  gcc:label_expr ,
+                  gcc:minus_expr ,
+                  gcc:mult_expr ,
+                  gcc:nop_expr ,
+                  gcc:plus_expr ,
+                  gcc:preincrement_expr ,
+                  gcc:return_expr ,
+                  gcc:sizeof_expr ,
+                  gcc:string_cst ,
+                  gcc:target_expr ,
+                  gcc:template_decl ,
+                  gcc:template_id_expr ,
+                  gcc:template_template_parm ,
+                  gcc:template_type_parm ,
+                  gcc:try_catch_expr ,
+                  gcc:try_finally .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P10
+gcc:P10 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:call_expr ,
+                    gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cond_expr ,
+                   gcc:expr_stmt ,
+                   gcc:if_stmt ,
+                   gcc:while_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P100
+gcc:P100 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P101
+gcc:P101 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P102
+gcc:P102 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P103
+gcc:P103 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P104
+gcc:P104 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P105
+gcc:P105 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P106
+gcc:P106 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P107
+gcc:P107 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P108
+gcc:P108 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P109
+gcc:P109 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P11
+gcc:P11 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:expr_stmt ,
+                   gcc:if_stmt ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P110
+gcc:P110 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P111
+gcc:P111 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P112
+gcc:P112 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P113
+gcc:P113 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P114
+gcc:P114 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P115
+gcc:P115 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P116
+gcc:P116 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P117
+gcc:P117 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P118
+gcc:P118 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P119
+gcc:P119 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P12
+gcc:P12 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:expr_stmt ,
+                   gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P120
+gcc:P120 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P121
+gcc:P121 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P122
+gcc:P122 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P123
+gcc:P123 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P124
+gcc:P124 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P125
+gcc:P125 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P126
+gcc:P126 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P127
+gcc:P127 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P128
+gcc:P128 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P129
+gcc:P129 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P13
+gcc:P13 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:expr_stmt ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P130
+gcc:P130 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P131
+gcc:P131 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P132
+gcc:P132 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P133
+gcc:P133 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P134
+gcc:P134 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P135
+gcc:P135 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P136
+gcc:P136 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P137
+gcc:P137 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P138
+gcc:P138 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P139
+gcc:P139 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P14
+gcc:P14 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:expr_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P140
+gcc:P140 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P141
+gcc:P141 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P142
+gcc:P142 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P143
+gcc:P143 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P144
+gcc:P144 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P145
+gcc:P145 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P146
+gcc:P146 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P147
+gcc:P147 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P148
+gcc:P148 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P149
+gcc:P149 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P15
+gcc:P15 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P150
+gcc:P150 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P151
+gcc:P151 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P152
+gcc:P152 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P153
+gcc:P153 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P154
+gcc:P154 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P155
+gcc:P155 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P156
+gcc:P156 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P157
+gcc:P157 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P158
+gcc:P158 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P159
+gcc:P159 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P16
+gcc:P16 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:do_stmt ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P160
+gcc:P160 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:cond_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P161
+gcc:P161 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P162
+gcc:P162 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P163
+gcc:P163 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P164
+gcc:P164 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P165
+gcc:P165 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P166
+gcc:P166 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P167
+gcc:P167 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P168
+gcc:P168 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P169
+gcc:P169 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P17
+gcc:P17 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:if_stmt ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P170
+gcc:P170 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P171
+gcc:P171 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:cond_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P172
+gcc:P172 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P173
+gcc:P173 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P174
+gcc:P174 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P175
+gcc:P175 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P176
+gcc:P176 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P177
+gcc:P177 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:goto_expr ,
+                    gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P178
+gcc:P178 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P179
+gcc:P179 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P18
+gcc:P18 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P180
+gcc:P180 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P181
+gcc:P181 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P182
+gcc:P182 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P183
+gcc:P183 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P184
+gcc:P184 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P185
+gcc:P185 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P186
+gcc:P186 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P187
+gcc:P187 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P188
+gcc:P188 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P189
+gcc:P189 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P19
+gcc:P19 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P190
+gcc:P190 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P191
+gcc:P191 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P192
+gcc:P192 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P193
+gcc:P193 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P194
+gcc:P194 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P195
+gcc:P195 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P196
+gcc:P196 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P197
+gcc:P197 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P198
+gcc:P198 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P199
+gcc:P199 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P2
+gcc:P2 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ,
+                   gcc:statement_list ,
+                   gcc:tree_vec ;
+       rdfs:range gcc:addr_expr ,
+                  gcc:array_ref ,
+                  gcc:call_expr ,
+                  gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:const_decl ,
+                  gcc:convert_expr ,
+                  gcc:do_stmt ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:minus_expr ,
+                  gcc:mult_expr ,
+                  gcc:nop_expr ,
+                  gcc:plus_expr ,
+                  gcc:return_expr ,
+                  gcc:scope_ref ,
+                  gcc:sizeof_expr ,
+                  gcc:string_cst ,
+                  gcc:switch_expr ,
+                  gcc:target_expr ,
+                  gcc:template_id_expr ,
+                  gcc:template_type_parm .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P20
+gcc:P20 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P200
+gcc:P200 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P201
+gcc:P201 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P202
+gcc:P202 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P203
+gcc:P203 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P204
+gcc:P204 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P205
+gcc:P205 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P206
+gcc:P206 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P207
+gcc:P207 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P208
+gcc:P208 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P209
+gcc:P209 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P21
+gcc:P21 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P210
+gcc:P210 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P211
+gcc:P211 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P212
+gcc:P212 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P213
+gcc:P213 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P214
+gcc:P214 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P215
+gcc:P215 rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+         rdfs:domain gcc:statement_list ;
+         rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P22
+gcc:P22 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P23
+gcc:P23 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P24
+gcc:P24 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P25
+gcc:P25 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cleanup_point_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P26
+gcc:P26 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cond_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P27
+gcc:P27 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cleanup_point_expr ,
+                   gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P28
+gcc:P28 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cleanup_point_expr ,
+                   gcc:label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P29
+gcc:P29 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P3
+gcc:P3 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ,
+                   gcc:statement_list ,
+                   gcc:tree_vec ;
+       rdfs:range gcc:addr_expr ,
+                  gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:convert_expr ,
+                  gcc:do_stmt ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:if_stmt ,
+                  gcc:nop_expr ,
+                  gcc:plus_expr ,
+                  gcc:return_expr ,
+                  gcc:scope_ref ,
+                  gcc:switch_expr ,
+                  gcc:template_parm_index .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P30
+gcc:P30 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P31
+gcc:P31 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P32
+gcc:P32 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P33
+gcc:P33 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P34
+gcc:P34 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P35
+gcc:P35 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P36
+gcc:P36 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P37
+gcc:P37 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P38
+gcc:P38 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P39
+gcc:P39 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P4
+gcc:P4 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:call_expr ,
+                  gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:convert_expr ,
+                  gcc:do_stmt ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:nop_expr ,
+                  gcc:plus_expr ,
+                  gcc:return_expr ,
+                  gcc:scope_ref ,
+                  gcc:template_parm_index ,
+                  gcc:while_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P40
+gcc:P40 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P41
+gcc:P41 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P42
+gcc:P42 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P43
+gcc:P43 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P44
+gcc:P44 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P45
+gcc:P45 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P46
+gcc:P46 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P47
+gcc:P47 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P48
+gcc:P48 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P49
+gcc:P49 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P5
+gcc:P5 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:case_label_expr ,
+                  gcc:cond_expr ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:if_stmt ,
+                  gcc:nop_expr ,
+                  gcc:return_expr ,
+                  gcc:while_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P50
+gcc:P50 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P51
+gcc:P51 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P52
+gcc:P52 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P53
+gcc:P53 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P54
+gcc:P54 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P55
+gcc:P55 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P56
+gcc:P56 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P57
+gcc:P57 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P58
+gcc:P58 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P59
+gcc:P59 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P6
+gcc:P6 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:const_decl ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:if_stmt ,
+                  gcc:label_expr ,
+                  gcc:nop_expr ,
+                  gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P60
+gcc:P60 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P61
+gcc:P61 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P62
+gcc:P62 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P63
+gcc:P63 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P64
+gcc:P64 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P65
+gcc:P65 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P66
+gcc:P66 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P67
+gcc:P67 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P68
+gcc:P68 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cond_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P69
+gcc:P69 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P7
+gcc:P7 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:expr_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:nop_expr ,
+                  gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P70
+gcc:P70 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P71
+gcc:P71 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P72
+gcc:P72 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cond_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P73
+gcc:P73 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:cond_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P74
+gcc:P74 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:cond_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P75
+gcc:P75 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P76
+gcc:P76 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P77
+gcc:P77 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P78
+gcc:P78 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P79
+gcc:P79 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P8
+gcc:P8 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:case_label_expr ,
+                  gcc:component_ref ,
+                  gcc:cond_expr ,
+                  gcc:expr_stmt ,
+                  gcc:for_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:nop_expr ,
+                  gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P80
+gcc:P80 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P81
+gcc:P81 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P82
+gcc:P82 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P83
+gcc:P83 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P84
+gcc:P84 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P85
+gcc:P85 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P86
+gcc:P86 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P87
+gcc:P87 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P88
+gcc:P88 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P89
+gcc:P89 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:goto_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P9
+gcc:P9 rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+       rdfs:domain gcc:call_expr ,
+                   gcc:statement_list ;
+       rdfs:range gcc:case_label_expr ,
+                  gcc:cond_expr ,
+                  gcc:expr_stmt ,
+                  gcc:goto_expr ,
+                  gcc:if_stmt ,
+                  gcc:label_expr ,
+                  gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P90
+gcc:P90 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P91
+gcc:P91 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P92
+gcc:P92 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P93
+gcc:P93 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P94
+gcc:P94 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P95
+gcc:P95 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P96
+gcc:P96 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P97
+gcc:P97 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P98
+gcc:P98 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:goto_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#P99
+gcc:P99 rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf <http://www.co-ode.org/ontologies/ont.owl#NumberedBody> ;
+        rdfs:domain gcc:statement_list ;
+        rdfs:range gcc:case_label_expr ,
+                   gcc:return_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#args
+gcc:args rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:function_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#argt
+gcc:argt rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:parm_decl ,
+                     gcc:unknown ;
+         rdfs:range gcc:enumeral_type ,
+                    gcc:real_type ,
+                    gcc:reference_type ,
+                    gcc:template_parm_index ,
+                    gcc:union_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#base
+gcc:base rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:record_type ;
+         rdfs:range gcc:template_type_parm .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bfld
+gcc:bfld rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:record_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#binf
+gcc:binf rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:binfo ,
+                     gcc:record_type ,
+                     gcc:union_type ;
+         rdfs:range gcc:binfo .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#body
+gcc:body rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:bind_expr ,
+                     gcc:do_stmt ,
+                     gcc:for_stmt ,
+                     gcc:function_decl ,
+                     gcc:loop_expr ,
+                     gcc:parm_decl ,
+                     gcc:switch_expr ,
+                     gcc:unknown ,
+                     gcc:while_stmt ;
+         rdfs:range gcc:break_stmt ,
+                    gcc:cond_expr ,
+                    gcc:continue_stmt ,
+                    gcc:ctor_initializer ,
+                    gcc:expr_stmt ,
+                    gcc:for_stmt ,
+                    gcc:goto_expr ,
+                    gcc:if_stmt ,
+                    gcc:return_expr ,
+                    gcc:switch_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bpos
+gcc:bpos rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:field_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#chain
+gcc:chain rdf:type owl:ObjectProperty ;
+          rdfs:domain gcc: ,
+                      gcc:const_decl ,
+                      gcc:field_decl ,
+                      gcc:function_decl ,
+                      gcc:label_decl ,
+                      gcc:namespace_decl ,
+                      gcc:parm_decl ,
+                      gcc:template_decl ,
+                      gcc:type_decl ,
+                      gcc:unknown ,
+                      gcc:var_decl ;
+          rdfs:range gcc:const_decl ,
+                     gcc:field_decl ,
+                     gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#chan
+gcc:chan rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:overload ,
+                     gcc:tree_list ;
+         rdfs:range gcc:overload .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#clas
+gcc:clas rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:method_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cnst
+gcc:cnst rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:const_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cond
+gcc:cond rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:do_stmt ,
+                     gcc:for_stmt ,
+                     gcc:if_stmt ,
+                     gcc:switch_expr ,
+                     gcc:while_stmt ;
+         rdfs:range gcc:call_expr ,
+                    gcc:component_ref ,
+                    gcc:cond_expr ,
+                    gcc:eq_expr ,
+                    gcc:ge_expr ,
+                    gcc:gt_expr ,
+                    gcc:indirect_ref ,
+                    gcc:le_expr ,
+                    gcc:lt_expr ,
+                    gcc:ne_expr ,
+                    gcc:nop_expr ,
+                    gcc:truth_andif_expr ,
+                    gcc:truth_not_expr ,
+                    gcc:truth_orif_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#crnt
+gcc:crnt rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:overload ;
+         rdfs:range gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#csts
+gcc:csts rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:enumeral_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#dcls
+gcc:dcls rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:namespace_decl ;
+         rdfs:range gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#decl
+gcc:decl rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:aggr_init_expr ,
+                     gcc:target_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#domn
+gcc:domn rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:array_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#else
+gcc:else rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:if_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#elts
+gcc:elts rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:array_type ;
+         rdfs:range gcc:boolean_type ,
+                    gcc:enumeral_type ,
+                    gcc:template_type_parm .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#expr
+gcc:expr rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:expr_stmt ,
+                     gcc:for_stmt ,
+                     gcc:return_expr ;
+         rdfs:range gcc:addr_expr ,
+                    gcc:array_ref ,
+                    gcc:bit_ior_expr ,
+                    gcc:call_expr ,
+                    gcc:cast_expr ,
+                    gcc:component_ref ,
+                    gcc:compound_expr ,
+                    gcc:cond_expr ,
+                    gcc:convert_expr ,
+                    gcc:dl_expr ,
+                    gcc:eq_expr ,
+                    gcc:ge_expr ,
+                    gcc:indirect_ref ,
+                    gcc:init_expr ,
+                    gcc:lt_expr ,
+                    gcc:minus_expr ,
+                    gcc:modify_expr ,
+                    gcc:modop_expr ,
+                    gcc:mult_expr ,
+                    gcc:ne_expr ,
+                    gcc:nw_expr ,
+                    gcc:plus_expr ,
+                    gcc:postdecrement_expr ,
+                    gcc:postincrement_expr ,
+                    gcc:preincrement_expr ,
+                    gcc:reinterpret_cast_expr ,
+                    gcc:result_decl ,
+                    gcc:static_cast_expr ,
+                    gcc:template_parm_index ,
+                    gcc:truth_andif_expr ,
+                    gcc:truth_not_expr ,
+                    gcc:truth_orif_expr ,
+                    gcc:void_cst .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#externbody
+gcc:externbody rdf:type owl:ObjectProperty ;
+               rdfs:domain gcc: ,
+                           gcc:parm_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#flds
+gcc:flds rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:record_type ,
+                     gcc:union_type ;
+         rdfs:range gcc:field_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#fn
+gcc:fn rdf:type owl:ObjectProperty ;
+       rdfs:domain gcc:aggr_init_expr ,
+                   gcc:call_expr ;
+       rdfs:range gcc:addr_expr ,
+                  gcc:baselink ,
+                  gcc:component_ref ,
+                  gcc:overload ,
+                  gcc:scope_ref ,
+                  gcc:template_id_expr ,
+                  gcc:template_parm_index .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#fncs
+gcc:fncs rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:record_type ;
+         rdfs:range gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#idx
+gcc:idx rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:constructor .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#init
+gcc:init rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:for_stmt ,
+                     gcc:target_expr ,
+                     gcc:var_decl ;
+         rdfs:range gcc:addr_expr ,
+                    gcc:aggr_init_expr ,
+                    gcc:array_ref ,
+                    gcc:bit_xor_expr ,
+                    gcc:call_expr ,
+                    gcc:cast_expr ,
+                    gcc:component_ref ,
+                    gcc:cond_expr ,
+                    gcc:constructor ,
+                    gcc:convert_expr ,
+                    gcc:expr_stmt ,
+                    gcc:indirect_ref ,
+                    gcc:minus_expr ,
+                    gcc:mult_expr ,
+                    gcc:nop_expr ,
+                    gcc:nw_expr ,
+                    gcc:plus_expr ,
+                    gcc:postincrement_expr ,
+                    gcc:scope_ref ,
+                    gcc:sizeof_expr ,
+                    gcc:string_cst ,
+                    gcc:template_parm_index ,
+                    gcc:trunc_div_expr ,
+                    gcc:trunc_mod_expr ,
+                    gcc:truth_andif_expr ,
+                    gcc:truth_not_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#inst
+gcc:inst rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#labl
+gcc:labl rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:goto_expr ;
+         rdfs:range gcc:label_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#low
+gcc:low rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:case_label_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#max
+gcc:max rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:enumeral_type ,
+                    gcc:integer_type ;
+        rdfs:range gcc:minus_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#min
+gcc:min rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:enumeral_type ,
+                    gcc:integer_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#mngl
+gcc:mngl rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:function_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#name
+gcc:name rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:array_type ,
+                     gcc:boolean_type ,
+                     gcc:case_label_expr ,
+                     gcc:complex_type ,
+                     gcc:const_decl ,
+                     gcc:enumeral_type ,
+                     gcc:field_decl ,
+                     gcc:function_decl ,
+                     gcc:function_type ,
+                     gcc:integer_type ,
+                     gcc:label_decl ,
+                     gcc:label_expr ,
+                     gcc:lang_type ,
+                     gcc:namespace_decl ,
+                     gcc:nullptr_type ,
+                     gcc:parm_decl ,
+                     gcc:pointer_bounds_type ,
+                     gcc:pointer_type ,
+                     gcc:real_type ,
+                     gcc:record_type ,
+                     gcc:result_decl ,
+                     gcc:template_decl ,
+                     gcc:template_template_parm ,
+                     gcc:template_type_parm ,
+                     gcc:type_decl ,
+                     gcc:typename_type ,
+                     gcc:union_type ,
+                     gcc:unknown ,
+                     gcc:var_decl ,
+                     gcc:void_type ;
+         rdfs:range gcc:label_decl ,
+                    gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#op_0
+gcc:op_0 rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:abs_expr ,
+                     gcc:addr_expr ,
+                     gcc:array_ref ,
+                     gcc:bit_and_expr ,
+                     gcc:bit_field_ref ,
+                     gcc:bit_ior_expr ,
+                     gcc:bit_not_expr ,
+                     gcc:bit_xor_expr ,
+                     gcc:cast_expr ,
+                     gcc:cleanup_point_expr ,
+                     gcc:component_ref ,
+                     gcc:compound_expr ,
+                     gcc:cond_expr ,
+                     gcc:const_cast_expr ,
+                     gcc:convert_expr ,
+                     gcc:eq_expr ,
+                     gcc:float_expr ,
+                     gcc:ge_expr ,
+                     gcc:gt_expr ,
+                     gcc:indirect_ref ,
+                     gcc:init_expr ,
+                     gcc:le_expr ,
+                     gcc:lshift_expr ,
+                     gcc:lt_expr ,
+                     gcc:max_expr ,
+                     gcc:minus_expr ,
+                     gcc:modify_expr ,
+                     gcc:mult_expr ,
+                     gcc:ne_expr ,
+                     gcc:negate_expr ,
+                     gcc:non_lvalue_expr ,
+                     gcc:nop_expr ,
+                     gcc:plus_expr ,
+                     gcc:pointer_plus_expr ,
+                     gcc:postdecrement_expr ,
+                     gcc:postincrement_expr ,
+                     gcc:predecrement_expr ,
+                     gcc:preincrement_expr ,
+                     gcc:rdiv_expr ,
+                     gcc:reinterpret_cast_expr ,
+                     gcc:rshift_expr ,
+                     gcc:static_cast_expr ,
+                     gcc:trunc_div_expr ,
+                     gcc:trunc_mod_expr ,
+                     gcc:truth_andif_expr ,
+                     gcc:truth_not_expr ,
+                     gcc:truth_orif_expr ,
+                     gcc:try_finally ;
+         rdfs:range gcc: ,
+                    gcc:abs_expr ,
+                    gcc:addr_expr ,
+                    gcc:array_ref ,
+                    gcc:arrow_expr ,
+                    gcc:bit_and_expr ,
+                    gcc:bit_field_ref ,
+                    gcc:bit_xor_expr ,
+                    gcc:call_expr ,
+                    gcc:cast_expr ,
+                    gcc:component_ref ,
+                    gcc:compound_expr ,
+                    gcc:cond_expr ,
+                    gcc:const_cast_expr ,
+                    gcc:convert_expr ,
+                    gcc:eq_expr ,
+                    gcc:expr_stmt ,
+                    gcc:float_expr ,
+                    gcc:ge_expr ,
+                    gcc:gt_expr ,
+                    gcc:indirect_ref ,
+                    gcc:init_expr ,
+                    gcc:le_expr ,
+                    gcc:lshift_expr ,
+                    gcc:lt_expr ,
+                    gcc:mem_ref ,
+                    gcc:minus_expr ,
+                    gcc:modify_expr ,
+                    gcc:mult_expr ,
+                    gcc:ne_expr ,
+                    gcc:negate_expr ,
+                    gcc:non_lvalue_expr ,
+                    gcc:nop_expr ,
+                    gcc:offsetof_expr ,
+                    gcc:plus_expr ,
+                    gcc:pointer_plus_expr ,
+                    gcc:postdecrement_expr ,
+                    gcc:postincrement_expr ,
+                    gcc:predecrement_expr ,
+                    gcc:preincrement_expr ,
+                    gcc:rdiv_expr ,
+                    gcc:reinterpret_cast_expr ,
+                    gcc:result_decl ,
+                    gcc:return_expr ,
+                    gcc:rshift_expr ,
+                    gcc:scope_ref ,
+                    gcc:sizeof_expr ,
+                    gcc:static_cast_expr ,
+                    gcc:string_cst ,
+                    gcc:target_expr ,
+                    gcc:template_parm_index ,
+                    gcc:template_type_parm ,
+                    gcc:trait_expr ,
+                    gcc:trunc_div_expr ,
+                    gcc:trunc_mod_expr ,
+                    gcc:truth_andif_expr ,
+                    gcc:truth_not_expr ,
+                    gcc:truth_orif_expr ,
+                    gcc:unknown ,
+                    gcc:void_cst .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#op_1
+gcc:op_1 rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:array_ref ,
+                     gcc:bit_and_expr ,
+                     gcc:bit_field_ref ,
+                     gcc:bit_ior_expr ,
+                     gcc:bit_xor_expr ,
+                     gcc:component_ref ,
+                     gcc:compound_expr ,
+                     gcc:cond_expr ,
+                     gcc:eq_expr ,
+                     gcc:ge_expr ,
+                     gcc:gt_expr ,
+                     gcc:init_expr ,
+                     gcc:le_expr ,
+                     gcc:lshift_expr ,
+                     gcc:lt_expr ,
+                     gcc:max_expr ,
+                     gcc:minus_expr ,
+                     gcc:modify_expr ,
+                     gcc:mult_expr ,
+                     gcc:ne_expr ,
+                     gcc:plus_expr ,
+                     gcc:pointer_plus_expr ,
+                     gcc:postdecrement_expr ,
+                     gcc:postincrement_expr ,
+                     gcc:predecrement_expr ,
+                     gcc:preincrement_expr ,
+                     gcc:rdiv_expr ,
+                     gcc:rshift_expr ,
+                     gcc:trunc_div_expr ,
+                     gcc:trunc_mod_expr ,
+                     gcc:truth_andif_expr ,
+                     gcc:truth_orif_expr ,
+                     gcc:try_finally ;
+         rdfs:range gcc:abs_expr ,
+                    gcc:addr_expr ,
+                    gcc:array_ref ,
+                    gcc:baselink ,
+                    gcc:bit_and_expr ,
+                    gcc:bit_ior_expr ,
+                    gcc:bit_not_expr ,
+                    gcc:bit_xor_expr ,
+                    gcc:call_expr ,
+                    gcc:cast_expr ,
+                    gcc:component_ref ,
+                    gcc:compound_expr ,
+                    gcc:cond_expr ,
+                    gcc:const_decl ,
+                    gcc:constructor ,
+                    gcc:convert_expr ,
+                    gcc:eq_expr ,
+                    gcc:field_decl ,
+                    gcc:float_expr ,
+                    gcc:ge_expr ,
+                    gcc:goto_expr ,
+                    gcc:gt_expr ,
+                    gcc:indirect_ref ,
+                    gcc:le_expr ,
+                    gcc:lshift_expr ,
+                    gcc:lt_expr ,
+                    gcc:max_expr ,
+                    gcc:minus_expr ,
+                    gcc:modify_expr ,
+                    gcc:mult_expr ,
+                    gcc:ne_expr ,
+                    gcc:negate_expr ,
+                    gcc:nop_expr ,
+                    gcc:plus_expr ,
+                    gcc:pointer_plus_expr ,
+                    gcc:postincrement_expr ,
+                    gcc:predecrement_expr ,
+                    gcc:preincrement_expr ,
+                    gcc:real_cst ,
+                    gcc:reinterpret_cast_expr ,
+                    gcc:return_expr ,
+                    gcc:rshift_expr ,
+                    gcc:scope_ref ,
+                    gcc:sizeof_expr ,
+                    gcc:target_expr ,
+                    gcc:template_parm_index ,
+                    gcc:trunc_div_expr ,
+                    gcc:trunc_mod_expr ,
+                    gcc:truth_andif_expr ,
+                    gcc:truth_not_expr ,
+                    gcc:truth_orif_expr ,
+                    gcc:void_cst .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#op_2
+gcc:op_2 rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:bit_field_ref ,
+                     gcc:cond_expr ;
+         rdfs:range gcc:addr_expr ,
+                    gcc:array_ref ,
+                    gcc:call_expr ,
+                    gcc:cast_expr ,
+                    gcc:compound_expr ,
+                    gcc:cond_expr ,
+                    gcc:convert_expr ,
+                    gcc:eq_expr ,
+                    gcc:goto_expr ,
+                    gcc:gt_expr ,
+                    gcc:le_expr ,
+                    gcc:lt_expr ,
+                    gcc:ne_expr ,
+                    gcc:nop_expr ,
+                    gcc:real_cst ,
+                    gcc:return_expr ,
+                    gcc:truth_not_expr ,
+                    gcc:void_cst .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#orig
+gcc:orig rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:function_decl ,
+                     gcc:label_decl ,
+                     gcc:parm_decl ,
+                     gcc:template_decl ,
+                     gcc:var_decl ;
+         rdfs:range gcc:label_decl ,
+                    gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#prms
+gcc:prms rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:function_type ,
+                     gcc:method_type ,
+                     gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ptd
+gcc:ptd rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:pointer_type ;
+        rdfs:range gcc:boolean_type ,
+                   gcc:enumeral_type ,
+                   gcc:method_type ,
+                   gcc:real_type ,
+                   gcc:template_type_parm ,
+                   gcc:typename_type ,
+                   gcc:union_type ,
+                   gcc:vector_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#purp
+gcc:purp rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:tree_list ;
+         rdfs:range gcc:const_decl ,
+                    gcc:scope_ref ,
+                    gcc:template_decl ,
+                    gcc:template_parm_index ,
+                    gcc:tree_vec ,
+                    gcc:typename_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#refd
+gcc:refd rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:reference_type ;
+         rdfs:range gcc:template_type_parm ,
+                    gcc:typename_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#retn
+gcc:retn rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:function_type ,
+                     gcc:method_type ;
+         rdfs:range gcc:boolean_type ,
+                    gcc:complex_type ,
+                    gcc:enumeral_type ,
+                    gcc:pointer_bounds_type ,
+                    gcc:real_type ,
+                    gcc:reference_type ,
+                    gcc:template_type_parm ,
+                    gcc:typename_type ,
+                    gcc:vector_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#rslt
+gcc:rslt rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#scpe
+gcc:scpe rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:const_decl ,
+                     gcc:field_decl ,
+                     gcc:function_decl ,
+                     gcc:label_decl ,
+                     gcc:namespace_decl ,
+                     gcc:parm_decl ,
+                     gcc:result_decl ,
+                     gcc:template_decl ,
+                     gcc:type_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ;
+         rdfs:range gcc:enumeral_type ,
+                    gcc:template_decl ,
+                    gcc:template_type_parm ,
+                    gcc:union_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#size
+gcc:size rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:array_type ,
+                     gcc:boolean_type ,
+                     gcc:complex_type ,
+                     gcc:enumeral_type ,
+                     gcc:field_decl ,
+                     gcc:function_type ,
+                     gcc:integer_type ,
+                     gcc:method_type ,
+                     gcc:nullptr_type ,
+                     gcc:parm_decl ,
+                     gcc:pointer_bounds_type ,
+                     gcc:pointer_type ,
+                     gcc:real_type ,
+                     gcc:record_type ,
+                     gcc:reference_type ,
+                     gcc:result_decl ,
+                     gcc:union_type ,
+                     gcc:unknown ,
+                     gcc:var_decl ,
+                     gcc:vector_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#spcs
+gcc:spcs rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:template_decl .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#then
+gcc:then rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:if_stmt .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#type
+gcc:type rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc: ,
+                     gcc:abs_expr ,
+                     gcc:addr_expr ,
+                     gcc:aggr_init_expr ,
+                     gcc:array_ref ,
+                     gcc:arrow_expr ,
+                     gcc:bind_expr ,
+                     gcc:binfo ,
+                     gcc:bit_and_expr ,
+                     gcc:bit_field_ref ,
+                     gcc:bit_ior_expr ,
+                     gcc:bit_not_expr ,
+                     gcc:bit_xor_expr ,
+                     gcc:break_stmt ,
+                     gcc:call_expr ,
+                     gcc:case_label_expr ,
+                     gcc:cast_expr ,
+                     gcc:cleanup_point_expr ,
+                     gcc:component_ref ,
+                     gcc:compound_expr ,
+                     gcc:cond_expr ,
+                     gcc:const_cast_expr ,
+                     gcc:const_decl ,
+                     gcc:continue_stmt ,
+                     gcc:convert_expr ,
+                     gcc:decl_expr ,
+                     gcc:dl_expr ,
+                     gcc:do_stmt ,
+                     gcc:eq_expr ,
+                     gcc:expr_stmt ,
+                     gcc:field_decl ,
+                     gcc:float_expr ,
+                     gcc:for_stmt ,
+                     gcc:function_decl ,
+                     gcc:ge_expr ,
+                     gcc:goto_expr ,
+                     gcc:gt_expr ,
+                     gcc:if_stmt ,
+                     gcc:indirect_ref ,
+                     gcc:init_expr ,
+                     gcc:integer_cst ,
+                     gcc:label_decl ,
+                     gcc:label_expr ,
+                     gcc:le_expr ,
+                     gcc:loop_expr ,
+                     gcc:lshift_expr ,
+                     gcc:lt_expr ,
+                     gcc:max_expr ,
+                     gcc:mem_ref ,
+                     gcc:minus_expr ,
+                     gcc:modify_expr ,
+                     gcc:modop_expr ,
+                     gcc:mult_expr ,
+                     gcc:namespace_decl ,
+                     gcc:ne_expr ,
+                     gcc:negate_expr ,
+                     gcc:non_lvalue_expr ,
+                     gcc:nop_expr ,
+                     gcc:nw_expr ,
+                     gcc:offsetof_expr ,
+                     gcc:parm_decl ,
+                     gcc:plus_expr ,
+                     gcc:pointer_plus_expr ,
+                     gcc:postdecrement_expr ,
+                     gcc:postincrement_expr ,
+                     gcc:predecrement_expr ,
+                     gcc:preincrement_expr ,
+                     gcc:rdiv_expr ,
+                     gcc:real_cst ,
+                     gcc:reinterpret_cast_expr ,
+                     gcc:result_decl ,
+                     gcc:return_expr ,
+                     gcc:rshift_expr ,
+                     gcc:sizeof_expr ,
+                     gcc:static_cast_expr ,
+                     gcc:string_cst ,
+                     gcc:switch_expr ,
+                     gcc:target_expr ,
+                     gcc:template_decl ,
+                     gcc:template_id_expr ,
+                     gcc:trunc_div_expr ,
+                     gcc:trunc_mod_expr ,
+                     gcc:truth_andif_expr ,
+                     gcc:truth_not_expr ,
+                     gcc:truth_orif_expr ,
+                     gcc:try_catch_expr ,
+                     gcc:try_finally ,
+                     gcc:type_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ,
+                     gcc:void_cst ,
+                     gcc:while_stmt ;
+         rdfs:range gcc:boolean_type ,
+                    gcc:complex_type ,
+                    gcc:enumeral_type ,
+                    gcc:lang_type ,
+                    gcc:method_type ,
+                    gcc:nullptr_type ,
+                    gcc:real_type ,
+                    gcc:reference_type ,
+                    gcc:template_template_parm ,
+                    gcc:template_type_parm ,
+                    gcc:typename_type ,
+                    gcc:union_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#unql
+gcc:unql rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:array_type ,
+                     gcc:boolean_type ,
+                     gcc:enumeral_type ,
+                     gcc:function_type ,
+                     gcc:integer_type ,
+                     gcc:method_type ,
+                     gcc:pointer_type ,
+                     gcc:real_type ,
+                     gcc:record_type ,
+                     gcc:template_type_parm ,
+                     gcc:typename_type ,
+                     gcc:union_type ,
+                     gcc:vector_type ,
+                     gcc:void_type ;
+         rdfs:range gcc:boolean_type ,
+                    gcc:enumeral_type ,
+                    gcc:method_type ,
+                    gcc:real_type ,
+                    gcc:template_type_parm ,
+                    gcc:typename_type ,
+                    gcc:union_type ,
+                    gcc:vector_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#val
+gcc:val rdf:type owl:ObjectProperty ;
+        rdfs:domain gcc:constructor ;
+        rdfs:range gcc:nop_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#valu
+gcc:valu rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:real_cst ,
+                     gcc:tree_list ;
+         rdfs:range gcc:addr_expr ,
+                    gcc:array_ref ,
+                    gcc:bit_not_expr ,
+                    gcc:boolean_type ,
+                    gcc:call_expr ,
+                    gcc:complex_type ,
+                    gcc:component_ref ,
+                    gcc:cond_expr ,
+                    gcc:const_cast_expr ,
+                    gcc:const_decl ,
+                    gcc:enumeral_type ,
+                    gcc:indirect_ref ,
+                    gcc:lshift_expr ,
+                    gcc:plus_expr ,
+                    gcc:pointer_bounds_type ,
+                    gcc:real_type ,
+                    gcc:reference_type ,
+                    gcc:rshift_expr ,
+                    gcc:template_decl ,
+                    gcc:template_parm_index ,
+                    gcc:template_type_parm ,
+                    gcc:tree_vec ,
+                    gcc:union_type ,
+                    gcc:vector_type .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#vars
+gcc:vars rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:bind_expr .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#vfld
+gcc:vfld rdf:type owl:ObjectProperty ;
+         rdfs:domain gcc:record_type ;
+         rdfs:range gcc:field_decl .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#accs
+gcc:accs rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:binfo ,
+                     gcc:field_decl ,
+                     gcc:function_decl ,
+                     gcc:record_type ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#algn
+gcc:algn rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc: ,
+                     gcc:array_type ,
+                     gcc:boolean_type ,
+                     gcc:complex_type ,
+                     gcc:enumeral_type ,
+                     gcc:field_decl ,
+                     gcc:function_type ,
+                     gcc:integer_type ,
+                     gcc:lang_type ,
+                     gcc:method_type ,
+                     gcc:nullptr_type ,
+                     gcc:parm_decl ,
+                     gcc:pointer_bounds_type ,
+                     gcc:pointer_type ,
+                     gcc:real_type ,
+                     gcc:record_type ,
+                     gcc:reference_type ,
+                     gcc:result_decl ,
+                     gcc:template_template_parm ,
+                     gcc:template_type_parm ,
+                     gcc:typename_type ,
+                     gcc:union_type ,
+                     gcc:unknown ,
+                     gcc:var_decl ,
+                     gcc:vector_type ,
+                     gcc:void_type ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bases
+gcc:bases rdf:type owl:DatatypeProperty ;
+          rdfs:domain gcc:binfo ;
+          rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#body
+gcc:body rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ctor
+gcc:ctor rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:aggr_init_expr ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#int
+gcc:int rdf:type owl:DatatypeProperty ;
+        rdfs:domain gcc:integer_cst ;
+        rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lang
+gcc:lang rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:function_decl ,
+                     gcc:namespace_decl ,
+                     gcc:parm_decl ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#line
+gcc:line rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:break_stmt ,
+                     gcc:continue_stmt ,
+                     gcc:do_stmt ,
+                     gcc:expr_stmt ,
+                     gcc:for_stmt ,
+                     gcc:if_stmt ,
+                     gcc:while_stmt ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#link
+gcc:link rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc: ,
+                     gcc:function_decl ,
+                     gcc:parm_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lngt
+gcc:lngt rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:constructor ,
+                     gcc:identifier_node ,
+                     gcc:string_cst ,
+                     gcc:tree_vec ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#note
+gcc:note rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc: ,
+                     gcc:field_decl ,
+                     gcc:function_decl ,
+                     gcc:label_decl ,
+                     gcc:parm_decl ,
+                     gcc:result_decl ,
+                     gcc:template_decl ,
+                     gcc:type_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#prec
+gcc:prec rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:enumeral_type ,
+                     gcc:integer_type ,
+                     gcc:real_type ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#qual
+gcc:qual rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:array_type ,
+                     gcc:boolean_type ,
+                     gcc:enumeral_type ,
+                     gcc:integer_type ,
+                     gcc:pointer_type ,
+                     gcc:real_type ,
+                     gcc:record_type ,
+                     gcc:template_type_parm ,
+                     gcc:typename_type ,
+                     gcc:union_type ,
+                     gcc:vector_type ,
+                     gcc:void_type ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#sign
+gcc:sign rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:enumeral_type ,
+                     gcc:integer_type ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#spec
+gcc:spec rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:function_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#srcp
+gcc:srcp rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc: ,
+                     gcc:const_decl ,
+                     gcc:field_decl ,
+                     gcc:function_decl ,
+                     gcc:label_decl ,
+                     gcc:namespace_decl ,
+                     gcc:parm_decl ,
+                     gcc:result_decl ,
+                     gcc:template_decl ,
+                     gcc:type_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#strg
+gcc:strg rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc:identifier_node ,
+                     gcc:string_cst ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#tag
+gcc:tag rdf:type owl:DatatypeProperty ;
+        rdfs:domain gcc:record_type ,
+                    gcc:union_type ;
+        rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#used
+gcc:used rdf:type owl:DatatypeProperty ;
+         rdfs:domain gcc: ,
+                     gcc:parm_decl ,
+                     gcc:unknown ,
+                     gcc:var_decl ;
+         rdfs:range xsd:string .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#valu
+gcc:valu rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#
+gcc: rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#abs_expr
+gcc:abs_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#addr_expr
+gcc:addr_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#aggr_init_expr
+gcc:aggr_init_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#array_ref
+gcc:array_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#array_type
+gcc:array_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#arrow_expr
+gcc:arrow_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#baselink
+gcc:baselink rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bind_expr
+gcc:bind_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#binfo
+gcc:binfo rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_and_expr
+gcc:bit_and_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_field_ref
+gcc:bit_field_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_ior_expr
+gcc:bit_ior_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_not_expr
+gcc:bit_not_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_xor_expr
+gcc:bit_xor_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#boolean_type
+gcc:boolean_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#break_stmt
+gcc:break_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#call_expr
+gcc:call_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#case_label_expr
+gcc:case_label_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cast_expr
+gcc:cast_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cleanup_point_expr
+gcc:cleanup_point_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#complex_type
+gcc:complex_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#component_ref
+gcc:component_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#compound_expr
+gcc:compound_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cond_expr
+gcc:cond_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#const_cast_expr
+gcc:const_cast_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#const_decl
+gcc:const_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#constructor
+gcc:constructor rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#continue_stmt
+gcc:continue_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#convert_expr
+gcc:convert_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ctor_initializer
+gcc:ctor_initializer rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#decl_expr
+gcc:decl_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#dl_expr
+gcc:dl_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#do_stmt
+gcc:do_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#enumeral_type
+gcc:enumeral_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#eq_expr
+gcc:eq_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#expr_stmt
+gcc:expr_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#field_decl
+gcc:field_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#float_expr
+gcc:float_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#for_stmt
+gcc:for_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#function_decl
+gcc:function_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#function_type
+gcc:function_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ge_expr
+gcc:ge_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#goto_expr
+gcc:goto_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#gt_expr
+gcc:gt_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#identifier_node
+gcc:identifier_node rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#if_stmt
+gcc:if_stmt rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#indirect_ref
+gcc:indirect_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#init_expr
+gcc:init_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#integer_cst
+gcc:integer_cst rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#integer_type
+gcc:integer_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#label_decl
+gcc:label_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#label_expr
+gcc:label_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lang_type
+gcc:lang_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#le_expr
+gcc:le_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#loop_expr
+gcc:loop_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lshift_expr
+gcc:lshift_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lt_expr
+gcc:lt_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#max_expr
+gcc:max_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#mem_ref
+gcc:mem_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#method_type
+gcc:method_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#minus_expr
+gcc:minus_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#modify_expr
+gcc:modify_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#modop_expr
+gcc:modop_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#mult_expr
+gcc:mult_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#namespace_decl
+gcc:namespace_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ne_expr
+gcc:ne_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#negate_expr
+gcc:negate_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#non_lvalue_expr
+gcc:non_lvalue_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nop_expr
+gcc:nop_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nullptr_type
+gcc:nullptr_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nw_expr
+gcc:nw_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#offsetof_expr
+gcc:offsetof_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#overload
+gcc:overload rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#parm_decl
+gcc:parm_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#plus_expr
+gcc:plus_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_bounds_type
+gcc:pointer_bounds_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_plus_expr
+gcc:pointer_plus_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_type
+gcc:pointer_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#postdecrement_expr
+gcc:postdecrement_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#postincrement_expr
+gcc:postincrement_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#predecrement_expr
+gcc:predecrement_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#preincrement_expr
+gcc:preincrement_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#rdiv_expr
+gcc:rdiv_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#real_cst
+gcc:real_cst rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#real_type
+gcc:real_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#record_type
+gcc:record_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#reference_type
+gcc:reference_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#reinterpret_cast_expr
+gcc:reinterpret_cast_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#result_decl
+gcc:result_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#return_expr
+gcc:return_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#rshift_expr
+gcc:rshift_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#scope_ref
+gcc:scope_ref rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#sizeof_expr
+gcc:sizeof_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#statement_list
+gcc:statement_list rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#static_cast_expr
+gcc:static_cast_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#string_cst
+gcc:string_cst rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#switch_expr
+gcc:switch_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#target_expr
+gcc:target_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_decl
+gcc:template_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_id_expr
+gcc:template_id_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_parm_index
+gcc:template_parm_index rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_template_parm
+gcc:template_template_parm rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_type_parm
+gcc:template_type_parm rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trait_expr
+gcc:trait_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#translation_unit_decl
+gcc:translation_unit_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#tree_list
+gcc:tree_list rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#tree_vec
+gcc:tree_vec rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trunc_div_expr
+gcc:trunc_div_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trunc_mod_expr
+gcc:trunc_mod_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_andif_expr
+gcc:truth_andif_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_not_expr
+gcc:truth_not_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_orif_expr
+gcc:truth_orif_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#try_catch_expr
+gcc:try_catch_expr rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#try_finally
+gcc:try_finally rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#type_decl
+gcc:type_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#typename_type
+gcc:typename_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#union_type
+gcc:union_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#unknown
+gcc:unknown rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#var_decl
+gcc:var_decl rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#vector_type
+gcc:vector_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#void_cst
+gcc:void_cst rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#void_type
+gcc:void_type rdf:type owl:Class .
+
+
+###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#while_stmt
+gcc:while_stmt rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
