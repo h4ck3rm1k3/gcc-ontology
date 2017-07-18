@@ -1,15 +1,15 @@
-@prefix : <#> .
+@prefix : <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#> .
 @prefix exp: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/example_instance.xml#> .
 @prefix gcc: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#> .
+@prefix new: <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.w3.org/2002/07/owl#> .
+@base <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl> .
 
-[ rdf:type owl:Ontology
- ] .
+<http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
@@ -27,8 +27,7 @@ gcc:P0 rdf:type owl:ObjectProperty ;
                    gcc:call_expr ,
                    gcc:statement_list ,
                    gcc:tree_vec ;
-       rdfs:range gcc: ,
-                  gcc:addr_expr ,
+       rdfs:range gcc:addr_expr ,
                   gcc:array_ref ,
                   gcc:call_expr ,
                   gcc:case_label_expr ,
@@ -1811,8 +1810,7 @@ gcc:args rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#argt
 gcc:argt rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:parm_decl ,
+         rdfs:domain gcc:parm_decl ,
                      gcc:unknown ;
          rdfs:range gcc:enumeral_type ,
                     gcc:real_type ,
@@ -1842,8 +1840,7 @@ gcc:binf rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#body
 gcc:body rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:bind_expr ,
+         rdfs:domain gcc:bind_expr ,
                      gcc:do_stmt ,
                      gcc:for_stmt ,
                      gcc:function_decl ,
@@ -1871,8 +1868,7 @@ gcc:bpos rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#chain
 gcc:chain rdf:type owl:ObjectProperty ;
-          rdfs:domain gcc: ,
-                      gcc:const_decl ,
+          rdfs:domain gcc:const_decl ,
                       gcc:field_decl ,
                       gcc:function_decl ,
                       gcc:label_decl ,
@@ -2010,8 +2006,7 @@ gcc:expr rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#externbody
 gcc:externbody rdf:type owl:ObjectProperty ;
-               rdfs:domain gcc: ,
-                           gcc:parm_decl .
+               rdfs:domain gcc:parm_decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#flds
@@ -2114,8 +2109,7 @@ gcc:mngl rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#name
 gcc:name rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:array_type ,
+         rdfs:domain gcc:array_type ,
                      gcc:boolean_type ,
                      gcc:case_label_expr ,
                      gcc:complex_type ,
@@ -2199,8 +2193,7 @@ gcc:op_0 rdf:type owl:ObjectProperty ;
                      gcc:truth_not_expr ,
                      gcc:truth_orif_expr ,
                      gcc:try_finally ;
-         rdfs:range gcc: ,
-                    gcc:abs_expr ,
+         rdfs:range gcc:abs_expr ,
                     gcc:addr_expr ,
                     gcc:array_ref ,
                     gcc:arrow_expr ,
@@ -2445,8 +2438,7 @@ gcc:rslt rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#scpe
 gcc:scpe rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:const_decl ,
+         rdfs:domain gcc:const_decl ,
                      gcc:field_decl ,
                      gcc:function_decl ,
                      gcc:label_decl ,
@@ -2465,8 +2457,7 @@ gcc:scpe rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#size
 gcc:size rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:array_type ,
+         rdfs:domain gcc:array_type ,
                      gcc:boolean_type ,
                      gcc:complex_type ,
                      gcc:enumeral_type ,
@@ -2500,8 +2491,7 @@ gcc:then rdf:type owl:ObjectProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#type
 gcc:type rdf:type owl:ObjectProperty ;
-         rdfs:domain gcc: ,
-                     gcc:abs_expr ,
+         rdfs:domain gcc:abs_expr ,
                      gcc:addr_expr ,
                      gcc:aggr_init_expr ,
                      gcc:array_ref ,
@@ -2695,8 +2685,7 @@ gcc:accs rdf:type owl:DatatypeProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#algn
 gcc:algn rdf:type owl:DatatypeProperty ;
-         rdfs:domain gcc: ,
-                     gcc:array_type ,
+         rdfs:domain gcc:array_type ,
                      gcc:boolean_type ,
                      gcc:complex_type ,
                      gcc:enumeral_type ,
@@ -2770,8 +2759,7 @@ gcc:line rdf:type owl:DatatypeProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#link
 gcc:link rdf:type owl:DatatypeProperty ;
-         rdfs:domain gcc: ,
-                     gcc:function_decl ,
+         rdfs:domain gcc:function_decl ,
                      gcc:parm_decl ,
                      gcc:unknown ,
                      gcc:var_decl ;
@@ -2789,8 +2777,7 @@ gcc:lngt rdf:type owl:DatatypeProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#note
 gcc:note rdf:type owl:DatatypeProperty ;
-         rdfs:domain gcc: ,
-                     gcc:field_decl ,
+         rdfs:domain gcc:field_decl ,
                      gcc:function_decl ,
                      gcc:label_decl ,
                      gcc:parm_decl ,
@@ -2842,8 +2829,7 @@ gcc:spec rdf:type owl:DatatypeProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#srcp
 gcc:srcp rdf:type owl:DatatypeProperty ;
-         rdfs:domain gcc: ,
-                     gcc:const_decl ,
+         rdfs:domain gcc:const_decl ,
                      gcc:field_decl ,
                      gcc:function_decl ,
                      gcc:label_decl ,
@@ -2873,8 +2859,7 @@ gcc:tag rdf:type owl:DatatypeProperty ;
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#used
 gcc:used rdf:type owl:DatatypeProperty ;
-         rdfs:domain gcc: ,
-                     gcc:parm_decl ,
+         rdfs:domain gcc:parm_decl ,
                      gcc:unknown ,
                      gcc:var_decl ;
          rdfs:range xsd:string .
@@ -2889,500 +2874,691 @@ gcc:valu rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
-###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#
-gcc: rdf:type owl:Class .
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#ClassInfo
+new:ClassInfo rdf:type owl:Class ;
+              rdfs:subClassOf new:Util .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Collection
+new:Collection rdf:type owl:Class ;
+               rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Const
+new:Const rdf:type owl:Class ;
+          rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Constructors
+new:Constructors rdf:type owl:Class ;
+                 rdfs:subClassOf new:Util .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Decl
+new:Decl rdf:type owl:Class ;
+         rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Expr
+new:Expr rdf:type owl:Class ;
+         rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#FunctionInfo
+new:FunctionInfo rdf:type owl:Class ;
+                 rdfs:subClassOf new:Util .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#List
+new:List rdf:type owl:Class ;
+         rdfs:subClassOf new:Collection .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#NodeType
+new:NodeType rdf:type owl:Class .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Ref
+new:Ref rdf:type owl:Class ;
+        rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Stmt
+new:Stmt rdf:type owl:Class ;
+         rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Template
+new:Template rdf:type owl:Class ;
+             rdfs:subClassOf new:ClassInfo .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#TypeC
+new:TypeC rdf:type owl:Class ;
+          rdfs:subClassOf new:NodeType .
+
+
+###  http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#Util
+new:Util rdf:type owl:Class ;
+         rdfs:subClassOf new:NodeType .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#abs_expr
-gcc:abs_expr rdf:type owl:Class .
+gcc:abs_expr rdf:type owl:Class ;
+             rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#addr_expr
-gcc:addr_expr rdf:type owl:Class .
+gcc:addr_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#aggr_init_expr
-gcc:aggr_init_expr rdf:type owl:Class .
+gcc:aggr_init_expr rdf:type owl:Class ;
+                   rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#array_ref
-gcc:array_ref rdf:type owl:Class .
+gcc:array_ref rdf:type owl:Class ;
+              rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#array_type
-gcc:array_type rdf:type owl:Class .
+gcc:array_type rdf:type owl:Class ;
+               rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#arrow_expr
-gcc:arrow_expr rdf:type owl:Class .
+gcc:arrow_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#baselink
-gcc:baselink rdf:type owl:Class .
+gcc:baselink rdf:type owl:Class ;
+             rdfs:subClassOf new:Expr ;
+             rdfs:comment "Expression, The type of a baselink is either method or function type." .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bind_expr
-gcc:bind_expr rdf:type owl:Class .
+gcc:bind_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#binfo
-gcc:binfo rdf:type owl:Class .
+gcc:binfo rdf:type owl:Class ;
+          rdfs:subClassOf new:ClassInfo .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_and_expr
-gcc:bit_and_expr rdf:type owl:Class .
+gcc:bit_and_expr rdf:type owl:Class ;
+                 rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_field_ref
-gcc:bit_field_ref rdf:type owl:Class .
+gcc:bit_field_ref rdf:type owl:Class ;
+                  rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_ior_expr
-gcc:bit_ior_expr rdf:type owl:Class .
+gcc:bit_ior_expr rdf:type owl:Class ;
+                 rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_not_expr
-gcc:bit_not_expr rdf:type owl:Class .
+gcc:bit_not_expr rdf:type owl:Class ;
+                 rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#bit_xor_expr
-gcc:bit_xor_expr rdf:type owl:Class .
+gcc:bit_xor_expr rdf:type owl:Class ;
+                 rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#boolean_type
-gcc:boolean_type rdf:type owl:Class .
+gcc:boolean_type rdf:type owl:Class ;
+                 rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#break_stmt
-gcc:break_stmt rdf:type owl:Class .
+gcc:break_stmt rdf:type owl:Class ;
+               rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#call_expr
-gcc:call_expr rdf:type owl:Class .
+gcc:call_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#case_label_expr
-gcc:case_label_expr rdf:type owl:Class .
+gcc:case_label_expr rdf:type owl:Class ;
+                    rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cast_expr
-gcc:cast_expr rdf:type owl:Class .
+gcc:cast_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cleanup_point_expr
-gcc:cleanup_point_expr rdf:type owl:Class .
+gcc:cleanup_point_expr rdf:type owl:Class ;
+                       rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#complex_type
-gcc:complex_type rdf:type owl:Class .
+gcc:complex_type rdf:type owl:Class ;
+                 rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#component_ref
-gcc:component_ref rdf:type owl:Class .
+gcc:component_ref rdf:type owl:Class ;
+                  rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#compound_expr
-gcc:compound_expr rdf:type owl:Class .
+gcc:compound_expr rdf:type owl:Class ;
+                  rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#cond_expr
-gcc:cond_expr rdf:type owl:Class .
+gcc:cond_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#const_cast_expr
-gcc:const_cast_expr rdf:type owl:Class .
+gcc:const_cast_expr rdf:type owl:Class ;
+                    rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#const_decl
-gcc:const_decl rdf:type owl:Class .
+gcc:const_decl rdf:type owl:Class ;
+               rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#constructor
-gcc:constructor rdf:type owl:Class .
+gcc:constructor rdf:type owl:Class ;
+                rdfs:subClassOf new:Constructors .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#continue_stmt
-gcc:continue_stmt rdf:type owl:Class .
+gcc:continue_stmt rdf:type owl:Class ;
+                  rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#convert_expr
-gcc:convert_expr rdf:type owl:Class .
+gcc:convert_expr rdf:type owl:Class ;
+                 rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ctor_initializer
-gcc:ctor_initializer rdf:type owl:Class .
+gcc:ctor_initializer rdf:type owl:Class ;
+                     rdfs:subClassOf new:Constructors .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#decl_expr
-gcc:decl_expr rdf:type owl:Class .
+gcc:decl_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#dl_expr
-gcc:dl_expr rdf:type owl:Class .
+gcc:dl_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#do_stmt
-gcc:do_stmt rdf:type owl:Class .
+gcc:do_stmt rdf:type owl:Class ;
+            rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#enumeral_type
-gcc:enumeral_type rdf:type owl:Class .
+gcc:enumeral_type rdf:type owl:Class ;
+                  rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#eq_expr
-gcc:eq_expr rdf:type owl:Class .
+gcc:eq_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#expr_stmt
-gcc:expr_stmt rdf:type owl:Class .
+gcc:expr_stmt rdf:type owl:Class ;
+              rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#field_decl
-gcc:field_decl rdf:type owl:Class .
+gcc:field_decl rdf:type owl:Class ;
+               rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#float_expr
-gcc:float_expr rdf:type owl:Class .
+gcc:float_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#for_stmt
-gcc:for_stmt rdf:type owl:Class .
+gcc:for_stmt rdf:type owl:Class ;
+             rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#function_decl
-gcc:function_decl rdf:type owl:Class .
+gcc:function_decl rdf:type owl:Class ;
+                  rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#function_type
-gcc:function_type rdf:type owl:Class .
+gcc:function_type rdf:type owl:Class ;
+                  rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ge_expr
-gcc:ge_expr rdf:type owl:Class .
+gcc:ge_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#goto_expr
-gcc:goto_expr rdf:type owl:Class .
+gcc:goto_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#gt_expr
-gcc:gt_expr rdf:type owl:Class .
+gcc:gt_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#identifier_node
-gcc:identifier_node rdf:type owl:Class .
+gcc:identifier_node rdf:type owl:Class ;
+                    rdfs:subClassOf new:Util .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#if_stmt
-gcc:if_stmt rdf:type owl:Class .
+gcc:if_stmt rdf:type owl:Class ;
+            rdfs:subClassOf new:Stmt .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#indirect_ref
-gcc:indirect_ref rdf:type owl:Class .
+gcc:indirect_ref rdf:type owl:Class ;
+                 rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#init_expr
-gcc:init_expr rdf:type owl:Class .
+gcc:init_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#integer_cst
-gcc:integer_cst rdf:type owl:Class .
+gcc:integer_cst rdf:type owl:Class ;
+                rdfs:subClassOf new:Const .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#integer_type
-gcc:integer_type rdf:type owl:Class .
+gcc:integer_type rdf:type owl:Class ;
+                 rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#label_decl
-gcc:label_decl rdf:type owl:Class .
+gcc:label_decl rdf:type owl:Class ;
+               rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#label_expr
-gcc:label_expr rdf:type owl:Class .
+gcc:label_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lang_type
-gcc:lang_type rdf:type owl:Class .
+gcc:lang_type rdf:type owl:Class ;
+              rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#le_expr
-gcc:le_expr rdf:type owl:Class .
+gcc:le_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#loop_expr
-gcc:loop_expr rdf:type owl:Class .
+gcc:loop_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lshift_expr
-gcc:lshift_expr rdf:type owl:Class .
+gcc:lshift_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#lt_expr
-gcc:lt_expr rdf:type owl:Class .
+gcc:lt_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#max_expr
-gcc:max_expr rdf:type owl:Class .
+gcc:max_expr rdf:type owl:Class ;
+             rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#mem_ref
-gcc:mem_ref rdf:type owl:Class .
+gcc:mem_ref rdf:type owl:Class ;
+            rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#method_type
-gcc:method_type rdf:type owl:Class .
+gcc:method_type rdf:type owl:Class ;
+                rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#minus_expr
-gcc:minus_expr rdf:type owl:Class .
+gcc:minus_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#modify_expr
-gcc:modify_expr rdf:type owl:Class .
+gcc:modify_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#modop_expr
-gcc:modop_expr rdf:type owl:Class .
+gcc:modop_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#mult_expr
-gcc:mult_expr rdf:type owl:Class .
+gcc:mult_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#namespace_decl
-gcc:namespace_decl rdf:type owl:Class .
+gcc:namespace_decl rdf:type owl:Class ;
+                   rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#ne_expr
-gcc:ne_expr rdf:type owl:Class .
+gcc:ne_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#negate_expr
-gcc:negate_expr rdf:type owl:Class .
+gcc:negate_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#non_lvalue_expr
-gcc:non_lvalue_expr rdf:type owl:Class .
+gcc:non_lvalue_expr rdf:type owl:Class ;
+                    rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nop_expr
-gcc:nop_expr rdf:type owl:Class .
+gcc:nop_expr rdf:type owl:Class ;
+             rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nullptr_type
-gcc:nullptr_type rdf:type owl:Class .
+gcc:nullptr_type rdf:type owl:Class ;
+                 rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#nw_expr
-gcc:nw_expr rdf:type owl:Class .
+gcc:nw_expr rdf:type owl:Class ;
+            rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#offsetof_expr
-gcc:offsetof_expr rdf:type owl:Class .
+gcc:offsetof_expr rdf:type owl:Class ;
+                  rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#overload
-gcc:overload rdf:type owl:Class .
+gcc:overload rdf:type owl:Class ;
+             rdfs:subClassOf new:FunctionInfo ;
+             rdfs:comment "" ,
+                          "List like node for chaining function overload" .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#parm_decl
-gcc:parm_decl rdf:type owl:Class .
+gcc:parm_decl rdf:type owl:Class ;
+              rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#plus_expr
-gcc:plus_expr rdf:type owl:Class .
+gcc:plus_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_bounds_type
-gcc:pointer_bounds_type rdf:type owl:Class .
+gcc:pointer_bounds_type rdf:type owl:Class ;
+                        rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_plus_expr
-gcc:pointer_plus_expr rdf:type owl:Class .
+gcc:pointer_plus_expr rdf:type owl:Class ;
+                      rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#pointer_type
-gcc:pointer_type rdf:type owl:Class .
+gcc:pointer_type rdf:type owl:Class ;
+                 rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#postdecrement_expr
-gcc:postdecrement_expr rdf:type owl:Class .
+gcc:postdecrement_expr rdf:type owl:Class ;
+                       rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#postincrement_expr
-gcc:postincrement_expr rdf:type owl:Class .
+gcc:postincrement_expr rdf:type owl:Class ;
+                       rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#predecrement_expr
-gcc:predecrement_expr rdf:type owl:Class .
+gcc:predecrement_expr rdf:type owl:Class ;
+                      rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#preincrement_expr
-gcc:preincrement_expr rdf:type owl:Class .
+gcc:preincrement_expr rdf:type owl:Class ;
+                      rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#rdiv_expr
-gcc:rdiv_expr rdf:type owl:Class .
+gcc:rdiv_expr rdf:type owl:Class ;
+              rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#real_cst
-gcc:real_cst rdf:type owl:Class .
+gcc:real_cst rdf:type owl:Class ;
+             rdfs:subClassOf new:Const .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#real_type
-gcc:real_type rdf:type owl:Class .
+gcc:real_type rdf:type owl:Class ;
+              rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#record_type
-gcc:record_type rdf:type owl:Class .
+gcc:record_type rdf:type owl:Class ;
+                rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#reference_type
-gcc:reference_type rdf:type owl:Class .
+gcc:reference_type rdf:type owl:Class ;
+                   rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#reinterpret_cast_expr
-gcc:reinterpret_cast_expr rdf:type owl:Class .
+gcc:reinterpret_cast_expr rdf:type owl:Class ;
+                          rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#result_decl
-gcc:result_decl rdf:type owl:Class .
+gcc:result_decl rdf:type owl:Class ;
+                rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#return_expr
-gcc:return_expr rdf:type owl:Class .
+gcc:return_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#rshift_expr
-gcc:rshift_expr rdf:type owl:Class .
+gcc:rshift_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#scope_ref
-gcc:scope_ref rdf:type owl:Class .
+gcc:scope_ref rdf:type owl:Class ;
+              rdfs:subClassOf new:Ref .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#sizeof_expr
-gcc:sizeof_expr rdf:type owl:Class .
+gcc:sizeof_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#statement_list
-gcc:statement_list rdf:type owl:Class .
+gcc:statement_list rdf:type owl:Class ;
+                   rdfs:subClassOf new:List .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#static_cast_expr
-gcc:static_cast_expr rdf:type owl:Class .
+gcc:static_cast_expr rdf:type owl:Class ;
+                     rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#string_cst
-gcc:string_cst rdf:type owl:Class .
+gcc:string_cst rdf:type owl:Class ;
+               rdfs:subClassOf new:Const .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#switch_expr
-gcc:switch_expr rdf:type owl:Class .
+gcc:switch_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#target_expr
-gcc:target_expr rdf:type owl:Class .
+gcc:target_expr rdf:type owl:Class ;
+                rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_decl
-gcc:template_decl rdf:type owl:Class .
+gcc:template_decl rdf:type owl:Class ;
+                  rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_id_expr
-gcc:template_id_expr rdf:type owl:Class .
+gcc:template_id_expr rdf:type owl:Class ;
+                     rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_parm_index
-gcc:template_parm_index rdf:type owl:Class .
+gcc:template_parm_index rdf:type owl:Class ;
+                        rdfs:subClassOf new:Template .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_template_parm
-gcc:template_template_parm rdf:type owl:Class .
+gcc:template_template_parm rdf:type owl:Class ;
+                           rdfs:subClassOf new:Template .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#template_type_parm
-gcc:template_type_parm rdf:type owl:Class .
+gcc:template_type_parm rdf:type owl:Class ;
+                       rdfs:subClassOf new:Template .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trait_expr
-gcc:trait_expr rdf:type owl:Class .
+gcc:trait_expr rdf:type owl:Class ;
+               rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#translation_unit_decl
-gcc:translation_unit_decl rdf:type owl:Class .
+gcc:translation_unit_decl rdf:type owl:Class ;
+                          rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#tree_list
-gcc:tree_list rdf:type owl:Class .
+gcc:tree_list rdf:type owl:Class ;
+              rdfs:subClassOf new:List .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#tree_vec
-gcc:tree_vec rdf:type owl:Class .
+gcc:tree_vec rdf:type owl:Class ;
+             rdfs:subClassOf new:Collection .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trunc_div_expr
-gcc:trunc_div_expr rdf:type owl:Class .
+gcc:trunc_div_expr rdf:type owl:Class ;
+                   rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#trunc_mod_expr
-gcc:trunc_mod_expr rdf:type owl:Class .
+gcc:trunc_mod_expr rdf:type owl:Class ;
+                   rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_andif_expr
-gcc:truth_andif_expr rdf:type owl:Class .
+gcc:truth_andif_expr rdf:type owl:Class ;
+                     rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_not_expr
-gcc:truth_not_expr rdf:type owl:Class .
+gcc:truth_not_expr rdf:type owl:Class ;
+                   rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#truth_orif_expr
-gcc:truth_orif_expr rdf:type owl:Class .
+gcc:truth_orif_expr rdf:type owl:Class ;
+                    rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#try_catch_expr
-gcc:try_catch_expr rdf:type owl:Class .
+gcc:try_catch_expr rdf:type owl:Class ;
+                   rdfs:subClassOf new:Expr .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#try_finally
-gcc:try_finally rdf:type owl:Class .
+gcc:try_finally rdf:type owl:Class ;
+                rdfs:subClassOf new:Util .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#type_decl
-gcc:type_decl rdf:type owl:Class .
+gcc:type_decl rdf:type owl:Class ;
+              rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#typename_type
-gcc:typename_type rdf:type owl:Class .
+gcc:typename_type rdf:type owl:Class ;
+                  rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#union_type
-gcc:union_type rdf:type owl:Class .
+gcc:union_type rdf:type owl:Class ;
+               rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#unknown
-gcc:unknown rdf:type owl:Class .
+gcc:unknown rdf:type owl:Class ;
+            rdfs:subClassOf new:Util .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#var_decl
-gcc:var_decl rdf:type owl:Class .
+gcc:var_decl rdf:type owl:Class ;
+             rdfs:subClassOf new:Decl .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#vector_type
-gcc:vector_type rdf:type owl:Class .
+gcc:vector_type rdf:type owl:Class ;
+                rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#void_cst
-gcc:void_cst rdf:type owl:Class .
+gcc:void_cst rdf:type owl:Class ;
+             rdfs:subClassOf new:Const .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#void_type
-gcc:void_type rdf:type owl:Class .
+gcc:void_type rdf:type owl:Class ;
+              rdfs:subClassOf new:TypeC .
 
 
 ###  https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#while_stmt
-gcc:while_stmt rdf:type owl:Class .
+gcc:while_stmt rdf:type owl:Class ;
+               rdfs:subClassOf new:Stmt .
 
 
 ###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
