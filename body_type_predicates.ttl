@@ -1,0 +1,517 @@
+@prefix gcc2: <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/types2.ttl#> .
+@prefix btp: <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/body_type_predicates.ttl#> .
+@prefix exp: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/example_instance.xml#> .
+@prefix gcc: <https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#> .
+@prefix new: <http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/body_type_predicates.ttl> rdf:type owl:Ontology .
+
+btp:this btp:createdby """grep -v _type  types2.ttl | grep gcc2 | cut '-d ' -f1,2 | sort -u > body_type_predicates.ttl""".
+
+#gcc:namespace_decl gcc2:chain btp:follow.
+gcc:namespace_decl gcc2:dcls btp:follow.
+gcc:namespace_decl gcc2:name btp:follow.
+gcc:namespace_decl gcc2:scpe btp:follow.
+
+gcc:function_decl gcc2:args btp:follow.
+
+gcc:function_decl gcc2:body btp:follow.
+
+gcc:function_decl gcc2:body gcc:bind_expr.
+gcc:function_decl gcc2:body gcc:cleanup_point_expr.
+gcc:function_decl gcc2:body gcc:cond_expr.
+gcc:function_decl gcc2:body gcc:return_expr.
+gcc:function_decl gcc2:body gcc:statement_list.
+gcc:function_decl gcc2:body gcc:switch_expr.
+
+#gcc:function_decl gcc2:chain btp:follow.
+gcc:function_decl gcc2:mngl btp:follow.
+gcc:function_decl gcc2:name btp:follow.
+gcc:function_decl gcc2:orig btp:follow.
+#gcc:function_decl gcc2:scpe btp:follow.
+
+gcc:abs_expr gcc2:op_0 btp:follow.
+
+gcc:addr_expr gcc2:op_0 btp:follow.
+
+gcc:aggr_init_expr gcc2:decl btp:follow.
+gcc:aggr_init_expr gcc2:fn btp:follow.
+gcc:aggr_init_expr gcc2:P0 btp:follow.
+gcc:aggr_init_expr gcc2:P1 btp:follow.
+gcc:aggr_init_expr gcc2:P2 btp:follow.
+gcc:aggr_init_expr gcc2:P3 btp:follow.
+gcc:aggr_init_expr gcc2:P4 btp:follow.
+
+gcc:array_ref gcc2:op_0 btp:follow.
+gcc:array_ref gcc2:op_1 btp:follow.
+
+gcc:bind_expr gcc2:body btp:follow.
+gcc:bind_expr gcc2:vars btp:follow.
+
+gcc:binfo gcc2:binf btp:follow.
+
+gcc:bit_and_expr gcc2:op_0 btp:follow.
+gcc:bit_and_expr gcc2:op_1 btp:follow.
+
+gcc:bit_field_ref gcc2:op_0 btp:follow.
+gcc:bit_field_ref gcc2:op_1 btp:follow.
+gcc:bit_field_ref gcc2:op_2 btp:follow.
+
+gcc:bit_ior_expr gcc2:op_0 btp:follow.
+gcc:bit_ior_expr gcc2:op_1 btp:follow.
+
+gcc:bit_not_expr gcc2:op_0 btp:follow.
+
+gcc:bit_xor_expr gcc2:op_0 btp:follow.
+gcc:bit_xor_expr gcc2:op_1 btp:follow.
+
+gcc:call_expr gcc2:fn btp:follow.
+gcc:call_expr gcc2:P0 btp:follow.
+gcc:call_expr gcc2:P1 btp:follow.
+gcc:call_expr gcc2:P10 btp:follow.
+gcc:call_expr gcc2:P2 btp:follow.
+gcc:call_expr gcc2:P3 btp:follow.
+gcc:call_expr gcc2:P4 btp:follow.
+gcc:call_expr gcc2:P5 btp:follow.
+gcc:call_expr gcc2:P6 btp:follow.
+gcc:call_expr gcc2:P7 btp:follow.
+gcc:call_expr gcc2:P8 btp:follow.
+gcc:call_expr gcc2:P9 btp:follow.
+
+gcc:case_label_expr gcc2:low btp:follow.
+gcc:case_label_expr gcc2:name btp:follow.
+
+gcc:cast_expr gcc2:op_0 btp:follow.
+
+gcc:cleanup_point_expr gcc2:op_0 btp:follow.
+
+gcc:component_ref gcc2:op_0 btp:follow.
+gcc:component_ref gcc2:op_1 btp:follow.
+
+gcc:compound_expr gcc2:op_0 btp:follow.
+gcc:compound_expr gcc2:op_1 btp:follow.
+
+gcc:cond_expr gcc2:op_0 btp:follow.
+gcc:cond_expr gcc2:op_1 btp:follow.
+gcc:cond_expr gcc2:op_2 btp:follow.
+
+gcc:const_cast_expr gcc2:op_0 btp:follow.
+
+#gcc:const_decl gcc2:chain btp:follow.
+gcc:const_decl gcc2:cnst btp:follow.
+gcc:const_decl gcc2:name btp:follow.
+
+gcc:constructor gcc2:idx btp:follow.
+gcc:constructor gcc2:val btp:follow.
+
+gcc:convert_expr gcc2:op_0 btp:follow.
+
+gcc:do_stmt gcc2:body btp:follow.
+gcc:do_stmt gcc2:cond btp:follow.
+
+gcc:eq_expr gcc2:op_0 btp:follow.
+gcc:eq_expr gcc2:op_1 btp:follow.
+
+gcc:expr_stmt gcc2:expr btp:follow.
+
+gcc:field_decl gcc2:bpos btp:follow.
+#gcc:field_decl gcc2:chain btp:follow.
+gcc:field_decl gcc2:name btp:follow.
+gcc:field_decl gcc2:size btp:follow.
+
+gcc:float_expr gcc2:op_0 btp:follow.
+gcc:for_stmt gcc2:body btp:follow.
+gcc:for_stmt gcc2:cond btp:follow.
+gcc:for_stmt gcc2:expr btp:follow.
+gcc:for_stmt gcc2:init btp:follow.
+
+
+gcc:ge_expr gcc2:op_0 btp:follow.
+gcc:ge_expr gcc2:op_1 btp:follow.
+
+gcc:goto_expr gcc2:labl btp:follow.
+
+gcc:gt_expr gcc2:op_0 btp:follow.
+gcc:gt_expr gcc2:op_1 btp:follow.
+
+gcc:if_stmt gcc2:cond btp:follow.
+gcc:if_stmt gcc2:else btp:follow.
+gcc:if_stmt gcc2:then btp:follow.
+
+gcc:indirect_ref gcc2:op_0 btp:follow.
+
+gcc:init_expr gcc2:op_0 btp:follow.
+gcc:init_expr gcc2:op_1 btp:follow.
+
+#gcc:label_decl gcc2:chain btp:follow.
+gcc:label_decl gcc2:name btp:follow.
+gcc:label_decl gcc2:orig btp:follow.
+gcc:label_decl gcc2:scpe btp:follow.
+gcc:label_expr gcc2:name btp:follow.
+
+gcc:le_expr gcc2:op_0 btp:follow.
+gcc:le_expr gcc2:op_1 btp:follow.
+
+gcc:link: gcc2:body btp:follow.
+#gcc:link: gcc2:chain btp:follow.
+gcc:link: gcc2:externbody btp:follow.
+gcc:link: gcc2:name btp:follow.
+gcc:link: gcc2:scpe btp:follow.
+gcc:link: gcc2:size btp:follow.
+
+gcc:loop_expr gcc2:body btp:follow.
+
+gcc:lshift_expr gcc2:op_0 btp:follow.
+gcc:lshift_expr gcc2:op_1 btp:follow.
+
+gcc:lt_expr gcc2:op_0 btp:follow.
+gcc:lt_expr gcc2:op_1 btp:follow.
+
+gcc:max_expr gcc2:op_0 btp:follow.
+gcc:max_expr gcc2:op_1 btp:follow.
+
+gcc:minus_expr gcc2:op_0 btp:follow.
+gcc:minus_expr gcc2:op_1 btp:follow.
+
+gcc:modify_expr gcc2:op_0 btp:follow.
+gcc:modify_expr gcc2:op_1 btp:follow.
+
+gcc:mult_expr gcc2:op_0 btp:follow.
+gcc:mult_expr gcc2:op_1 btp:follow.
+
+
+gcc:ne_expr gcc2:op_0 btp:follow.
+gcc:ne_expr gcc2:op_1 btp:follow.
+
+gcc:negate_expr gcc2:op_0 btp:follow.
+
+gcc:non_lvalue_expr gcc2:op_0 btp:follow.
+
+gcc:nop_expr gcc2:op_0 btp:follow.
+
+gcc:overload gcc2:chan btp:follow.
+gcc:overload gcc2:crnt btp:follow.
+
+gcc:parm_decl gcc2:argt btp:follow.
+gcc:parm_decl gcc2:body btp:follow.
+gcc:parm_decl gcc2:chain btp:follow.
+gcc:parm_decl gcc2:externbody btp:follow.
+gcc:parm_decl gcc2:name btp:follow.
+gcc:parm_decl gcc2:orig btp:follow.
+gcc:parm_decl gcc2:scpe btp:follow.
+gcc:parm_decl gcc2:size btp:follow.
+
+gcc:plus_expr gcc2:op_0 btp:follow.
+gcc:plus_expr gcc2:op_1 btp:follow.
+
+gcc:pointer_plus_expr gcc2:op_0 btp:follow.
+gcc:pointer_plus_expr gcc2:op_1 btp:follow.
+
+gcc:postdecrement_expr gcc2:op_0 btp:follow.
+gcc:postdecrement_expr gcc2:op_1 btp:follow.
+
+gcc:postincrement_expr gcc2:op_0 btp:follow.
+gcc:postincrement_expr gcc2:op_1 btp:follow.
+
+gcc:predecrement_expr gcc2:op_0 btp:follow.
+gcc:predecrement_expr gcc2:op_1 btp:follow.
+gcc:preincrement_expr gcc2:op_0 btp:follow.
+gcc:preincrement_expr gcc2:op_1 btp:follow.
+
+gcc:rdiv_expr gcc2:op_0 btp:follow.
+gcc:rdiv_expr gcc2:op_1 btp:follow.
+
+gcc:reinterpret_cast_expr gcc2:op_0 btp:follow.
+
+gcc:result_decl gcc2:name btp:follow.
+gcc:result_decl gcc2:scpe btp:follow.
+gcc:result_decl gcc2:size btp:follow.
+
+gcc:return_expr gcc2:expr btp:follow.
+
+gcc:rshift_expr gcc2:op_0 btp:follow.
+gcc:rshift_expr gcc2:op_1 btp:follow.
+
+gcc:statement_list gcc2:P0 btp:follow.
+gcc:statement_list gcc2:P1 btp:follow.
+gcc:statement_list gcc2:P10 btp:follow.
+gcc:statement_list gcc2:P100 btp:follow.
+gcc:statement_list gcc2:P101 btp:follow.
+gcc:statement_list gcc2:P102 btp:follow.
+gcc:statement_list gcc2:P103 btp:follow.
+gcc:statement_list gcc2:P104 btp:follow.
+gcc:statement_list gcc2:P105 btp:follow.
+gcc:statement_list gcc2:P106 btp:follow.
+gcc:statement_list gcc2:P107 btp:follow.
+gcc:statement_list gcc2:P108 btp:follow.
+gcc:statement_list gcc2:P109 btp:follow.
+gcc:statement_list gcc2:P11 btp:follow.
+gcc:statement_list gcc2:P110 btp:follow.
+gcc:statement_list gcc2:P111 btp:follow.
+gcc:statement_list gcc2:P112 btp:follow.
+gcc:statement_list gcc2:P113 btp:follow.
+gcc:statement_list gcc2:P114 btp:follow.
+gcc:statement_list gcc2:P115 btp:follow.
+gcc:statement_list gcc2:P116 btp:follow.
+gcc:statement_list gcc2:P117 btp:follow.
+gcc:statement_list gcc2:P118 btp:follow.
+gcc:statement_list gcc2:P119 btp:follow.
+gcc:statement_list gcc2:P12 btp:follow.
+gcc:statement_list gcc2:P120 btp:follow.
+gcc:statement_list gcc2:P121 btp:follow.
+gcc:statement_list gcc2:P122 btp:follow.
+gcc:statement_list gcc2:P123 btp:follow.
+gcc:statement_list gcc2:P124 btp:follow.
+gcc:statement_list gcc2:P125 btp:follow.
+gcc:statement_list gcc2:P126 btp:follow.
+gcc:statement_list gcc2:P127 btp:follow.
+gcc:statement_list gcc2:P128 btp:follow.
+gcc:statement_list gcc2:P129 btp:follow.
+gcc:statement_list gcc2:P13 btp:follow.
+gcc:statement_list gcc2:P130 btp:follow.
+gcc:statement_list gcc2:P131 btp:follow.
+gcc:statement_list gcc2:P132 btp:follow.
+gcc:statement_list gcc2:P133 btp:follow.
+gcc:statement_list gcc2:P134 btp:follow.
+gcc:statement_list gcc2:P135 btp:follow.
+gcc:statement_list gcc2:P136 btp:follow.
+gcc:statement_list gcc2:P137 btp:follow.
+gcc:statement_list gcc2:P138 btp:follow.
+gcc:statement_list gcc2:P139 btp:follow.
+gcc:statement_list gcc2:P14 btp:follow.
+gcc:statement_list gcc2:P140 btp:follow.
+gcc:statement_list gcc2:P141 btp:follow.
+gcc:statement_list gcc2:P142 btp:follow.
+gcc:statement_list gcc2:P143 btp:follow.
+gcc:statement_list gcc2:P144 btp:follow.
+gcc:statement_list gcc2:P145 btp:follow.
+gcc:statement_list gcc2:P146 btp:follow.
+gcc:statement_list gcc2:P147 btp:follow.
+gcc:statement_list gcc2:P148 btp:follow.
+gcc:statement_list gcc2:P149 btp:follow.
+gcc:statement_list gcc2:P15 btp:follow.
+gcc:statement_list gcc2:P150 btp:follow.
+gcc:statement_list gcc2:P151 btp:follow.
+gcc:statement_list gcc2:P152 btp:follow.
+gcc:statement_list gcc2:P153 btp:follow.
+gcc:statement_list gcc2:P154 btp:follow.
+gcc:statement_list gcc2:P155 btp:follow.
+gcc:statement_list gcc2:P156 btp:follow.
+gcc:statement_list gcc2:P157 btp:follow.
+gcc:statement_list gcc2:P158 btp:follow.
+gcc:statement_list gcc2:P159 btp:follow.
+gcc:statement_list gcc2:P16 btp:follow.
+gcc:statement_list gcc2:P160 btp:follow.
+gcc:statement_list gcc2:P161 btp:follow.
+gcc:statement_list gcc2:P162 btp:follow.
+gcc:statement_list gcc2:P163 btp:follow.
+gcc:statement_list gcc2:P164 btp:follow.
+gcc:statement_list gcc2:P165 btp:follow.
+gcc:statement_list gcc2:P166 btp:follow.
+gcc:statement_list gcc2:P167 btp:follow.
+gcc:statement_list gcc2:P168 btp:follow.
+gcc:statement_list gcc2:P169 btp:follow.
+gcc:statement_list gcc2:P17 btp:follow.
+gcc:statement_list gcc2:P170 btp:follow.
+gcc:statement_list gcc2:P171 btp:follow.
+gcc:statement_list gcc2:P172 btp:follow.
+gcc:statement_list gcc2:P173 btp:follow.
+gcc:statement_list gcc2:P174 btp:follow.
+gcc:statement_list gcc2:P175 btp:follow.
+gcc:statement_list gcc2:P176 btp:follow.
+gcc:statement_list gcc2:P177 btp:follow.
+gcc:statement_list gcc2:P178 btp:follow.
+gcc:statement_list gcc2:P179 btp:follow.
+gcc:statement_list gcc2:P18 btp:follow.
+gcc:statement_list gcc2:P180 btp:follow.
+gcc:statement_list gcc2:P181 btp:follow.
+gcc:statement_list gcc2:P182 btp:follow.
+gcc:statement_list gcc2:P183 btp:follow.
+gcc:statement_list gcc2:P184 btp:follow.
+gcc:statement_list gcc2:P185 btp:follow.
+gcc:statement_list gcc2:P186 btp:follow.
+gcc:statement_list gcc2:P187 btp:follow.
+gcc:statement_list gcc2:P188 btp:follow.
+gcc:statement_list gcc2:P189 btp:follow.
+gcc:statement_list gcc2:P19 btp:follow.
+gcc:statement_list gcc2:P190 btp:follow.
+gcc:statement_list gcc2:P191 btp:follow.
+gcc:statement_list gcc2:P192 btp:follow.
+gcc:statement_list gcc2:P193 btp:follow.
+gcc:statement_list gcc2:P194 btp:follow.
+gcc:statement_list gcc2:P195 btp:follow.
+gcc:statement_list gcc2:P196 btp:follow.
+gcc:statement_list gcc2:P197 btp:follow.
+gcc:statement_list gcc2:P198 btp:follow.
+gcc:statement_list gcc2:P199 btp:follow.
+gcc:statement_list gcc2:P2 btp:follow.
+gcc:statement_list gcc2:P20 btp:follow.
+gcc:statement_list gcc2:P200 btp:follow.
+gcc:statement_list gcc2:P201 btp:follow.
+gcc:statement_list gcc2:P202 btp:follow.
+gcc:statement_list gcc2:P203 btp:follow.
+gcc:statement_list gcc2:P204 btp:follow.
+gcc:statement_list gcc2:P205 btp:follow.
+gcc:statement_list gcc2:P206 btp:follow.
+gcc:statement_list gcc2:P207 btp:follow.
+gcc:statement_list gcc2:P208 btp:follow.
+gcc:statement_list gcc2:P209 btp:follow.
+gcc:statement_list gcc2:P21 btp:follow.
+gcc:statement_list gcc2:P210 btp:follow.
+gcc:statement_list gcc2:P211 btp:follow.
+gcc:statement_list gcc2:P212 btp:follow.
+gcc:statement_list gcc2:P213 btp:follow.
+gcc:statement_list gcc2:P214 btp:follow.
+gcc:statement_list gcc2:P215 btp:follow.
+gcc:statement_list gcc2:P22 btp:follow.
+gcc:statement_list gcc2:P23 btp:follow.
+gcc:statement_list gcc2:P24 btp:follow.
+gcc:statement_list gcc2:P25 btp:follow.
+gcc:statement_list gcc2:P26 btp:follow.
+gcc:statement_list gcc2:P27 btp:follow.
+gcc:statement_list gcc2:P28 btp:follow.
+gcc:statement_list gcc2:P29 btp:follow.
+gcc:statement_list gcc2:P3 btp:follow.
+gcc:statement_list gcc2:P30 btp:follow.
+gcc:statement_list gcc2:P31 btp:follow.
+gcc:statement_list gcc2:P32 btp:follow.
+gcc:statement_list gcc2:P33 btp:follow.
+gcc:statement_list gcc2:P34 btp:follow.
+gcc:statement_list gcc2:P35 btp:follow.
+gcc:statement_list gcc2:P36 btp:follow.
+gcc:statement_list gcc2:P37 btp:follow.
+gcc:statement_list gcc2:P38 btp:follow.
+gcc:statement_list gcc2:P39 btp:follow.
+gcc:statement_list gcc2:P4 btp:follow.
+gcc:statement_list gcc2:P40 btp:follow.
+gcc:statement_list gcc2:P41 btp:follow.
+gcc:statement_list gcc2:P42 btp:follow.
+gcc:statement_list gcc2:P43 btp:follow.
+gcc:statement_list gcc2:P44 btp:follow.
+gcc:statement_list gcc2:P45 btp:follow.
+gcc:statement_list gcc2:P46 btp:follow.
+gcc:statement_list gcc2:P47 btp:follow.
+gcc:statement_list gcc2:P48 btp:follow.
+gcc:statement_list gcc2:P49 btp:follow.
+gcc:statement_list gcc2:P5 btp:follow.
+gcc:statement_list gcc2:P50 btp:follow.
+gcc:statement_list gcc2:P51 btp:follow.
+gcc:statement_list gcc2:P52 btp:follow.
+gcc:statement_list gcc2:P53 btp:follow.
+gcc:statement_list gcc2:P54 btp:follow.
+gcc:statement_list gcc2:P55 btp:follow.
+gcc:statement_list gcc2:P56 btp:follow.
+gcc:statement_list gcc2:P57 btp:follow.
+gcc:statement_list gcc2:P58 btp:follow.
+gcc:statement_list gcc2:P59 btp:follow.
+gcc:statement_list gcc2:P6 btp:follow.
+gcc:statement_list gcc2:P60 btp:follow.
+gcc:statement_list gcc2:P61 btp:follow.
+gcc:statement_list gcc2:P62 btp:follow.
+gcc:statement_list gcc2:P63 btp:follow.
+gcc:statement_list gcc2:P64 btp:follow.
+gcc:statement_list gcc2:P65 btp:follow.
+gcc:statement_list gcc2:P66 btp:follow.
+gcc:statement_list gcc2:P67 btp:follow.
+gcc:statement_list gcc2:P68 btp:follow.
+gcc:statement_list gcc2:P69 btp:follow.
+gcc:statement_list gcc2:P7 btp:follow.
+gcc:statement_list gcc2:P70 btp:follow.
+gcc:statement_list gcc2:P71 btp:follow.
+gcc:statement_list gcc2:P72 btp:follow.
+gcc:statement_list gcc2:P73 btp:follow.
+gcc:statement_list gcc2:P74 btp:follow.
+gcc:statement_list gcc2:P75 btp:follow.
+gcc:statement_list gcc2:P76 btp:follow.
+gcc:statement_list gcc2:P77 btp:follow.
+gcc:statement_list gcc2:P78 btp:follow.
+gcc:statement_list gcc2:P79 btp:follow.
+gcc:statement_list gcc2:P8 btp:follow.
+gcc:statement_list gcc2:P80 btp:follow.
+gcc:statement_list gcc2:P81 btp:follow.
+gcc:statement_list gcc2:P82 btp:follow.
+gcc:statement_list gcc2:P83 btp:follow.
+gcc:statement_list gcc2:P84 btp:follow.
+gcc:statement_list gcc2:P85 btp:follow.
+gcc:statement_list gcc2:P86 btp:follow.
+gcc:statement_list gcc2:P87 btp:follow.
+gcc:statement_list gcc2:P88 btp:follow.
+gcc:statement_list gcc2:P89 btp:follow.
+gcc:statement_list gcc2:P9 btp:follow.
+gcc:statement_list gcc2:P90 btp:follow.
+gcc:statement_list gcc2:P91 btp:follow.
+gcc:statement_list gcc2:P92 btp:follow.
+gcc:statement_list gcc2:P93 btp:follow.
+gcc:statement_list gcc2:P94 btp:follow.
+gcc:statement_list gcc2:P95 btp:follow.
+gcc:statement_list gcc2:P96 btp:follow.
+gcc:statement_list gcc2:P97 btp:follow.
+gcc:statement_list gcc2:P98 btp:follow.
+gcc:statement_list gcc2:P99 btp:follow.
+
+gcc:static_cast_expr gcc2:op_0 btp:follow.
+
+gcc:switch_expr gcc2:body btp:follow.
+gcc:switch_expr gcc2:cond btp:follow.
+
+gcc:target_expr gcc2:decl btp:follow.
+gcc:target_expr gcc2:init btp:follow.
+
+#gcc:template_decl gcc2:chain btp:follow.
+gcc:template_decl gcc2:inst btp:follow.
+gcc:template_decl gcc2:name btp:follow.
+gcc:template_decl gcc2:orig btp:follow.
+gcc:template_decl gcc2:prms btp:follow.
+gcc:template_decl gcc2:rslt btp:follow.
+gcc:template_decl gcc2:scpe btp:follow.
+gcc:template_decl gcc2:spcs btp:follow.
+gcc:template_decl gcc2:type btp:follow.
+
+gcc:template_template_parm gcc2:name btp:follow.
+
+gcc:tree_list gcc2:chan btp:follow.
+gcc:tree_list gcc2:purp btp:follow.
+gcc:tree_list gcc2:valu btp:follow.
+
+gcc:tree_vec gcc2:P0 btp:follow.
+gcc:tree_vec gcc2:P1 btp:follow.
+gcc:tree_vec gcc2:P2 btp:follow.
+gcc:tree_vec gcc2:P3 btp:follow.
+
+gcc:trunc_div_expr gcc2:op_0 btp:follow.
+gcc:trunc_div_expr gcc2:op_1 btp:follow.
+
+gcc:trunc_mod_expr gcc2:op_0 btp:follow.
+gcc:trunc_mod_expr gcc2:op_1 btp:follow.
+
+gcc:truth_andif_expr gcc2:op_0 btp:follow.
+gcc:truth_andif_expr gcc2:op_1 btp:follow.
+
+gcc:truth_not_expr gcc2:op_0 btp:follow.
+
+gcc:truth_orif_expr gcc2:op_0 btp:follow.
+gcc:truth_orif_expr gcc2:op_1 btp:follow.
+
+gcc:try_finally gcc2:op_0 btp:follow.
+gcc:try_finally gcc2:op_1 btp:follow.
+
+#gcc:type_decl gcc2:chain btp:follow.
+gcc:type_decl gcc2:name btp:follow.
+gcc:type_decl gcc2:scpe btp:follow.
+gcc:type_decl gcc2:type btp:follow.
+
+#gcc:var_decl gcc2:chain btp:follow.
+gcc:var_decl gcc2:init btp:follow.
+gcc:var_decl gcc2:name btp:follow.
+gcc:var_decl gcc2:orig btp:follow.
+gcc:var_decl gcc2:scpe btp:follow.
+gcc:var_decl gcc2:size btp:follow.
+
+gcc:while_stmt gcc2:body btp:follow.
+gcc:while_stmt gcc2:cond btp:follow.
+
