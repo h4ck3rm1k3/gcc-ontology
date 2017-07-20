@@ -19,16 +19,13 @@ gcc:namespace_decl gcc2:name btp:follow.
 gcc:namespace_decl gcc2:scpe btp:follow.
 
 gcc:function_decl gcc2:args btp:follow.
-
 gcc:function_decl gcc2:body btp:follow.
-
 gcc:function_decl gcc2:body gcc:bind_expr.
 gcc:function_decl gcc2:body gcc:cleanup_point_expr.
 gcc:function_decl gcc2:body gcc:cond_expr.
 gcc:function_decl gcc2:body gcc:return_expr.
 gcc:function_decl gcc2:body gcc:statement_list.
 gcc:function_decl gcc2:body gcc:switch_expr.
-
 #gcc:function_decl gcc2:chain btp:follow.
 gcc:function_decl gcc2:mngl btp:follow.
 gcc:function_decl gcc2:name btp:follow.
