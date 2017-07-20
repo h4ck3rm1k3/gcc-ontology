@@ -35,7 +35,7 @@ where {
   ?b gcc:scpe ?a.
   ?b gcc:name ?b_name.
   ?b_name gcc:strg ?b_name_string.
-  ?a rdf:type gcc:translation_unit_decl.
+ # ?a rdf:type gcc:translation_unit_decl.
  
    }
 limit 100000
