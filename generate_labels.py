@@ -35,7 +35,7 @@ where {
   ?b gcc:scpe ?a.
   ?b gcc:name ?b_name.
   ?b_name gcc:strg ?b_name_string.
- # ?a rdf:type gcc:translation_unit_decl.
+  ?a rdf:type gcc:translation_unit_decl.
  
    }
 limit 100000
@@ -52,7 +52,7 @@ for x in data['results']['bindings']:
     url = x['b']['value']
     url = url.replace('https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#','gcc:')
     name = x['b_name_string']['value']
-    print "{url} a gcc:func_decl; rdfs:label \"\"\"{s}\"\"\".".format(url=url,s=name)
+    print "{url} a gcc:func_decl; a gcci:top_level_function; rdfs:label \"\"\"{s}\"\"\".".format(url=url,s=name)
 #    print "gcci:{s} a gcc:func_decl; owl:sameAs {url}.".format(url=url,s=name) 
     
     
