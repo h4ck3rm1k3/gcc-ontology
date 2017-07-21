@@ -46,11 +46,14 @@ def generate_param_query():
     ?b_args_name_string
 
     WHERE { 
-     ?b_args_type_name gcc:strg ?b_args_type_name_string.
-     ?b_args_type gcc:name* ?b_args_type_name.            
+     ?b_args_type_name2 gcc:strg ?b_args_type_name_string.
+     ?b_args_type gcc:name ?b_args_type_name.            
+     ?b_args_type_name gcc:name ?b_args_type_name2.            
      ?b_args gcc:argt ?b_args_type.
-     ?b_args_name gcc:strg ?b_args_name_string.
-     ?b_args gcc:name* ?b_args_name.
+
+     ?b_args_name2 gcc:strg ?b_args_name_string.
+     ?b_args gcc:name ?b_args_name.
+     ?b_args_name gcc:name ?b_args_name2.
      ?b_args rdf:type gcc:parm_decl.
     }
     """
