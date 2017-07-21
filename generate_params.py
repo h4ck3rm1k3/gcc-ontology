@@ -45,8 +45,15 @@ def generate_param_query(size):
 
     for y in (xrange(0,size)):
         if y > 0 :
-            sparql = sparql + """\t\t?b_args{x} gcc:chain ?b_args{x2}.\n""".format(x=y-1,x2=y)
+            sparql = sparql + """
+            ?b_args{x} gcc:chain ?b_args{x2}.
+            """.format(x=y-1,x2=y)
 
+        sparql = sparql + """
+            ?b_args{x2}_type_name gcc:strg ?b_args{x2}_type_name_string.
+            ?b_args{x2}_type gcc:name* ?b_args{x2}_type_name.            
+            ?b_args{x2} gcc:argt ?b_args{x2}_type.""".format(x2=y)
+                          
         sparql = sparql + """
             ?b_args{x2}_name gcc:strg ?b_args{x2}_name_string.
             ?b_args{x2} gcc:name ?b_args{x2}_name.
@@ -61,7 +68,6 @@ def generate_param_query(size):
 
     # functional body
     sparql = sparql + """
-
                 ?b rdf:type gcc:function_decl.
                 ?b gcc:scpe ?a.
                 ?b gcc:name ?b_name.
@@ -70,17 +76,13 @@ def generate_param_query(size):
                 ?a rdf:type gcc:translation_unit_decl.
     } ## where
     """
+    print sparql
     return runq(sparql)
-
-    
-
-
-
                     
 #print  generate_param_query(0)
 #print  generate_param_query(1)
 for x in reversed(xrange(0,10)):
-    
+    print "param {0}".format( x)
     c = generate_param_query(x)
     if c > 0:
         print  "Found " + str(c) + " for "+ str(x)
