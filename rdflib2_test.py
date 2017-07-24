@@ -40,6 +40,15 @@ class GCC (Ontology):
     scpe = rdflib.term.URIRef(base + 'scpe')
     name = rdflib.term.URIRef(base + 'name')
     args = rdflib.term.URIRef(base + 'args')
+
+    body = rdflib.term.URIRef(base + 'body')
+
+    op_0 = rdflib.term.URIRef(base + 'op_0')
+    op_1 = rdflib.term.URIRef(base + 'op_1')
+    expr = rdflib.term.URIRef(base + 'expr')
+    #fn = rdflib.term.URIRef(base + 'fn')
+    p = rdflib.term.URIRef(base + 'P')
+    
     argt = rdflib.term.URIRef(base + 'argt')
     chain = rdflib.term.URIRef(base + 'chain')
     strg = rdflib.term.URIRef(base + 'strg')
@@ -47,6 +56,8 @@ class GCC (Ontology):
     #translation_unit_decl = rdflib.term.URIRef(gcc + 'translation_unit_decl')
     translation_unit_decl = NodeType(rdflib.term.URIRef(rdflib.term.URIRef(base + 'translation_unit_decl')))
 
+    undefined_body = rdflib.term.URIRef(base + 'undefined_body')
+        
 class OWL (Ontology):
     base = Namespace('http://www.w3.org/2002/07/owl#')
     prefix = "owl"
@@ -104,6 +115,9 @@ class Named(Node):
     def strg(self):
         return self.get_one(GCC.strg)
 
+    def body(self):
+        return self.get_one(GCC.body)
+
     def resolve(self):
         n = self.name()
         nstr = None
@@ -118,6 +132,56 @@ class Named(Node):
                 n = None # end
         return nstr
 
+class Expr(Node):
+    def __init__(self,g,nid):
+        Node.__init__(self,g,nid)
+                
+    def recurse(self, indent, p):
+        i = indent * "\t"
+        print ("{indent}Exprobj {t1}".format(
+            indent=i,
+            t1=p.clean(self.nid)))
+        for t in self.g.triples((self.nid,None,None)):
+            if t[1].startswith(GCC.p):
+                print ("\t{indent} BP: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+                e = Expr(self.g,t[2])
+                e.recurse(indent + 1, p)               
+            elif t[1] in (GCC.op_0,GCC.op_1, GCC.expr):
+                print ("\t{indent} B: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+                e = Expr(self.g,t[2])
+                e.recurse(indent + 1, p)
+            else:
+                print ("\t{indent} skip: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+
+class Description():
+    def __init__(self, quote, source):
+        self.quote=quote
+        self.source=source
+        
+class CleanupPointExpr(Expr):
+
+    description = Description(quote="""These nodes represent full-expressions. The single operand is an expression to evaluate. Any destructor calls engendered by the creation of temporaries during the evaluation of that expression should be performed immediately after the expression is evaluated.""",
+                              source='https://gcc.gnu.org/onlinedocs/gccint/Unary-and-Binary-Expressions.html')
+    
+    def _type(self):
+        # type that expression evals to
+        pass
+    
+    def op_0(self):
+        pass
+    
 class Chained(Node):
 
     def __init__(self,g,nid):
@@ -164,24 +228,22 @@ def do_function_decl(g,p,nid):
     s = f.scope()
     if s == None :
         print ("\tNo Scope")
-        return
+        #return
+    else:
+        print ("\tscope {0}".format(p.clean(s)))
+        maxc =  10
+        for st in  Node(g,s).get_type():
+            if st:          
+                if maxc <= 0:
+                    print ("Too Many")
+                    return
+                if st == OWL.NamedIndividual.nid :
+                    #print ("\t\tnamed id")
+                    pass
+                else:
+                    print ("\t\tscope type {0}".format(p.clean(st)))
 
 
-    print ("\tscope {0}".format(p.clean(s)))
-
-    maxc =  10
-    for st in  Node(g,s).get_type():
-        if st:
-            
-            if maxc <= 0:
-                print ("Too Many")
-                return
-            if st == OWL.NamedIndividual.nid :
-                #print ("\t\tnamed id")
-                pass
-            else:
-                print ("\t\tscope type {0}".format(p.clean(st)))
-            
     if f.is_global():
         print ("\t\tIS global {0}".format(p.clean(nid)))
 
@@ -190,19 +252,28 @@ def do_function_decl(g,p,nid):
     if a is not None:
         a = Args(g,a)
     while a is not None:
-
+        # name
         strg = a.resolve()
         print ("\t\targ {0}".format(strg))
-
+        
         argt = a.argt()
         if argt is not None :
             argts = argt.resolve()
             print ("\t\targt {0}".format(argts))
-
+            
         ## find next
         a = a.chain()
         if a is not None:
             a = Args(g,a)
+
+    # body
+    b = f.body()
+    if b is not None:
+        if b != GCC.undefined_body:
+            e = Expr(g, b)
+            e.recurse(1,p)
+        else:
+            print ("No body")
             
 def test_load():
     g = global_test_data()
