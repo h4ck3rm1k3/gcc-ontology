@@ -13,7 +13,7 @@ class NodeType :
         self.nid = nid
 
     def is_type(self, g,subject):
-        if (subject,RDFS._type,self.nid) in g:
+        if (subject,RDF._type,self.nid) in g:
             return True
         else:
             return False
@@ -27,32 +27,56 @@ def global_test_data():
 class Ontology:
     pass
 
-class RDFS (Ontology):
+class RDF (Ontology):
     base = Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#')
-    prefix = 'rdfs'    
+    prefix = 'rdf'    
     _type = rdflib.term.URIRef(base + 'type')
 
+class RDFS (Ontology):
+    base = Namespace('http://www.w3.org/2000/01/rdf-schema#')
+    prefix = 'rdfs'    
+    isDefinedBy = rdflib.term.URIRef(base + 'isDefinedBy')
+
+class GCCInt (Ontology):
+    base = Namespace('http://github.com/h4ck3rm1k3/gcc-ontology/blob/master/gcc_internals.ttl#')
+    prefix = 'gcci'
+
+    
+class GCCSrc (Ontology):
+    base = Namespace('https://h4ck3rm1k3.github.io/gogccintro/gcc/')
+    prefix = 'gccsrc'
 
 class GCC (Ontology):
     base = Namespace('https://h4ck3rm1k3.github.io/gogccintro/gcc/ontology/2017/05/20/gcc_compiler.owl#')
     prefix = 'gcc'
     
     scpe = rdflib.term.URIRef(base + 'scpe')
+    srcp = rdflib.term.URIRef(base + 'srcp')
+    _type = rdflib.term.URIRef(base + 'type')
     name = rdflib.term.URIRef(base + 'name')
     args = rdflib.term.URIRef(base + 'args')
+    algn = rdflib.term.URIRef(base + 'algn')
+    size = rdflib.term.URIRef(base + 'size')
+    lngt = rdflib.term.URIRef(base + 'lngt')
+    decl = rdflib.term.URIRef(base + 'decl')
+    init = rdflib.term.URIRef(base + 'init') 
 
     body = rdflib.term.URIRef(base + 'body')
 
     op_0 = rdflib.term.URIRef(base + 'op_0')
     op_1 = rdflib.term.URIRef(base + 'op_1')
     expr = rdflib.term.URIRef(base + 'expr')
-    #fn = rdflib.term.URIRef(base + 'fn')
+    fn = rdflib.term.URIRef(base + 'fn')
     p = rdflib.term.URIRef(base + 'P')
     
     argt = rdflib.term.URIRef(base + 'argt')
     chain = rdflib.term.URIRef(base + 'chain')
     strg = rdflib.term.URIRef(base + 'strg')
+
+
+    ## node types
     function_decl = rdflib.term.URIRef(base + 'function_decl')
+    parm_decl = rdflib.term.URIRef(base + 'parm_decl')
     #translation_unit_decl = rdflib.term.URIRef(gcc + 'translation_unit_decl')
     translation_unit_decl = NodeType(rdflib.term.URIRef(rdflib.term.URIRef(base + 'translation_unit_decl')))
 
@@ -61,7 +85,7 @@ class GCC (Ontology):
 class OWL (Ontology):
     base = Namespace('http://www.w3.org/2002/07/owl#')
     prefix = "owl"
-    NamedIndividual =  NodeType(rdflib.term.URIRef(rdflib.term.URIRef(base + 'NamedIndividual')))
+    NamedIndividual =  rdflib.term.URIRef(rdflib.term.URIRef(base + 'NamedIndividual'))
 
 class Node :
     def __init__(self,g, nid):
@@ -75,29 +99,39 @@ class Node :
             return None
 
     def get_type(self):
-        for t in self.g.triples((self.nid,RDFS._type,None)):
+        for t in self.g.triples((self.nid,RDF._type,None)):
             yield t[2]
 
             
 class Prefixes :
     def __init__(self, names):
         self.names = []
-        
+        self.seen= {}
         self.lookup = {}
         for name in names :
             self.add(name)
             
     def add(self, name):
         self.names.append(name)
-        print (name.prefix, name.base)
+        #print (name.prefix, name.base)
         #self.lookup [name.prefix] = name.base
     def clean(self, name):
         for n in self.names:
             if n.base in name:
                 name = name.replace(n.base, n.prefix + ":")
-                
-        return name
 
+        if name not in self.seen :
+            self.seen[name]=1
+        else:
+            self.seen[name]=self.seen[name]+1
+        return name
+    def report(self):
+        for name in self.seen:
+            v = self.seen[name]
+            print ("{n} {c}".format(n=name,c=v))
+    def print(self, x):
+        pass
+    
 class Named(Node):
     """
     Named object with a chain of names ending in a string
@@ -132,34 +166,112 @@ class Named(Node):
                 n = None # end
         return nstr
 
-class Expr(Node):
+class FunctionCall(Named):
     def __init__(self,g,nid):
         Node.__init__(self,g,nid)
                 
     def recurse(self, indent, p):
-        i = indent * "\t"
-        print ("{indent}Exprobj {t1}".format(
+        i = indent * " "
+        
+        p.print ("{indent}FunctionCall {t1} ".format(
             indent=i,
-            t1=p.clean(self.nid)))
+            t1=p.clean(self.nid),
+            #s=s,
+        ))
         for t in self.g.triples((self.nid,None,None)):
-            if t[1].startswith(GCC.p):
-                print ("\t{indent} BP: {t1} {t2}".format(
-                    indent=i,
-                    t1=p.clean(t[1]),
-                    t2=p.clean(t[2])
-                ))
-                e = Expr(self.g,t[2])
-                e.recurse(indent + 1, p)               
-            elif t[1] in (GCC.op_0,GCC.op_1, GCC.expr):
-                print ("\t{indent} B: {t1} {t2}".format(
+            if t[1] in (GCC.op_0,GCC.op_1, GCC.expr, GCC.body, GCC.decl, GCC.init):
+                #if t[2] == GCC.function_decl :
+                #                else:
+                p.print ("{indent}B: {t1} {t2}".format(
                     indent=i,
                     t1=p.clean(t[1]),
                     t2=p.clean(t[2])
                 ))
                 e = Expr(self.g,t[2])
                 e.recurse(indent + 1, p)
+            elif t[1]==RDF._type and t[2]==OWL.NamedIndividual:
+                pass 
             else:
-                print ("\t{indent} skip: {t1} {t2}".format(
+                
+                p.print ("{indent} skip1: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+
+class Expr(Node):
+    def __init__(self,g,nid):
+        Node.__init__(self,g,nid)
+                
+    def recurse(self, indent, p):
+        i = indent * " "
+        typename = ""
+        for x in self.get_type():
+            if x == OWL.NamedIndividual :
+                pass
+            else:        
+                typename = typename + p.clean(x) + ";"
+            
+        p.print ("{indent}Exprobj {t1} {typename}".format(
+            indent=i,
+            
+            typename=typename,
+            t1=p.clean(self.nid)))
+        for t in self.g.triples((self.nid,None,None)):
+            if t[1].startswith(GCC.p):
+                p.print ("{indent} BP: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+                e = Expr(self.g,t[2])
+                e.recurse(indent + 1, p)               
+            elif t[1] in (GCC.op_0,GCC.op_1, GCC.expr, GCC.body, GCC.decl, GCC.init):
+                p.print ("{indent} B: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+                e = Expr(self.g,t[2])
+                e.recurse(indent + 1, p)
+            elif t[1] in (GCC.fn):
+                p.print ("{indent}FN: {t1} {t2}".format(
+                    indent=i,
+                    t1=p.clean(t[1]),
+                    t2=p.clean(t[2])
+                ))
+                e = FunctionCall(self.g,t[2])
+                e.recurse(indent + 1, p)
+
+            elif t[1]==RDF._type and t[2]==GCC.function_decl:
+                d = FunctionDecl(self.g, self.nid)
+                s = d.resolve()
+                p.print ("{indent} FunctionName: {s}".format(indent=i,s=s))
+            elif t[1]==RDF._type and t[2]==GCC.parm_decl:
+                d = ParmDecl(self.g, self.nid)
+                s = d.resolve()
+                p.print ("{indent} ParmDecl: {s}".format(indent=i,s=s))
+            elif t[1]==RDF._type and t[2]==OWL.NamedIndividual:
+                pass
+            elif t[1]==RDF._type :
+                pass
+            elif t[1]==GCC.algn :
+                pass
+            elif t[1]==GCC.size :
+                pass
+            elif t[1]==GCC.lngt :
+                pass
+            elif t[1]==GCC.scpe :
+                pass
+            elif t[1]==GCC._type :
+                pass
+            elif t[1]==GCC.srcp :
+                pass
+            elif t[1]==GCC.chain :
+                pass
+            else:
+                
+               p.print ("{indent} skip: {t1} {t2}".format(
                     indent=i,
                     t1=p.clean(t[1]),
                     t2=p.clean(t[2])
@@ -201,6 +313,11 @@ class Args(Chained, Named):
         if t is not None:
             t= Named(self.g,t)
         return t
+    
+class ParmDecl(Named):
+    def __init__(self,g,nid):
+        Node.__init__(self,g,nid)
+
 
 class FunctionDecl(Named):
 
@@ -219,33 +336,33 @@ class FunctionDecl(Named):
     
 
 def do_function_decl(g,p,nid):
-    print ("Function decl {0}".format(p.clean(nid)))
+    p.print ("Function decl {0}".format(p.clean(nid)))
     f = FunctionDecl(g,nid)
 
     nstr = f.resolve()
             
-    print ("Found name str {0}".format(nstr))
+    p.print ("Found name str {0}".format(nstr))
     s = f.scope()
     if s == None :
-        print ("\tNo Scope")
+       p.print ("No Scope")
         #return
     else:
-        print ("\tscope {0}".format(p.clean(s)))
+        p.print ("scope {0}".format(p.clean(s)))
         maxc =  10
         for st in  Node(g,s).get_type():
             if st:          
                 if maxc <= 0:
-                    print ("Too Many")
+                    p.print ("Too Many")
                     return
-                if st == OWL.NamedIndividual.nid :
-                    #print ("\t\tnamed id")
+                if st == OWL.NamedIndividual :
+                    #print ("named id")
                     pass
                 else:
-                    print ("\t\tscope type {0}".format(p.clean(st)))
+                   p.print ("scope type {0}".format(p.clean(st)))
 
 
     if f.is_global():
-        print ("\t\tIS global {0}".format(p.clean(nid)))
+       p.print ("IS global {0}".format(p.clean(nid)))
 
     ## args
     a = f.args()
@@ -254,12 +371,12 @@ def do_function_decl(g,p,nid):
     while a is not None:
         # name
         strg = a.resolve()
-        print ("\t\targ {0}".format(strg))
+        p.print ("arg {0}".format(strg))
         
         argt = a.argt()
         if argt is not None :
             argts = argt.resolve()
-            print ("\t\targt {0}".format(argts))
+            p.print ("argt {0}".format(argts))
             
         ## find next
         a = a.chain()
@@ -273,37 +390,21 @@ def do_function_decl(g,p,nid):
             e = Expr(g, b)
             e.recurse(1,p)
         else:
-            print ("No body")
+            p.print ("No body")
             
 def test_load():
     g = global_test_data()
     p = Prefixes([
-        GCC, OWL, RDFS
-    ])
-    
-    #print ("Global", g)
-    #print ("Global", dir(g))
-    #Global [
-    #'_Graph__get_identifier', '_Graph__get_store', '_Graph__identifier', '_Graph__namespace_manager', '_Graph__store', '__add__', '__and__', '__class__', '__cmp__', '__contains__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__iadd__', '__init__', '__isub__', '__iter__', '__le__', '__len__', '__lt__', '__module__', '__mul__', '__new__', '__or__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__sub__', '__subclasshook__', '__weakref__', '__xor__', '_get_namespace_manager', '_process_skolem_tuples', '_set_namespace_manager', 'absolutize', 'add', 'addN',
-    #'all_nodes',
-    #'bind', 'close', 'comment', 'commit', 'compute_qname', 'connected', 'context_aware', 'de_skolemize',
-    #'default_union', 'destroy', 'formula_aware', 'identifier', 'isomorphic',
-    #'items',
-    #'label', 'load', 'md5_term_hash', 'n3', 'namespace_manager', 'namespaces',
-    #'objects', 'open', 'parse', 'predicate_objects',
-    #'predicates', 'preferredLabel', 'qname', 'query', 'remove', 'resource', 'rollback', 'seq', 'serialize', 'set', 'skolemize', 'store', 'subject_objects', 'subject_predicates', 'subjects', 'toPython', 'transitiveClosure', 'transitive_objects', 'transitive_subjects', 'triples', 'triples_choices', 'update', 'value']
-    #print ("Global", g.__dict__)
+        GCC, OWL, RDFS,RDF,
+        GCCSrc,
+        GCCInt,
+    ])    
     count = 0
-    # for c in g.objects():
-    #     count = count + 1
-    # print ("objects {0}".format(count))
-
-
     scope = rdflib.term.URIRef(GCC.scpe)
     func_decl = rdflib.term.URIRef(GCC.function_decl)
     count = 0
-    sample = 200    
-    for c in g.triples((None,RDFS._type,func_decl)):
+    sample = 2000
+    for c in g.triples((None,RDF._type,func_decl)):
         count = count + 1
         if count < sample :
             #print(c)        
@@ -311,5 +412,6 @@ def test_load():
             #pass
             do_function_decl(g,p, c[0])
         
-    print ("scope {0}".format(count))
+    p.print ("scope {0}".format(count))
+    p.report()
     
