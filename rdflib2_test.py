@@ -392,7 +392,7 @@ def do_function_decl(g,p,nid):
         else:
             p.print ("No body")
             
-def test_load():
+def t3st_load():
     g = global_test_data()
     p = Prefixes([
         GCC, OWL, RDFS,RDF,

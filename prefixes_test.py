@@ -18,5 +18,6 @@ def test_load_prefixes():
     g = global_test_data()
     #g.namespace_manager.
     for n in g.namespace_manager.namespaces():
-        print (n)
+        #print (n)
+        pass
         
