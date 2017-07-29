@@ -6,11 +6,8 @@ import sys
 sys.path.append('lib')
 import pprint
 import rdflib
-from gccont.ontologies.org.gcc.source import GCCSrc
-gccsrc = GCCSrc()
-
-from gccont.ontologies.org.gcc.internals import GCCInternals
-gccint = GCCInternals()
+from gccont.ontologies.org.gcc.source import gccsrc
+from gccont.ontologies.org.gcc.internals import gcci as gccint
 
 def global_test_data():
     if __global_test_data__ is not None :
