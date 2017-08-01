@@ -133,6 +133,7 @@ for p in [
             import_module = importlib.import_module(import_path)
             
             print "import:" + str(import_module)
+            print import_module.ontology.base
             #print(astunparse.dump(ast.parse(inspect.getsource(import_module))))
         else:
 
