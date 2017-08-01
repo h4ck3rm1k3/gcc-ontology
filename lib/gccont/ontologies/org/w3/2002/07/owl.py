@@ -18,3 +18,4 @@ class OWL (Ontology):
                         
     
 owl = OWL()
+ontology = OWL()
