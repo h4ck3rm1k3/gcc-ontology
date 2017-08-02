@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 import pdb
 sys.path.append("/home/mdupont/experiments/astunparse/lib/")
@@ -229,9 +230,9 @@ def process (prefix,url):
 
         if not step.exists():
             print "going to makedir Step",step, "for ", url
-            step.mkdir_p()
+            #step.mkdir_p()
             #pdb.set_trace()
-            #raise Exception("no more")
+            raise Exception("no more")
         f = step + "/__init__.py"
         #print f
         if not f.exists():
@@ -1563,5 +1564,5 @@ for (prefix,url) in namespace_manager.namespaces():
             print (prefix,url),","
 
         
-g2.serialize("results.ttl", format="turtle")
-g3.serialize("total.ttl", format="turtle")
+g2.serialize("data/results.ttl", format="turtle")
+g3.serialize("data/total.ttl", format="turtle")

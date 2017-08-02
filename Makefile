@@ -1,5 +1,5 @@
 rdflib_data :
-	python rdflib_data_total.py
+	python lib/rdflib_data_total.py
 
 runtest :
 	python pythoscope_test.py
