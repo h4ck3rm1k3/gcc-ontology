@@ -48,7 +48,7 @@ def test_load_csv():
         #print("debug namespace {0}:  {1}".format(prefix,ns2))
         ns[prefix]=ns2
 
-    f =open ('ranking.csv')
+    f =open ('data/ranking.csv')
     rank = 0
     
     for line in f.readlines():

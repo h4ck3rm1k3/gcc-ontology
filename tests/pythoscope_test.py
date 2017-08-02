@@ -7,7 +7,7 @@ from pythoscope.store import Project,Function
 import sys
 sys.path.append("/home/mdupont/experiments/py-loadr-forkr-debugr")
 import forkr
-forkr.set_logging() # turn on all logging
+# forkr.set_logging() # turn on all logging
 import inspect
 import ast
 import sys
@@ -19,7 +19,7 @@ from ast import *
 def test_unparse_ast() :
     print "Hello Python!"
     
-def pythoscope_test():
+def pythoscope_t3st():
     project = Project.from_directory(".")
     #inspect_project(project)
     #add_tests_to_project(project, modules, template, force)

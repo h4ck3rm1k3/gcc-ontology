@@ -14,7 +14,7 @@ def global_test_data():
     else:
         return rdflib.Graph()
 
-def test_load_prefixes():
+def t3st_load_prefixes():
     g = global_test_data()
     #g.namespace_manager.
     for n in g.namespace_manager.namespaces():
