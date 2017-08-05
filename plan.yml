@@ -1,0 +1,25 @@
+-
+  plan :
+    - plan :
+        - recognize opportunity
+    - do :
+        - test change
+        - small study
+    - check:
+        - measure
+        - review the test
+        - analyze results
+        - learning 
+    - act :
+        - take larger action
+
+-
+  - parse ast data and extract interesting data from it
+  - extract data from instance of object
+-
+  - represent owl information as class level static data
+  - evaluate data when needed on init:
+      -  add in base class at runtime:
+          ref : http://www.linuxjournal.com/node/4540/print
+          example :
+            "pyClass.__bases__ += mixInClass"
