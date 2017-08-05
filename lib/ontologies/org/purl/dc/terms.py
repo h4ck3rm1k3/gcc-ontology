@@ -2,10 +2,10 @@
 import rdflib
 from ontology import Ontology
 
-class DC(Ontology, ):
+class DCT(Ontology, ):
 
     def __init__(self):
         Ontology.__init__(self, rdflib.term.URIRef(u'http://purl.org/dc/terms/'))
-    prefix = 'dc'
-dc = DC()
-ontology = dc
+    prefix = 'dct'
+dct = DCT()
+ontology = dct

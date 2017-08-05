@@ -9,6 +9,7 @@ import astunparse
 import pprint
 import ast
 from ast import *
+import re
 
 def rebind(g):
     g.namespace_manager.bind("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#",True)
@@ -46,9 +47,79 @@ def rebind(g):
     g.namespace_manager.bind("solid","http://www.w3.org/ns/solid/terms#",True)  
     g.namespace_manager.bind("formats","http://www.w3.org/ns/formats/",True)  
     g.namespace_manager.bind("mvcb","http://webns.net/mvcb/",True)
+
+keywords = [
+    'False',
+    'class',
+    'finally',
+    'is',
+    'return',
+    'None',
+    'continue',
+    'for',
+    'lambda',
+    'try',
+    'True',
+    'def',
+    'from',
+    'nonlocal',
+    'while',
+    'and',
+    'del',
+    'global',
+    'not',
+    'with',
+    'as',
+    'elif',
+    'if',
+    'or',
+    'yield',
+    'assert',
+    'else',
+    'import',
+    'pass',
+    'break',
+    'except',
+    'in',
+    'raise'
+]
+
+def convert(name):
+    # https://stackoverflow.com/questions/1175208/elegant-python-function-to-convert-camelcase-to-snake-case
+    name = name.replace("-","_")
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+    x = re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+    if x in keywords:
+        x = "_" + x
+    return x.lower()
+
+def convert2(name):
+    n2 = convert(name)
+    x = []
+    for y in n2.split('_'):
+        #if y in keywords :
+            #y = "_" +y.capitalize()
+        #else
+        y = y.capitalize()
+        x.append(y)
     
+    return "".join(x)
+
+
+def resolve(x):
+    if  isinstance(x, (list, tuple)) :
+        prefix = x[0]
+        name = x[1]
+        obj = x[2]
+        #obj.ge
+        return ".".join( [prefix ,name])
+    else:
+        return x
+
 def all_url_test():
     l = classgenerator.Library()
+    l2 = classgenerator.Library()
+    l2.base_path = ["gentest","lib","ontologies"]                    
     #print ("test of getting global data")
     g = test_global_data_files.get_global_data()
     #print (g)
@@ -129,23 +200,96 @@ def all_url_test():
                     _format = 'xml'
                 o = Ontology(url=m,prefix=prefix,_format=_format)
                 o.set_path(path)
-                print "prefix", prefix, m
+                #print "prefix", prefix, m
                 libs[prefix]=o
                 
     ## now revisit the graph and link it
-    pprint.pprint(libs)
+    #pprint.pprint(libs)
         
     for p in libs:
+
         o = libs[p]
+        #print "Lib", p, o.path
         og = o.fetch(g.namespace_manager)
         rebind(og)
         od = o.extract_graph(og,l, libs)
+
+        ours = od[0]
+        others = od[2]
+        prefixs = od[2]
+        code = ""
+        for x in prefixs:
+            m = prefixs[x]
+
+            cast = Module(body=[ImportFrom(
+                module=m.module_name(),
+                names=[alias(
+                name='ontology',
+                    asname=x)],
+                level=0)])
+
+            #code = "from {module} import ontology as {alias}".format(module=m.module_name(), alias=x)
+            # x = Import(names=[alias(
+            #     name=m.module_name(),
+            #     asname=None)]),
+            #print(astunparse.dump(ast.parse(code)))
+            code = code +  astunparse.unparse(cast) + "\n"
+            #print code
+            
+        for x in ours :
+            if 'http' in x :
+                pass
+            else:
+                types=[]
+                
+                # lets try and create a class
+                attrs = ours[x]
+                for y in attrs:
+                    p = y[0]
+                    s = y[1]
+                    p1 = resolve(p)
+                    s1 = resolve(s)
+                    if p1 == 'rdf.type' :
+                        if s1 == 'owl.Restriction' :
+                            pass
+                        else:
+                            types.append(s1)
+                        #print "\t","pred",p1,s1
+
+                if len(types) > 0:
+                    caml= convert2(x)
+                    short= convert(x)
+                    if caml.startswith('Ub'):
+                        pass
+                    else:
+                        
+                        code = code + "class {_class}({base}):\n    term=\"{name}\"\n".format(_class=caml,
+                                                                                      name=x,
+                                                                                      base=",".join(types))
+                        #print classc
+                        code = code + "\n{alias} = {_class}()\n".format(alias=short,_class=caml)
+                        
+        ###
+        if len(code )> 1:
+            npath= "gentest/" + o.path
+            #path = l.get_module(ns,m)
+            #print ns, m, path
+            importl = l.get_import_path(npath)
+            #prefix = l.get_import_path(ns)
+            l.createpath(npath)
+            print "npath",npath
+            #print code
+            l.create_module(npath,o.prefix,url=o.base,append=code)
+
+            #of = open(npath,"w")
+            #of.write(code)            
+
         #print "url", m
         #print "path", path
         
-        code = pprint.pformat(od)
-        print code
-        
+        #code = pprint.pformat(od)
+        #print code
+    
         #print(astunparse.unparse(ast.parse(code)))
                 
         # continue

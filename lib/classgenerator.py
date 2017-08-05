@@ -103,10 +103,11 @@ class Library :
 
     base_path = ["lib","ontologies"]
 
-    def create_module(self, module, prefix, url):
+    def create_module(self, module, prefix, url, append = ""):
 
         p = Path(module)
-        if not p.exists():
+        if True:
+        #if not p.exists():
 
             prefix = str(prefix).replace('-','_')
             class_name = prefix.upper()
@@ -116,6 +117,7 @@ class Library :
 
             o = open (module,"w")
             o.write(code)
+            o.write(append)
             o.close()
 
     def createpath(self, path):

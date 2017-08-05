@@ -59,7 +59,10 @@ class Ontology:
         self.path = ""
         self._format = _format
         self.import_path=""
-        
+
+    def module_name(self):
+        return self.path.replace('lib/','').replace('/','.').replace('.py','')
+    
     def set_path(self,path):
         self.path=path
         
@@ -145,25 +148,28 @@ class Ontology:
             
         return g
 
-    def resolve_prefix(self, g, libs, res):
+    def resolve_prefix(self, g, libs, res,prefixes):
         x = self.qname(g,res)
         prefix = x[0]
         url = x[1]
         if prefix is None:
             
             if str(res)== str(self.base):
-                return [self.prefix,res,self]
+                return [self.prefix,res,None]
             else:
-                return [self.prefix,res,self]
+                return [self.prefix,res,None]
             #print res
             #    print x
             #    raise Exception(res)
         lib = None            
         if prefix in libs :
             lib = libs[prefix]
+
+            prefixes[prefix]=lib
         else:
             m = g.namespace_manager.store.namespace(prefix)
-            print "g.namespace_manager.bind(\"{prefix}\",\"{url}\",True)  ".format(prefix=prefix,url=m)
+            
+            #print "NEW g.namespace_manager.bind(\"{prefix}\",\"{url}\",True)  ".format(prefix=prefix,url=m)
             #raise Exception(prefix)
 
         return [prefix,url,lib]
@@ -171,22 +177,31 @@ class Ontology:
     def extract_graph(self, g, l, libs):
         #os.path.dirname(os.path.abspath(__file__))
         myclass = {}
+        myclass3 = {}
+        myclass2 = {}
+        prefixes = {}
         others = []
         for s,p,o in g:
 
             #s1 = g.namespace_manager.qname(s)
             #p1 = g.namespace_manager.qname(p)
 
-            o1 = self.resolve_prefix(g,libs,o)
-            p1 = self.resolve_prefix(g,libs,p)
-            s1 = self.resolve_prefix(g,libs,s)
+            o1 = self.resolve_prefix(g,libs,o,prefixes)
+            p1 = self.resolve_prefix(g,libs,p,prefixes)
+            s1 = self.resolve_prefix(g,libs,s,prefixes)
 
             k = s1[1] # term of subject
 
             try :
                 subject_prefix = s1[0]
                 subject_url = s1[1]
-                if subject_prefix== self.prefix:
+                if subject_prefix== None:
+                    if k in myclass3 :
+                        myclass3[k].append([p1,o1])
+                    else:
+                        myclass3[k] = [[p1,o1]]
+
+                elif subject_prefix== self.prefix:
 
                     if k in myclass :
                         myclass[k].append([p1,o1])
@@ -195,9 +210,9 @@ class Ontology:
                 
                 elif str(subject_url)== str(self.base):
                     if k in myclass :
-                        myclass[k].append([p1,o1])
+                        myclass2[k].append([p1,o1])
                     else:
-                        myclass[k] = [[p1,o1]]
+                        myclass2[k] = [[p1,o1]]
                 else:
                     #print "Not in prefix", self.prefix, s1, p1, o1
                     pass
@@ -205,6 +220,7 @@ class Ontology:
             except Exception as e:
                 print "Exception",e, self.prefix, s1, p1, o1
                 others.append([s1, p1, o1])
+
                 
-        return [myclass, others]
+        return [myclass, others,prefixes,myclass2,myclass3]
     

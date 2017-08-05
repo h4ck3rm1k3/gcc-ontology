@@ -1,4 +1,4 @@
--
+- 
   plan :
     - plan :
         - recognize opportunity
@@ -14,12 +14,28 @@
         - take larger action
 
 -
-  - parse ast data and extract interesting data from it
-  - extract data from instance of object
--
-  - represent owl information as class level static data
-  - evaluate data when needed on init:
-      -  add in base class at runtime:
-          ref : http://www.linuxjournal.com/node/4540/print
-          example :
-            "pyClass.__bases__ += mixInClass"
+  - create self modifying code :
+      - parse ast data and extract interesting data from it
+      - extract data from instance of object
+      - not needed right now, because we can re-generate the entire thing from the rdf
+  
+-      
+  - create python code representing the rdf data as close as possible
+      - normalize names
+      - create python names for urls
+      - create imports for each needed prefix/module
+      - store original names
+      - create names for the ontology/namespace object
+      - represent owl information as class level static data
+      - evaluate data when needed on init:
+          -  add in base class at runtime:
+              ref : http://www.linuxjournal.com/node/4540/print
+              example :
+                "pyClass.__bases__ += mixInClass"
+
+  - review namespaces:
+      - review why some prefixes are not loaded
+      - review new prefixes
+      - track the type of each file/url in the namespace
+      - parse rda and other formats in the librdf:
+          - this might be supported
