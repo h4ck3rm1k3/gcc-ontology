@@ -1,4 +1,3 @@
-
 import rdflib
 from rdflib import Namespace
 from ontology import Ontology
@@ -7,12 +6,21 @@ from ontology import Ontology
 # refactor circular definition to metaclass
 
 class MetaClass():
+    """
+    The metaclass is used to replace the circular type of the rdfs.Class
+    
+    The idea is that the metaclass would be a recursive order metaclass where it is one higher than the previous level.
+    
+    """
     term = 'MetaClass'
 
 ## forward of rdfs class
 
 class RDFS :
-
+    """
+    Forward definition of the rdfs.Class and Datatype used in the rdf namespace.
+    To avoid circular definitions these parts are broken out and then the class is redefined later again.
+    """
     class Class(MetaClass, ):
         term = 'Class'
     _class = Class()
@@ -28,11 +36,11 @@ class RDF(Ontology, ):
     def __init__(self):
         Ontology.__init__(self, Namespace(u'http://www.w3.org/1999/02/22-rdf-syntax-ns#'))
     prefix = 'rdf'
-    
-    class Property(RDFS.Class):        
+
+    class Property(RDFS.Class):
         term = 'Property'
     property = Property()
-    
+
     class LangString(RDFS.Datatype ):
         term = 'langString'
         base = None
@@ -71,7 +79,7 @@ class RDF(Ontology, ):
     bag = Bag()
 
     ## used
-    
+
     class Subject(Property, ):
         term = 'subject'
     subject = Subject()
@@ -83,7 +91,7 @@ class RDF(Ontology, ):
     class Predicate(Property, ):
         term = 'predicate'
     predicate = Predicate()
-        
+
     class Object(Property, ):
         term = 'object'
     object = Object()
@@ -110,6 +118,15 @@ class RDFS(Ontology, ):
     def __init__(self):
         Ontology.__init__(self, Namespace(u'http://www.w3.org/2000/01/rdf-schema#'))
     prefix = 'rdfs'
+
+# these two subclasses are defined again because the class is redefined
+    class Class(MetaClass, ):
+        term = 'Class'
+    _class = Class()
+
+    class Datatype(Class, ):
+        term = 'Datatype'
+    datatype = Datatype()
 
     class Comment(RDF.Property, ):
         term = 'comment'
@@ -164,7 +181,7 @@ class RDFS(Ontology, ):
     class SeeAlso(RDF.Property, ):
         term = 'seeAlso'
     see_also = SeeAlso()
-    
+
 rdfs = RDFS()
 #ontology = rdfs
 
@@ -172,3 +189,4 @@ rdf = RDF()
 ontology = rdf
 
 ##
+x = rdfs.Class()
