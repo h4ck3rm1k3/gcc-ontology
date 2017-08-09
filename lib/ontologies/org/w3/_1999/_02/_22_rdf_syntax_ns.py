@@ -1,5 +1,6 @@
 
 import rdflib
+from rdflib import Namespace
 from ontology import Ontology
 
 class RDF(Ontology, ):

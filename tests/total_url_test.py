@@ -167,8 +167,9 @@ def all_url_test():
             if path:
                 importl = l.get_import_path(path)
                 prefix = l.get_import_path(ns)
-                l.createpath(path)
-                l.create_module(path,prefix,url=m)
+            
+                #l.createpath(path)
+                #l.create_module(path,prefix,url=m)
                 #print "import {module} as {prefix}".format(module=importl,prefix=ns)
                 replace= {
                     'http://purl.org/dc/dcam/' : 'https://raw.githubusercontent.com/dcmi/vocabtool/master/build/dcam.rdf'
@@ -209,6 +210,8 @@ def all_url_test():
     for p in libs:
 
         o = libs[p]
+        prefix = o.prefix
+        
         #print "Lib", p, o.path
         og = o.fetch(g.namespace_manager)
         rebind(og)
@@ -217,25 +220,13 @@ def all_url_test():
         ours = od[0]
         others = od[2]
         prefixs = od[2]
-        code = ""
-        for x in prefixs:
-            m = prefixs[x]
+        code = []
 
-            cast = Module(body=[ImportFrom(
-                module=m.module_name(),
-                names=[alias(
-                name='ontology',
-                    asname=x)],
-                level=0)])
+        importcode = []
 
-            #code = "from {module} import ontology as {alias}".format(module=m.module_name(), alias=x)
-            # x = Import(names=[alias(
-            #     name=m.module_name(),
-            #     asname=None)]),
-            #print(astunparse.dump(ast.parse(code)))
-            code = code +  astunparse.unparse(cast) + "\n"
-            #print code
-            
+        
+        # create members
+        used_prefixes= {}
         for x in ours :
             if 'http' in x :
                 pass
@@ -254,6 +245,10 @@ def all_url_test():
                             pass
                         else:
                             types.append(s1)
+                            ## append to used types
+                            #print "check prefix for import",s,s1
+                            
+                            used_prefixes[s[0]] =1 
                         #print "\t","pred",p1,s1
 
                 if len(types) > 0:
@@ -262,15 +257,48 @@ def all_url_test():
                     if caml.startswith('Ub'):
                         pass
                     else:
-                        
-                        code = code + "class {_class}({base}):\n    term=\"{name}\"\n".format(_class=caml,
-                                                                                      name=x,
-                                                                                      base=",".join(types))
-                        #print classc
-                        code = code + "\n{alias} = {_class}()\n".format(alias=short,_class=caml)
-                        
+                    
+                        classcode = ast.parse("class {_class}({base}):\n    term=\"{name}\"\n".format(
+                            _class=caml,
+                            name=x,
+                            base=",".join(types)))
+                        used_prefixes[prefix]=1
+                        alias_code =  ast.parse("{alias} = {_class}()\n".format(
+                            prefix=prefix,
+                            alias=short,
+                            _class=caml))
+
+                        code.append(classcode)
+                        code.append(alias_code)
+
+
+        ##### create prefixes
+        for x in prefixs:
+            m = prefixs[x]
+
+            if x not in used_prefixes:
+                continue # remove unused prefixes
+        
+            if x == o.prefix :
+                continue
+            
+            import_module = Module(body=[ImportFrom(
+                module=m.module_name(),
+                names=[alias(
+                name='ontology',
+                    asname=x)],
+                level=0)])
+
+            #code = "from {module} import ontology as {alias}".format(module=m.module_name(), alias=x)
+            # x = Import(names=[alias(
+            #     name=m.module_name(),
+            #     asname=None)]),
+            #print(astunparse.dump(ast.parse(code)))
+            importcode.append(import_module)
+
+        
         ###
-        if len(code )> 1:
+        if True:
             npath= "gentest/" + o.path
             #path = l.get_module(ns,m)
             #print ns, m, path
@@ -279,7 +307,7 @@ def all_url_test():
             l.createpath(npath)
             print "npath",npath
             #print code
-            l.create_module(npath,o.prefix,url=o.base,append=code)
+            l.create_module(npath,o.prefix,url=o.base,members=code,imports=importcode)
 
             #of = open(npath,"w")
             #of.write(code)            

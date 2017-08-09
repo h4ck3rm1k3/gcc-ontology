@@ -39,3 +39,7 @@
       - track the type of each file/url in the namespace
       - parse rda and other formats in the librdf:
           - this might be supported
+  - sort dependencies :
+      - look at all fields that do not need imports, put them first
+      - order members of the class by dependency
+      - break circular dependancies

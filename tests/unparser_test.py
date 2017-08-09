@@ -99,6 +99,5 @@ def t3st_unparse_ast():
 def t3st_unparse():
     code = test_unparse_ast
     print(astunparse.unparse(ast.parse(inspect.getsource(code))))
-
     # get a pretty-printed dump of the AST
     print(astunparse.dump(ast.parse(inspect.getsource(code))))

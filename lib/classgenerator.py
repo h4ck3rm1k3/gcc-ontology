@@ -2,6 +2,9 @@ import re
 import inspect
 import ast
 import astunparse
+from urlparse import urlparse
+from path import Path
+
 from ast import *
 class PrototypeNamespace:
     "namespace of <url>"
@@ -21,10 +24,8 @@ class PrototypeProperty(PrototypeBaseClass):
     domains = [PrototypeType]
     pranges = [PrototypeType]
 
-from urlparse import urlparse
-from path import Path
 
-def create_ont_module(class_name,prefix,url):
+def create_ont_module(class_name,prefix,url, imports, members):
     
     return Module(body=[
         
@@ -33,11 +34,19 @@ def create_ont_module(class_name,prefix,url):
             asname=None)]),
         
         ImportFrom(
+            module='rdflib',
+            names=[alias(
+                name='Namespace',
+                asname=None)],
+            level=0),
+        
+        ImportFrom(
             module='ontology',
             names=[alias(
                 name='Ontology',
                 asname=None)],
             level=0),
+
         
         ClassDef(
             name=class_name,
@@ -45,6 +54,9 @@ def create_ont_module(class_name,prefix,url):
                 id='Ontology',
                 ctx=Load())],
             body=[
+                # insert the other imports inside the class
+                imports,
+
                 FunctionDef(
                     name='__init__',
                     args=arguments(
@@ -74,7 +86,11 @@ def create_ont_module(class_name,prefix,url):
                     targets=[Name(
                         id='prefix',
                         ctx=Store())],
-                    value=Str(s=prefix))],
+                    value=Str(s=prefix)),
+
+                members
+                
+            ],
             decorator_list=[]),
 
         Assign(
@@ -103,21 +119,18 @@ class Library :
 
     base_path = ["lib","ontologies"]
 
-    def create_module(self, module, prefix, url, append = ""):
+    def create_module(self, module, prefix, url, members = None, imports= None):
 
         p = Path(module)
         if True:
-        #if not p.exists():
-
             prefix = str(prefix).replace('-','_')
             class_name = prefix.upper()
             print "module create:" + module, class_name
-            ast = create_ont_module(class_name,prefix,url)        
+            ast = create_ont_module(class_name,prefix,url, imports, members)        
             code = astunparse.unparse(ast)
 
             o = open (module,"w")
             o.write(code)
-            o.write(append)
             o.close()
 
     def createpath(self, path):
