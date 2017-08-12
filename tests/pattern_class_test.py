@@ -1,8 +1,14 @@
 import sys
 sys.path.append("/home/mdupont/experiments/astunparse/lib/")
 import astunparse
-import pprint 
-from ast import *
+import pprint
+
+from ast import NodeTransformer,Str, Name, Param,  Module, FunctionDef, arguments, Return, keyword, Load, ClassDef, Assign, Store 
+#pattern_class_test.py:88: redefinition of unused 'visit_Tuple' from line 83
+#pattern_class_test.py:138: tree may be undefined, or defined from star imports: ast
+#pattern_class_test.py:138: local variable 'tree' is assigned to but never used
+
+
 import ast
 import inspect
 
@@ -15,18 +21,18 @@ def extract_ast(thing):
     #print src
     return ast.parse(src)
 
-def do_replacements(aast, **replacements):
-    for x in extract_tokens(aast):
-        name = x[0]
-        val = x[1]
-        obj = x[2]
-        print "debug",name, val, obj
-        if val in replacements :
+# def do_replacements(aast, **replacements):
+#     for x in extract_tokens(aast):
+#         name = x[0]
+#         val = x[1]
+#         obj = x[2]
+#         #print ("debug",name, val, obj)
+#         if val in replacements :
             
-            new = replacements[val]
-            setattr(obj,name,new)
-            #print(astunparse.unparse(obj))
-    return aast
+#             new = replacements[val]
+#             setattr(obj,name,new)
+#             #print(astunparse.unparse(obj))
+#     return aast
 
 class ReplaceObjects(NodeTransformer):
     def __init__(self,rep):
@@ -85,11 +91,6 @@ class ReplaceObjects(NodeTransformer):
         # pprint.pprint(node._fields)
         # pprint.pprint(node.__dict__)
         return self.generic_visit(node)
-    def visit_Tuple(self, node):
-        # print "tuple",node
-        # pprint.pprint(node._fields)
-        # pprint.pprint(node.__dict__)
-        return self.generic_visit(node)
     def visit_Assign(self, node):
         # print "assign",node
         # pprint.pprint(node._fields)
@@ -102,9 +103,9 @@ class ReplaceObjects(NodeTransformer):
         # pprint.pprint(node.__dict__)
         #print astunparse.dump(node)
         return self.generic_visit(node)
-    def visit_Load(self, node):
-        #pprint.pprint(node)
-        return self.generic_visit(node)
+    # def visit_Load(self, node):
+    #     #pprint.pprint(node)
+    #     return self.generic_visit(node)
     
     
 def do_replacements_objects(aast, **replacements):
@@ -125,47 +126,47 @@ def do_replacements_objects(aast, **replacements):
                     
     # return aast
 
-def define_pattern(thing, **replacements):
-    """
-    defines a thing that is a pattern
-    keywords are a list of things that could be replaced
-    replacements are the replacements to make
-    """
+# def define_pattern(thing, **replacements):
+#     """
+#     defines a thing that is a pattern
+#     keywords are a list of things that could be replaced
+#     replacements are the replacements to make
+#     """
 
-    aast = extract_ast(thing)
-    aast = do_replacements(aast,replacements)
+#     aast = extract_ast(thing)
+#     aast = do_replacements(aast,replacements)
 
-    tree = RewriteName().visit(tree)
+#     tree = RewriteName().visit(tree)
     
-    print(astunparse.unparse(aast))
-    # for kw in replacements:
-    #     newv = replacements[kw]
-    #     #kwa = define_keyword(aast,kw)
-    #     aast = replace_pattern(aast, kw, newv)      
-    #     pprint.pprint(x)
+#     print(astunparse.unparse(aast))
+#     # for kw in replacements:
+#     #     newv = replacements[kw]
+#     #     #kwa = define_keyword(aast,kw)
+#     #     aast = replace_pattern(aast, kw, newv)      
+#     #     pprint.pprint(x)
 
-    return aast
+#     return aast
 
-def extract_tokens(a):
-    """
-    extract the tokens from ast
-    """
+# def extract_tokens(a):
+#     """
+#     extract the tokens from ast
+#     """
     
-    for x in ast.walk(a):
-        #pprint.pprint([x,x.__dict__, x._fields])
-        d = x.__dict__
-        for k in  d:
-            if k in ('col_offset','lineno'):
-                continue
+#     for x in ast.walk(a):
+#         #pprint.pprint([x,x.__dict__, x._fields])
+#         d = x.__dict__
+#         for k in  d:
+#             if k in ('col_offset','lineno'):
+#                 continue
 
-            v = d[k]
-            if isinstance(v, str):
-                yield [k,v,x]
-            elif isinstance(v, int):
-                yield [k,v,x]
+#             v = d[k]
+#             if isinstance(v, str):
+#                 yield [k,v,x]
+#             elif isinstance(v, int):
+#                 yield [k,v,x]
             
-def foo(x):
-    return x + 1
+# def foo(x):
+#     return x + 1
 
 class MetaClass(type):
     def __init__(cls, name, bases, nmspc):
@@ -178,55 +179,55 @@ class BaseClass(object):
 class ClassWithMetaclass(BaseClass) :
      __metaclass__ = MetaClass
 
-def print_tokens(thing):
-    """
-    walk and print tokens
-    """
-    aast = extract_ast(thing)
-    for x in extract_tokens(aast):
-        pprint.pprint(x)
+# def print_tokens(thing):
+#     """
+#     walk and print tokens
+#     """
+#     aast = extract_ast(thing)
+#     for x in extract_tokens(aast):
+#         pprint.pprint(x)
 
-def dump_tokens():
-    print_tokens(MetaClass)
-    print_tokens(ClassWithMetaclass)
+# def dump_tokens():
+#     print_tokens(MetaClass)
+#     print_tokens(ClassWithMetaclass)
 
-def one_test():
-    define_pattern(
-        foo,
-        foo = 'function_name',
-        x   = 'parameter'
-    )
+# # def one_test():
+# #     define_pattern(
+# #         foo,
+# #         foo = 'function_name',
+# #         x   = 'parameter'
+# #     )
 
-def dump_two(thing):
-    aast = extract_ast(thing)
-    ad = astunparse.dump(aast)
-    #newcode = compile(ad,'<string>','exec')
-    newast = ast.parse(ad)
-    #print_tokens(newast)
-    for x in extract_tokens(newast):
-        pprint.pprint(x)
-    print(astunparse.unparse(newast))
+# def dump_two(thing):
+#     aast = extract_ast(thing)
+#     ad = astunparse.dump(aast)
+#     #newcode = compile(ad,'<string>','exec')
+#     newast = ast.parse(ad)
+#     #print_tokens(newast)
+#     for x in extract_tokens(newast):
+#         pprint.pprint(x)
+#     print(astunparse.unparse(newast))
     
-def dump_three(thing):
-    aast = extract_ast(thing)
-    ad = astunparse.dump(aast)
-    newast = ast.parse(ad)
+# def dump_three(thing):
+#     aast = extract_ast(thing)
+#     ad = astunparse.dump(aast)
+#     newast = ast.parse(ad)
     
-    ad2 = astunparse.dump(newast)
-    newast2 = ast.parse(ad2)
+#     ad2 = astunparse.dump(newast)
+#     newast2 = ast.parse(ad2)
     
-    #print_tokens(newast)
-    for x in extract_tokens(newast2):
-        pprint.pprint(x)
-    print(astunparse.unparse(newast2))
+#     #print_tokens(newast)
+#     for x in extract_tokens(newast2):
+#         pprint.pprint(x)
+#     print(astunparse.unparse(newast2))
 
-def meta_test():
+# def meta_test():
 
-    define_pattern(ClassWithMetaclass,
-                   MetaClass = "Foobar"
-    )
+#     define_pattern(ClassWithMetaclass,
+#                    MetaClass = "Foobar"
+#     )
 
-    Name(id='classname', ctx=Param()),
+#     Name(id='classname', ctx=Param()),
     
 def define_pattern2(methodname,thing,**kw):
 
@@ -276,40 +277,40 @@ def define_pattern2(methodname,thing,**kw):
     
     return define_replace_method(methodname,args, skip)
 
-def create_metaclass_ast(classname, bases,metaclassname):
-    return Module(body=[ClassDef(name=classname,
-                                 bases=bases,
-                                 body=[Assign(targets=[Name(id='__metaclass__', ctx=Store())],
-                                              value=Name(id=metaclassname, ctx=Load()))], decorator_list=[])])
+# def create_metaclass_ast(classname, bases,metaclassname):
+#     return Module(body=[ClassDef(name=classname,
+#                                  bases=bases,
+#                                  body=[Assign(targets=[Name(id='__metaclass__', ctx=Store())],
+#                                               value=Name(id=metaclassname, ctx=Load()))], decorator_list=[])])
 
 
-def create_call_load_name_dump(_id):
-    return Call(
-        func=Name(
-            id='Name',
-            ctx=Load()
-        ),
-        args=[],
-        keywords=[
-            keyword(
-                arg='id',
-                value=Str(s=_id)),
-            keyword(
-                arg='ctx',
-                value=Call(
-                    func=Name(
-                        id='Load',
-                        ctx=Load()
-                ),
-                    args=[],
-                keywords=[],
-                    starargs=None,
-                    kwargs=None
-            )
-            )
-        ],
-        starargs=None,
-        kwargs=None)
+# def create_call_load_name_dump(_id):
+#     return Call(
+#         func=Name(
+#             id='Name',
+#             ctx=Load()
+#         ),
+#         args=[],
+#         keywords=[
+#             keyword(
+#                 arg='id',
+#                 value=Str(s=_id)),
+#             keyword(
+#                 arg='ctx',
+#                 value=Call(
+#                     func=Name(
+#                         id='Load',
+#                         ctx=Load()
+#                 ),
+#                     args=[],
+#                 keywords=[],
+#                     starargs=None,
+#                     kwargs=None
+#             )
+#             )
+#         ],
+#         starargs=None,
+#         kwargs=None)
 
 def create_load_name_dump(key,_id):
     return [
@@ -318,11 +319,11 @@ def create_load_name_dump(key,_id):
                 value=Name(id=_id,ctx=Load()))
     ]        
 
-def create_load_name(id):
-    "creates a name reference"
-    return Name(
-        id=id,
-        ctx=Load())
+# def create_load_name(id):
+#     "creates a name reference"
+#     return Name(
+#         id=id,
+#         ctx=Load())
 
 def create_param_name(id):
     "creates a named parameter"
@@ -355,8 +356,8 @@ def define_replace_method(methodname,args, body):
         ]
     )# module
 
-def generate_metaclass2(MetaClassVariable, NewBaseClassName, NewClassName):
-    return Module(body=[ClassDef(name=NewClassName, bases=[Name(id=NewBaseClassName, ctx=Load())], body=[Assign(targets=[Name(id='__metaclass__', ctx=Store())], value=Name(id=MetaClassVariable, ctx=Load()))], decorator_list=[])])
+# def generate_metaclass2(MetaClassVariable, NewBaseClassName, NewClassName):
+#     return Module(body=[ClassDef(name=NewClassName, bases=[Name(id=NewBaseClassName, ctx=Load())], body=[Assign(targets=[Name(id='__metaclass__', ctx=Store())], value=Name(id=MetaClassVariable, ctx=Load()))], decorator_list=[])])
 
 
 if __name__ == '__main__' :
@@ -374,13 +375,13 @@ if __name__ == '__main__' :
 
     #print(astunparse.dump(newmethod))
     code = astunparse.unparse(newmethod)
-    print code
+    print (code)
 
     #c2 = "\nprint(astunparse.unparse(generate_metaclass('a', 'b', 'c')))"
     #code = code + c2
     
     c = compile(code,'<string>','exec')
-    print c
+    print (c)
 
     exec(c)
     
