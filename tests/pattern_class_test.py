@@ -1,3 +1,7 @@
+"""
+use normal python code prototype for code generation by replacing tokens on ast.
+generates a function to do the replacement and then executes it inline without writing new files.
+"""
 import sys
 import pprint
 from ast import NodeTransformer, Str, Name, Param
