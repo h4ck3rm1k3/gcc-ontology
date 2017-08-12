@@ -43,3 +43,32 @@
       - look at all fields that do not need imports, put them first
       - order members of the class by dependency
       - break circular dependancies
+  - metalevels :
+      - rdfs:Class a rdf:Class, this might be better defined with rdfs:Class a rdf:Class2 where rdf:Class2 is a metaclass at a higher order, and rdf:Class2 would be a rdf:Class3 etc. 
+  - pattern class:
+      - define a prototype thing using normal python
+      - extract the ast from the thing
+      - replace tokens in the ast with variables to create new thing
+  - pattern ast :
+      - an ast of an ast is a description of the original ast but expanded once
+      - create the ast of an ast that will regenerate a new similar ast
+      - create a method that will generate an ast on the fly with the parameters requested
+      - replace keywords in ast of ast with parameter values
+      - replace const parameter values with variables in the new ast of ast
+-
+  -
+
+    - use one metaclass per rdfs class:
+        - representation of rdf on of these :
+            - store in existing librdf
+            - possible generate native python representation
+            
+        - store the entire rdf object in the metaclass:
+            - be able to lookup the class for any rdf url:
+                - use world object
+                - associate the metaclass object with the rdf object
+        
+        - generate the class methods in the new:
+            - create elegant python representation of rdf
+            - 
+        
