@@ -72,3 +72,30 @@
             - create elegant python representation of rdf
             - 
         
+-
+  -
+    - extract code from existing python libs
+    - look for each ast type
+    - look how each is reachable from the root
+    - create examples for each ast type
+    - extract examples from each ast type
+    - extract statistics for each relationship between ast node types
+    - extract field information
+  -
+    - repeatedly call deparse until you get a basic metadata about ast represention
+    - how many recursive calls are needed until all asts look the same
+    - what are the primited parts needed to construct all asts?
+    - what are the basic rules
+  -
+    - create new concise ast representation
+    - canonical
+    - simple
+    - multi language
+    - generate idiomic python or gcc
+    - recognise defined idioms
+
+  -
+    - metadata tagging
+    - create special variables or names that are used to tag metavariables
+    - be able to replace metavariables
+    
