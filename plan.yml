@@ -97,5 +97,11 @@
   -
     - metadata tagging
     - create special variables or names that are used to tag metavariables
+    - generate the variable names based on the tree context, so recursing over the tree prepend names to create very long names
     - be able to replace metavariables
+  -
+    - build examples on top of each other
+    - empty function vs function with data
+    - compare two examples to define one item:
+        - treat as standard item
     
