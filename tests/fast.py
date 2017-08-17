@@ -25,9 +25,17 @@ def temp_object(name):
     return sym
 
 def list(x,indent="  "):
-    declare_type("alist")
-    ret =  "alist("
-    count = 0 
+
+
+    l = len(x)
+
+    name =  "alist_{l}".format(l=l)
+        
+    ret =   name + "("
+    
+    declare_type(name)    
+    count = 0
+    
     for i in x:
 
         if count > 0:
@@ -37,7 +45,7 @@ def list(x,indent="  "):
         
         count = count + 1
         
-    ret += indent +  ")"
+    ret +=   ")"
     return ret
 
 
@@ -87,7 +95,7 @@ def rec(x,indent="  "):
             declare_type("setrec")
             ret += "\n" + indent + "  setrec(\"{name}\", {value})".format(name=k,value=rec(v, indent=indent + "  "))
         
-    ret += indent + ")"
+    ret += ")"
     
     typename = temp_object("record_type_{name}".format(name="_".join(sorted(atype.keys()))))
 
@@ -114,7 +122,7 @@ def Call(**x):
     #return {"Call":x}
     #y =  "call " + rec(x)
     #print y
-    return {'code' : x}
+    return {'Call' : x}
 
 nc = Counter()    
 def Name(ctx, id):
