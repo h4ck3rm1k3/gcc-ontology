@@ -1,5 +1,48 @@
+
+-- def example_empty_function():
+--     pass
+
+-- Module(body=[FunctionDef(
+--   name='example_empty_function',
+--   args=arguments(
+--     args=[],
+--     vararg=None,
+--     kwarg=None,
+--     defaults=[]),
+--   body=[Pass()],
+--   decorator_list=[])])
+
+-- significant data :
+-- Module(body=[FunctionDef(
+--   name='example_empty_function',
+--   args=arguments(),
+--   body=[Pass()],
+-- )])
+  
+  
 data Tree =
   EmptyList
+  | BodyElements Tree
+  | L [Tree ] -- reduce
+  | Skip
+  | Debug Tree
+  | CallFunctionDefFunc2 [Tree]
+  | CallModuleFunc Tree
+  | CallModuleFunc2 [Tree]
+  | CallArgumentsFunc [Tree]
+  | Check Tree Tree
+  | SetArgArgs Tree
+  | LoadArgArgs
+  | LoadArgDecoratorList
+  | LoadArgDefaults Tree
+  | SetKeyWordArg
+  | NoKeyWordArg
+  | NoVarArgs
+  | Check2 Tree
+  | SetArgBody Tree
+  | SetBodyAttr Tree
+  | SetArgBodyElts Tree 
+  | SRV Tree Tree -- set record value
   | C1 [ Tree ]
   | C2 [ Tree ]
   | C2B [ Tree ]
@@ -11,7 +54,7 @@ data Tree =
   | SetName 
   | Load
   | LoadValue Tree
-  | ArgDefaults
+  | ArgDefaults Tree
   | SetAlist Tree
   | SetRecValue Tree
   | SetCall Tree
@@ -77,7 +120,7 @@ data Tree =
   | Record_type_value Tree
   | Setrec Tree Tree
   | Alist0
-  | Record_type_Call Tree
+  | DoCall Tree
   | NilAttr Tree
   | NilStarArgs
   | ArgArgs
@@ -85,8 +128,15 @@ data Tree =
   | Node Int Tree Tree
   | ArgumentsFunc
   | ArgVarArg
+  | F [Tree]
   | AlistN [ Tree ]
           deriving Show
+
+record_type_value x =  x
+
+-- this is setting the body of a record type, so one time at the top of the fake modules created,
+-- lets skip this for now to reduce the size of the tree
+record_type_body x = x
 
 attribute_body_type_list x =
   case x of 
@@ -102,11 +152,31 @@ record_type_arg_value (arg,value) =
   case arg of
     Load ->
       case value of
+        ArgArgs -> LoadArgArgs
+        ArgDecoratorList -> LoadArgDecoratorList
+        ArgDefaults x -> LoadArgDefaults x
         _ -> LoadValue value
     SetValue v ->
       case value of
-        SetName -> DoSetName v 
-    _ -> Record_type_arg_value arg value
+        SetName -> DoSetName v
+    SetRecValue v ->
+      case value of
+        ArgBody -> case v of
+          Record_type_a_list(SetAlist (x))-> case x of
+            Record_type_ctx_elts y z -> case y of
+                SetElements a -> case a of
+                  Attribute_elts_type_list b -> case b of                                                  
+                    AlistN [ list ] -> case z of
+                      CtxLd -> case list of
+                        DoCall (f)->SetArgBodyElts f
+                                                   -- SetElements (Attribute_elts_type_list (AlistN x))
+        _  -> SRV value v
+    NoneValue -> case value of
+      ArgVarArg -> NoVarArgs
+      SetKeyWordArg -> NoKeyWordArg
+      _ -> Check2 value
+    _ -> case value of
+      ArgArgs -> SetArgArgs arg --Check arg value --Record_type_arg_value Check(arg) value
 
 record_type_a_list x =
   case x of
@@ -128,19 +198,28 @@ setrec (x,y) =
         _ -> SetAlist y
     Value -> case y of
       Load -> Load
-      Record_type_Call f -> f
+      DoCall f -> f
       _ -> SetRecValue y
     Call -> case y of
       Record_type_args_func_keywords_kwargs_starargs keywords kwargs args func  starargs ->
         case keywords of
-          NoKeyWords -> C1 [ func -- , args,  kwargs, starargs
-                           ]
+          NoKeyWords -> case args of
+            SetEmptyArgs -> case kwargs of              
+              NilKeyWordArgs -> case starargs of
+                NilStarArgs ->  func -- just a func
+          
           _ -> case args of
             
             SetEmptyArgs -> case kwargs of              
               NilKeyWordArgs -> case starargs of
-                NilStarArgs -> C2B [ func ,
-                                     keywords  ]
+                NilStarArgs -> case func of
+                  ModuleFunc -> case keywords of
+                    SetKeyWords (L x) -> CallModuleFunc2 x
+                  ArgumentsFunc -> case keywords of
+                    SetKeyWords (L x) -> CallArgumentsFunc x
+                  FunctionDefFunc -> case keywords of
+                    SetKeyWords (L x) -> CallFunctionDefFunc2 x
+                  _ -> C2C [ func ,  keywords ]
                 _ -> C2C [ func ,  keywords , starargs ]
               _ -> C2 [ func, kwargs ]
                        
@@ -153,10 +232,33 @@ setrec (x,y) =
                       ]
       _ -> SetCall y    
     --_ -> Setrec x y
+kwtl x = case x of
+  SetArgBodyElts y -> BodyElements y
+  DoSetName y ->DoSetName y
+  SetArgArgs y -> SetArgArgs y
+  LoadArgArgs -> Skip
+  NoVarArgs -> Skip
+  NoKeyWordArg -> Skip
+  LoadArgDefaults y -> Skip
+  LoadArgDecoratorList -> Skip
+--  _ -> Debug x
+
+kwtlf x = case x of
+            Skip -> False
+            _ -> True
+            
+dof x = map kwtl  x
+dof3 x = filter kwtlf  x
+
+dof2 x = L (dof3(dof x))
+
+--
+
 attribute_keywords_type_list x =
   case x of
     Alist0 -> NoKeyWords
-    AlistN x -> SetKeyWords2 x
+    -- map kwtl
+    AlistN x -> dof2  x 
 --    _ -> Attribute_keywords_type_list x
 
 attribute_elts_type_list x =
@@ -182,11 +284,12 @@ setstr (k, v) =
     Arg ->
       case v of
         Body -> ArgBody
-        Defaults -> ArgDefaults
+        Defaults -> ArgDefaults v
         Args -> ArgArgs
         DecoratorList -> ArgDecoratorList
         VarArg -> ArgVarArg
         Name -> SetName
+        KeyWordArg -> SetKeyWordArg
         _ -> SetArg v
     Func -> 
       case v of
@@ -213,6 +316,8 @@ setattr (x,y) =
         EmptyList -> SetEmptyArgs
         Alist0 -> SetEmptyArgs
         _ ->         SetArgs y
+    Body ->
+      y --SetBodyAttr 
     _ -> SetAttr x y
       
 attribute_args_type_list_39 x =
@@ -225,7 +330,7 @@ arecord x =x
     --( Arg, Arg) -> x
     --(Arg, Arg, Arg, Arg, Arg) -> x
   
-record_type_Call x = Record_type_Call x
+record_type_Call x = DoCall x
 --  case x of
     
 
@@ -301,9 +406,9 @@ record_type_arg_value_38 x = record_type_arg_value x
 
 record_type_args_func_keywords_kwargs_starargs_40 x = record_type_args_func_keywords_kwargs_starargs x
 record_type_Call_41 x = record_type_Call x
-record_type_value x = Record_type_value x
+
 record_type_value_42 x = record_type_value x
-record_type_body x = Record_type_body x
+
 record_type_body_43 x = record_type_body x
 
 
