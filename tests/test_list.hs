@@ -1,5 +1,39 @@
-
-data Tree = SetStr Tree Tree
+data Tree =
+  EmptyList
+  | C1 [ Tree ]
+  | C2 [ Tree ]
+  | C2B [ Tree ]
+  | C2C [ Tree ]  
+  | C3 [ Tree ]
+  | C4 [ Tree ]
+  | SetBody [ Tree ]
+  | DoSetName Tree
+  | SetName 
+  | Load
+  | LoadValue Tree
+  | ArgDefaults
+  | SetAlist Tree
+  | SetRecValue Tree
+  | SetCall Tree
+  | SetKeyWords2 [Tree]
+  | SetKeyWords Tree
+  | PassFunc
+  | NoKeyWords
+  | EmptyEltsList
+  | SetElements Tree 
+  | ArgDecoratorList
+  | CtxLd
+  | ArgBody
+  | SetEmptyArgs
+    | NilKeyWordArgs
+  | SetArgs Tree
+  | SetArg Tree
+  | SetStr Tree Tree
+  | SetFunc Tree
+  | ModuleFunc
+  | FunctionDefFunc
+  ---
+  |   ExampleEmptyFunction
   -- constants
   | AList
   | Arg
@@ -11,7 +45,7 @@ data Tree = SetStr Tree Tree
   | DecoratorList
   | Defaults
   | Elements
-  | ExampleEmptyFunction
+  | NoneValue
   | Func
   | FunctionDef
   | KeyWordArg
@@ -33,7 +67,7 @@ data Tree = SetStr Tree Tree
   | Attribute_elts_type_list Tree
   | Attribute_args_type_list  Tree 
   | Record_type_args_func_keywords_kwargs_starargs Tree Tree Tree Tree Tree
-
+  | SetValue Tree
   | Achain Tree
   | Arecord Tree Tree
   | Record_type_a_list Tree
@@ -45,16 +79,159 @@ data Tree = SetStr Tree Tree
   | Alist0
   | Record_type_Call Tree
   | NilAttr Tree
+  | NilStarArgs
+  | ArgArgs
   | SetAttr Tree Tree
   | Node Int Tree Tree
+  | ArgumentsFunc
+  | ArgVarArg
+  | AlistN [ Tree ]
           deriving Show
 
-setstr (k, v) = SetStr k v
-nilattr x = NilAttr x
-alist_4 (a,b,c,d) = Alist4 a b c d
-alist_1 x = Alist1 x
+attribute_body_type_list x =
+  case x of 
+    AlistN f -> SetBody f
+
+alist_4 (a,b,c,d) = AlistN [a, b, c, d]
+alist_1 x = AlistN [x]
 alist_0 x = Alist0
-setattr (x,y) = SetAttr x y
+
+achain x =  x
+
+record_type_arg_value (arg,value) =
+  case arg of
+    Load ->
+      case value of
+        _ -> LoadValue value
+    SetValue v ->
+      case value of
+        SetName -> DoSetName v 
+    _ -> Record_type_arg_value arg value
+
+record_type_a_list x =
+  case x of
+    Load -> Load
+    _ -> Record_type_a_list x
+    
+record_type_ctx_elts (ctx,elts) =
+  case ctx of
+    EmptyEltsList ->
+      case elts of
+        CtxLd -> Load          
+    _ -> Record_type_ctx_elts ctx elts
+
+setrec (x,y) =
+  case x of
+    AList ->
+      case y of
+        Load -> Load
+        _ -> SetAlist y
+    Value -> case y of
+      Load -> Load
+      Record_type_Call f -> f
+      _ -> SetRecValue y
+    Call -> case y of
+      Record_type_args_func_keywords_kwargs_starargs keywords kwargs args func  starargs ->
+        case keywords of
+          NoKeyWords -> C1 [ func -- , args,  kwargs, starargs
+                           ]
+          _ -> case args of
+            
+            SetEmptyArgs -> case kwargs of              
+              NilKeyWordArgs -> case starargs of
+                NilStarArgs -> C2B [ func ,
+                                     keywords  ]
+                _ -> C2C [ func ,  keywords , starargs ]
+              _ -> C2 [ func, kwargs ]
+                       
+                            
+                            
+            _ -> case kwargs of 
+              NilKeyWordArgs -> C3 [ func --, args,  keywords,  starargs
+                                   ]
+              _ -> C4 [ func -- , args,  keywords, kwargs, starargs
+                      ]
+      _ -> SetCall y    
+    --_ -> Setrec x y
+attribute_keywords_type_list x =
+  case x of
+    Alist0 -> NoKeyWords
+    AlistN x -> SetKeyWords2 x
+--    _ -> Attribute_keywords_type_list x
+
+attribute_elts_type_list x =
+  case x of
+    Alist0 -> EmptyEltsList
+    _ -> Attribute_elts_type_list x
+
+nilattr x =
+  case x of
+    StarArgs -> NilStarArgs
+    KeyWordArgs -> NilKeyWordArgs
+    _ ->  NilAttr x
+setstr (k, v) =
+  case k of
+    Value ->
+      case v of
+        None ->     NoneValue
+        _ -> SetValue v
+          
+    Ctx ->
+      case v of
+        Ld -> CtxLd
+    Arg ->
+      case v of
+        Body -> ArgBody
+        Defaults -> ArgDefaults
+        Args -> ArgArgs
+        DecoratorList -> ArgDecoratorList
+        VarArg -> ArgVarArg
+        Name -> SetName
+        _ -> SetArg v
+    Func -> 
+      case v of
+        Module -> ModuleFunc
+        Pass -> PassFunc
+        FunctionDef -> FunctionDefFunc
+        Arguments -> ArgumentsFunc
+        _ -> SetFunc v
+    _ -> SetStr k v
+
+setattr (x,y) =
+  case x of
+    KeyWords ->
+      case y of
+        NoKeyWords -> NoKeyWords
+        SetKeyWords2 y -> SetKeyWords2 y
+        _ -> SetKeyWords y
+    Elements ->
+      case y of 
+        EmptyEltsList -> EmptyEltsList
+        _ -> SetElements y
+    Args ->
+      case y of
+        EmptyList -> SetEmptyArgs
+        Alist0 -> SetEmptyArgs
+        _ ->         SetArgs y
+    _ -> SetAttr x y
+      
+attribute_args_type_list_39 x =
+  case x of
+    Alist0 -> EmptyList
+
+arecord x =x
+--  case x of
+--    Arg -> x
+    --( Arg, Arg) -> x
+    --(Arg, Arg, Arg, Arg, Arg) -> x
+  
+record_type_Call x = Record_type_Call x
+--  case x of
+    
+
+
+
+
 tupleToList :: [(a,a)] -> [a]
 tupleToList ((a,b):xs) = a : b : tupleToList xs
 tupleToList _          = []
@@ -63,30 +240,30 @@ main :: IO()
 main = do 
     print eval_module
 
-arecord x = x
 
-attribute_body_type_list x = Attribute_body_type_list x
+
+
 attribute_body_type_list_1 x = attribute_body_type_list x
 
-achain x = Achain x
-setrec (x,y) = Setrec x y
-attribute_keywords_type_list x = Attribute_keywords_type_list x
+
+
+
 attribute_keywords_type_list_2 x = attribute_keywords_type_list x
-attribute_elts_type_list x =  Attribute_elts_type_list x
+
 attribute_elts_type_list_3 x = attribute_elts_type_list x
 attribute_keywords_type_list_4 x = attribute_keywords_type_list x
 
 
-record_type_arg_value (arg,value) = Record_type_arg_value arg value
+
 
 record_type_arg_value_5 x = record_type_arg_value x
 attribute_keywords_type_list_6 x = attribute_keywords_type_list x
 attribute_elts_type_list_7 x = attribute_elts_type_list x
 
-record_type_ctx_elts (ctx,elts) = Record_type_ctx_elts ctx elts
+
 record_type_ctx_elts_30 x = record_type_ctx_elts x
 record_type_ctx_elts_8 x = record_type_ctx_elts x
-record_type_a_list x = Record_type_a_list x
+
 record_type_a_list_9 x = record_type_a_list x
 record_type_arg_value_10 x = record_type_arg_value x
 record_type_arg_value_11 x = record_type_arg_value x
@@ -100,7 +277,7 @@ attribute_args_type_list x =  x
 attribute_args_type_list_17 x = x
 record_type_args_func_keywords_kwargs_starargs (args,func, keywords, kwargs, starargs) = Record_type_args_func_keywords_kwargs_starargs args func keywords kwargs starargs
 record_type_args_func_keywords_kwargs_starargs_18 x = record_type_args_func_keywords_kwargs_starargs x
-record_type_Call x = Record_type_Call x
+
 record_type_Call_19 x = record_type_Call x
 record_type_arg_value_20 x = record_type_arg_value x
 attribute_elts_type_list_21 x = attribute_elts_type_list x
@@ -121,7 +298,7 @@ record_type_Call_35 x = record_type_Call x
 record_type_ctx_elts_36 x = record_type_ctx_elts x
 record_type_a_list_37 x = record_type_a_list x
 record_type_arg_value_38 x = record_type_arg_value x
-attribute_args_type_list_39 x = Attribute_args_type_list x
+
 record_type_args_func_keywords_kwargs_starargs_40 x = record_type_args_func_keywords_kwargs_starargs x
 record_type_Call_41 x = record_type_Call x
 record_type_value x = Record_type_value x
