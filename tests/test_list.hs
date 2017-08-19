@@ -1,7 +1,14 @@
+-- Example python ast reduced using haskell
 
+-- Input :
 -- def example_empty_function():
 --     pass
 
+-- Currently evals to (manual tweaking):
+-- SetBody [CallModuleFunc2 [BodyElements (CallFunctionDefFunc2 [DoSetName ExampleEmptyFunction,SetArgArgs (CallArgumentsFunc []),BodyElements PassFunc])]]
+
+-- Simple ast :
+-- from generate_haskell_from_empty_python_ast.py
 -- Module(body=[FunctionDef(
 --   name='example_empty_function',
 --   args=arguments(
