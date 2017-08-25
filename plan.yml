@@ -105,3 +105,5 @@
     - compare two examples to define one item:
         - treat as standard item
     
+-
+  - like template haskell we could define similar mechanisms without a new syntax by speciallly named functions or variables recognized by compiler plugins. 
