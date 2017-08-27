@@ -1,0 +1,85 @@
+
+==================== Parser AST ====================
+2017-08-26 17:12:40.726952425 UTC
+
+
+({ simple2.hs:1:1 }
+ (HsModule 
+  (Just 
+   ({ simple2.hs:1:8-10 }{ModuleName: Foo})) 
+  (Nothing) 
+  [] 
+  [
+   ({ simple2.hs:2:1-18 }
+    (TyClD 
+     (DataDecl 
+      ({ simple2.hs:2:6-11 }
+       (Unqual {OccName: Python})) 
+      (HsQTvs 
+       (PlaceHolder) 
+       [] 
+       (PlaceHolder)) 
+      (Prefix) 
+      (HsDataDefn 
+       (DataType) 
+       ({ <no location info> }
+        []) 
+       (Nothing) 
+       (Nothing) 
+       [
+        ({ simple2.hs:2:15-18 }
+         (ConDeclH98 
+          ({ simple2.hs:2:15-18 }
+           (Unqual {OccName: None})) 
+          (Nothing) 
+          (Just 
+           ({ <no location info> }
+            [])) 
+          (PrefixCon 
+           []) 
+          (Nothing)))] 
+       ({ <no location info> }
+        [])) 
+      (PlaceHolder) 
+      (PlaceHolder)))),
+   ({ simple2.hs:3:1-10 }
+    (ValD 
+     (FunBind 
+      ({ simple2.hs:3:1 }
+       (Unqual {OccName: f})) 
+      (MG 
+       ({ simple2.hs:3:1-10 }
+        [
+         ({ simple2.hs:3:1-10 }
+          (Match 
+           (FunRhs 
+            ({ simple2.hs:3:1 }
+             (Unqual {OccName: f})) 
+            (Prefix) 
+            (NoSrcStrict)) 
+           [
+            ({ simple2.hs:3:3 }
+             (VarPat 
+              ({ simple2.hs:3:3 }
+               (Unqual {OccName: x}))))] 
+           (Nothing) 
+           (GRHSs 
+            [
+             ({ simple2.hs:3:5-10 }
+              (GRHS 
+               [] 
+               ({ simple2.hs:3:7-10 }
+                (HsVar 
+                 ({ simple2.hs:3:7-10 }
+                  (Unqual {OccName: None}))))))] 
+            ({ <no location info> }
+             (EmptyLocalBinds)))))]) 
+       [] 
+       (PlaceHolder) 
+       (FromSource)) 
+      (WpHole) 
+      (PlaceHolder) 
+      [])))] 
+  (Nothing) 
+  (Nothing)))
+

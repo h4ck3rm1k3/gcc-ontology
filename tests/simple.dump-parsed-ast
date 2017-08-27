@@ -1,0 +1,62 @@
+
+==================== Parser AST ====================
+2017-08-26 17:12:45.061727658 UTC
+
+
+({ simple.hs:1:1 }
+ (HsModule 
+  (Just 
+   ({ simple.hs:1:8-10 }{ModuleName: Foo})) 
+  (Nothing) 
+  [] 
+  [
+   ({ simple.hs:2:1-7 }
+    (ValD 
+     (FunBind 
+      ({ simple.hs:2:1 }
+       (Unqual {OccName: f})) 
+      (MG 
+       ({ simple.hs:2:1-7 }
+        [
+         ({ simple.hs:2:1-7 }
+          (Match 
+           (FunRhs 
+            ({ simple.hs:2:1 }
+             (Unqual {OccName: f})) 
+            (Prefix) 
+            (NoSrcStrict)) 
+           [
+            ({ simple.hs:2:3 }
+             (VarPat 
+              ({ simple.hs:2:3 }
+               (Unqual {OccName: x}))))] 
+           (Nothing) 
+           (GRHSs 
+            [
+             ({ simple.hs:2:5-7 }
+              (GRHS 
+               [] 
+               ({ simple.hs:2:7 }
+                (HsOverLit 
+                 (OverLit 
+                  (HsIntegral 
+                   (IL 
+                    (SourceText "1") 
+                    (False) 
+                    (1))) 
+                  (PlaceHolder) 
+                  (HsLit 
+                   (HsString 
+                    (SourceText "noExpr") {FastString: "noExpr"})) 
+                  (PlaceHolder))))))] 
+            ({ <no location info> }
+             (EmptyLocalBinds)))))]) 
+       [] 
+       (PlaceHolder) 
+       (FromSource)) 
+      (WpHole) 
+      (PlaceHolder) 
+      [])))] 
+  (Nothing) 
+  (Nothing)))
+

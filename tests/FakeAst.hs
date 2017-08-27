@@ -96,7 +96,17 @@ data Foo = HsModule Foo Foo Foo Foo Foo Foo Foo
   | CheckSource Foo Foo
   | EmptyArray
   | SomeArray [Foo]
-  
+  | PrefixCon Foo
+  | HsVar Foo
+  | ConDeclH98 Foo Foo Foo Foo Foo
+  | DataType
+  | DataDecl Foo Foo Foo Foo Foo Foo
+  | HsDataDefn Foo Foo Foo Foo Foo Foo
+  | HsQTvs Foo Foo Foo
+  | TyClD Foo
+  | GHCPrimName (String, String,String,String)
+  | Exact Foo
+  | ConPatIn Foo Foo
          deriving Show
 
 checkSrc x y = CheckSource x y

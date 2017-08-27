@@ -1,0 +1,87 @@
+
+==================== Parser AST ====================
+2017-08-26 17:12:44.949035316 UTC
+
+
+({ simple6.hs:1:1 }
+ (HsModule 
+  (Just 
+   ({ simple6.hs:1:8-10 }{ModuleName: Foo})) 
+  (Nothing) 
+  [] 
+  [
+   ({ simple6.hs:(3,1)-(4,6) }
+    (TyClD 
+     (DataDecl 
+      ({ simple6.hs:3:6-11 }
+       (Unqual {OccName: Python})) 
+      (HsQTvs 
+       (PlaceHolder) 
+       [] 
+       (PlaceHolder)) 
+      (Prefix) 
+      (HsDataDefn 
+       (DataType) 
+       ({ <no location info> }
+        []) 
+       (Nothing) 
+       (Nothing) 
+       [
+        ({ simple6.hs:4:3-6 }
+         (ConDeclH98 
+          ({ simple6.hs:4:3-6 }
+           (Unqual {OccName: None})) 
+          (Nothing) 
+          (Just 
+           ({ <no location info> }
+            [])) 
+          (PrefixCon 
+           []) 
+          (Nothing)))] 
+       ({ <no location info> }
+        [])) 
+      (PlaceHolder) 
+      (PlaceHolder)))),
+   ({ simple6.hs:6:1-23 }
+    (ValD 
+     (FunBind 
+      ({ simple6.hs:6:1-13 }
+       (Unqual {OccName: emptyfunction})) 
+      (MG 
+       ({ simple6.hs:6:1-23 }
+        [
+         ({ simple6.hs:6:1-23 }
+          (Match 
+           (FunRhs 
+            ({ simple6.hs:6:1-13 }
+             (Unqual {OccName: emptyfunction})) 
+            (Prefix) 
+            (NoSrcStrict)) 
+           [
+            ({ simple6.hs:6:15-16 }
+             (ConPatIn 
+              ({ simple6.hs:6:15-16 }
+               (Exact {Name: ghc-prim:GHC.Tuple.(){(w) d 70}})) 
+              (PrefixCon 
+               [])))] 
+           (Nothing) 
+           (GRHSs 
+            [
+             ({ simple6.hs:6:18-23 }
+              (GRHS 
+               [] 
+               ({ simple6.hs:6:20-23 }
+                (HsVar 
+                 ({ simple6.hs:6:20-23 }
+                  (Unqual {OccName: None}))))))] 
+            ({ <no location info> }
+             (EmptyLocalBinds)))))]) 
+       [] 
+       (PlaceHolder) 
+       (FromSource)) 
+      (WpHole) 
+      (PlaceHolder) 
+      [])))] 
+  (Nothing) 
+  (Nothing)))
+
