@@ -107,6 +107,21 @@ data Foo = HsModule Foo Foo Foo Foo Foo Foo Foo
   | GHCPrimName (String, String,String,String)
   | Exact Foo
   | ConPatIn Foo Foo
+  | ImportDecl Foo Foo Foo Bool Bool Bool Bool Foo Foo
+  | HsPar Foo
+  | HsApp Foo Foo
+  | HsTyVar Foo Foo
+  | NotPromoted
+  | HsParTy Foo
+  | HsAppsTy Foo
+  | HsAppPrefix Foo
+  | HsTupleTy Foo Foo
+  | HsBoxedOrConstraintTuple 
+  | HsListTy Foo
+  | HsDerivingClause Foo Foo
+  | HsIB Foo Foo Foo
+  | ExplicitList Foo Foo Foo
+  | NoSourceText
          deriving Show
 
 checkSrc x y = CheckSource x y
