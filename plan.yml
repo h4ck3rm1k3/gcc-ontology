@@ -114,3 +114,6 @@
       python parseast.py simple.dump-parsed-ast > simple.dump-parsed-ast.hs
   - ast :
       FakeAst.hs
+-
+  - retest by generating the ast from the generate ast
+  - test this again, after the third time the dumper slows to a crawl.

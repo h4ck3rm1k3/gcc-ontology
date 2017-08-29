@@ -42,7 +42,16 @@ recompile3c :
 recompile3d:
 	ghc FakeAst3.hs
 
+GHC=/home/mdupont/experiments/ghc/inplace/bin/ghc-stage1
 recompile3e :
-	ghc -O -ddump-to-file -ddump-parsed-ast FakeAst3.hs
+	$(GHC) -O -ddump-to-file -ddump-parsed-ast FakeAst3.hs
+
+FakeAst4.hs : FakeAst3.dump-parsed-ast
 	python parseast.py FakeAst3.dump-parsed-ast > FakeAst4.hs
-	ghc FakeAst4.hs
+
+recompile4e :
+	$(GHC) -O -ddump-to-file -ddump-parsed-ast FakeAst4.hs
+
+	#$(GHC) FakeAst4.hs
+FakeAst5.hs : FakeAst4.dump-parsed-ast
+	python parseast.py FakeAst4.dump-parsed-ast > FakeAst5.hs
