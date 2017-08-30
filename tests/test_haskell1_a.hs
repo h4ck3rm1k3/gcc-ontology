@@ -1,9 +1,10 @@
 module Foo where
 import Language.Haskell.Exts.Syntax
 import Language.Haskell.Exts.SrcLoc
+import Helper
 --import FakeAst
 f x =
-    Module (
+    parseOK(Module (
     SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 1 1 6 1, srcInfoPoints = [SrcSpan "test_haskell1.hs" 1 1 1 1,SrcSpan "test_haskell1.hs" 1 1 1 1,SrcSpan "test_haskell1.hs" 1 1 1 1,SrcSpan "test_haskell1.hs" 2 1 2 1,SrcSpan "test_haskell1.hs" 3 1 3 1,SrcSpan "test_haskell1.hs" 5 1 5 1,SrcSpan "test_haskell1.hs" 6 1 6 1,SrcSpan "test_haskell1.hs" 6 1 6 1]}) Nothing [] [] [TypeSig (
     SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 1 1 1 32, srcInfoPoints = [SrcSpan "test_haskell1.hs" 1 5 1 7]}) [Ident (
     SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 1 1 1 4, srcInfoPoints = []}) "foo"] (
@@ -100,4 +101,4 @@ f x =
     SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 5 18 5 21, srcInfoPoints = [SrcSpan "test_haskell1.hs" 5 18 5 19,SrcSpan "test_haskell1.hs" 5 20 5 21]}) [Lit (
     SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 5 19 5 20, srcInfoPoints = []}) (
     Int (
-    SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 5 19 5 20, srcInfoPoints = []}) 1 "1")]))) Nothing]
+    SrcSpanInfo {srcInfoSpan = SrcSpan "test_haskell1.hs" 5 19 5 20, srcInfoPoints = []}) 1 "1")]))) Nothing])
