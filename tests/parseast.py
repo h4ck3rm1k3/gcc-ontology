@@ -71,6 +71,10 @@ for l in f.readlines():
             pass
     #print l
     text = text + "\n   "+ l
-print "module TestFakeAst where"    
-print "import FakeAst"
+print '{-# LANGUAGE CPP #-}'
+print '{-# LANGUAGE DeriveDataTypeable #-}'
+print 'module TestFakeAst where'
+print 'import FakeAstCore'
+
+
 print "f x = {}".format(text)

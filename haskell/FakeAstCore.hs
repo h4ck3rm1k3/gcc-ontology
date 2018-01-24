@@ -171,8 +171,6 @@ data TyFamEqn = TyFamEqn {
 -- DataFamily
 -- DataType
 -- DataType
-data EmptyArray = EmptyArray
-    deriving (Show, Eq, Ord)
 -- FieldOcc :: HsQName -> t177 -> x58
 
 -- HsBangTy :: t180 -> t183 -> t179
@@ -341,11 +339,11 @@ data TyClDecl -- name
                 , tcdLName :: HsQName -- Located -- ^ Name of the class
                 , tcdHsQTvs :: LHsQTyVars -- HsQTvs -- LHsTyVarBndrs -- HsQName -- HsQTvs
                 , tcdPrefix :: LexicalFixity
-                , tcdEmptyArray :: EmptyArray
+                , tcdEmptyArray :: SomeArray(Foo)
                 , tcdSomeArray :: SomeArray ( IE )
                 , tcdFamilyArray :: SomeArray ( FamilyDecl )
                 , tcdFamilyEqnArray :: SomeArray (TyFamEqn )
-                , tcdEmptyArray2 :: EmptyArray
+                , tcdEmptyArray2 :: SomeArray(Foo)
                 , tcdPlaceHolder :: HsIB
                 
                     -- LHsTyVarBndrs -- ^ Class type variables
@@ -516,7 +514,7 @@ data OccName4 =
 -- | We attach SrcSpans to lots of things, so let's have a datatype for it.
 data GenLocated  =
     L SrcSpan 
-    | NoLocationInfo ( EmptyArray)
+    | NoLocationInfo ( SomeArray(Foo) )
     deriving (Eq, Ord, Show)
 
 data RealSrcSpan = RealSrcSpan'
@@ -624,20 +622,20 @@ data Blah =
 
 data SomeArray x =
     SomeArray [x]
+    | EmptyArray
   deriving (Eq, Ord, Show)
 
 f2 = (AJust ((ModuleName ("Pos.Core.Block.Blockchain"))))
 
 data HsModule =
-    HsModule (AMaybe ModuleName)
-  -- (MyMaybe Module)
-  -- export spec array
-  -- 
-             (AMaybe (SomeArray (IE ))) -- IE IE
-    --[HsImportDecl]
-    (SomeArray (ImportDecl))
-    --[HsDecl]
-    (SomeArray (HsDecl))
+    HsModule 
+  { module_name      ::    (AMaybe ModuleName) -- 1
+  , module_ie_array  :: (AMaybe (SomeArray (IE )))   -- 2 IE IE
+  , module_imports   :: (SomeArray (ImportDecl))     -- 3 [HsImportDecl]
+  , module_decls     ::  (SomeArray (HsDecl))    --[HsDecl]
+  , m1f :: AMaybe (Foo)
+  , m2f :: AMaybe (Foo)
+  }
                 -- Blah
     deriving (Eq, Ord, Show)
 
@@ -756,7 +754,7 @@ data HsType =
     | HsTupleTy
       {
         hstys :: HsTupleSort -- HsBoxedOrConstraintTuple -- :: t0 -> EmptyArray -> t41
-      , hstyta ::  EmptyArray -- [HsType] -- L
+      , hstyta ::  SomeArray(Foo) -- [HsType] -- L
       }
     | HsBangTy  HsType HsType -- :: t32 -> t35 -> t126HsBangTy :: t32 -> t35 -> t126
     | HsParTy (HsType) --  :: t122 -> t31
