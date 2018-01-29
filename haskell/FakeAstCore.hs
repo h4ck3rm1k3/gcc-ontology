@@ -4,6 +4,17 @@
 -- https://github.com/ghc/ghc/blob/4d41e9212d1fdf109f2d0174d204644446f5874c/compiler/hsSyn/HsTypes.hs
 module FakeAstCore where
 
+data SourceBlock = SourceBlock { f :: String,
+                                 l1 :: String,
+                                 l2 :: String
+                               }
+                 deriving (Show, Eq, Ord)
+
+source (x,y,z) = SourceBlock x y z
+data SourceBlock2 = SourceBlock2
+                  deriving (Show, Eq, Ord)
+checkSrc x y = SourceBlock2
+
 data HsIB = HsIB
             { hsib_ph1 :: HsIB -- :: PlaceHolder -> t0
             , hsib_ph2 :: HsFunTy -- :: PlaceHolder -> t116
@@ -25,7 +36,7 @@ data FieldOcc = FieldOcc HsQName HsIB
     deriving (Show, Eq, Ord)
 
 data ConDeclField = ConDeclField
-  { cd_fld_name :: (SomeArray FieldOcc)
+  { cd_fld_name :: [FieldOcc]
   , cd_fld_type :: (HsType)
   , cd_fld_doc :: AMaybe LHsDocString
   }  
@@ -38,12 +49,7 @@ data LHsDocString = LHsDocString
 data LHsSigType = LHsSigType
     deriving (Show, Eq, Ord)
 
-data Foo = Foo
-    deriving (Show, Eq, Ord)
 
-data HsConDeclDetails = HsConDeclDetails
-  | RecCon(SomeArray (ConDeclField))
-    deriving (Show, Eq, Ord)
 
 data ConDecl 
   = ConDeclGADT
@@ -110,7 +116,7 @@ data HsDataDefn    -- The payload of a data type defn
       -- or @data instance@ decl, with explicit kind sig
       --
       -- Always @Nothing@ for H98-syntax decls      
-      dd_cons   :: SomeArray ConDecl ,
+      dd_cons   :: [ConDecl ],
       -- ^ Data constructors
       --
       -- For @data T a = T1 | T2 a@
@@ -121,13 +127,6 @@ data HsDataDefn    -- The payload of a data type defn
                    -- For details on above see note [Api annotations] in ApiAnnotation
     }
     deriving (Show, Eq, Ord)
-          -- :: t6
-          --    -> NoLocationInfo
-          --    -> AMaybe e4
-          --    -> AMaybe e5
-          --    -> SomeArray x1
-          --    -> NoLocationInfo
-          --    -> t5
 
 --data DataFamily = DataFamily
 
@@ -150,13 +149,24 @@ data FamilyDecl = FamilyDecl
                   , fdTyVars :: LHsQTyVars -- LHsTyVarBndrs -- 3
                   , fdFixity :: LexicalFixity -- 4
                   , fdResultSig :: KindSig --LHsTyVarBndrs -- 5 
-                  , fdInjectivityAnn :: AMaybe ( SomeArray (FamilyDecl)) -- 6
+                  , fdInjectivityAnn :: AMaybe ( [FamilyDecl]) -- 6
                   }
                   -- https://github.com/haskell/haddock/blob/3743d0822029728e5b9ef93e741ba6a440412e9f/haddock-api/src/Haddock/Convert.hs
     deriving (Show, Eq, Ord)
 
 data LexicalFixity = Prefix | Infix 
   deriving (Show, Eq, Ord)
+
+data HsConDeclDetails = HsConDeclDetails
+  | RecCon([ConDeclField])
+  | PrefixCon [ HsType ]
+    deriving (Show, Eq, Ord)
+
+-- data HsConDetails arg rec
+--   = PrefixCon [arg]             -- C p1 p2 p3
+--   | RecCon    rec               -- C { x = p1, y = p2 }
+--   | InfixCon  arg arg           -- p1 `C` p2
+--   deriving Data
 
 data TyFamEqn = TyFamEqn {
   -- 4
@@ -284,7 +294,7 @@ data LHsQTyVars   -- See Note [HsType binders]
   = HsQTvs { hsq_implicit :: HsIB -- PostRn  [Name]
                 -- Implicit (dependent) variables
 
-           , hsq_explicit :: SomeArray HsTyVarBndr -- [LHsTyVarBndr ]
+           , hsq_explicit :: [ HsTyVarBndr] -- [LHsTyVarBndr ]
                 -- Explicit variables, written by the user
                 -- See Note [HsForAllTy tyvar binders]
 
@@ -320,9 +330,14 @@ data TyClDecl -- name
   --          , tcdTyDefn :: HsTyDefn name
   --          , tcdFVs    :: NameSet }
       -- |
-
+      SynDecl { tcdsLName  :: HsQName            -- ^ Type constructor
+              , tcdTyVars :: LHsQTyVars         -- ^ Type variables; for an associated type--   these include outer binders
+              , tcdFixity :: LexicalFixity    -- ^ Fixity used in the declaration
+              , tcdRhs    :: HsType            -- ^ RHS of type declaration
+              , tcdsFVs    :: HsIB }
+    
       --     :: HsQName             -> t94 -> Prefix -> t5 -> PlaceHolder -> PlaceHolder -> TyClDecl
-          DataDecl { tcdLName    :: HsQName -- Located Name --(IdP ) -- ^ Type constructor
+      | DataDecl { tcdLName    :: HsQName -- Located Name --(IdP ) -- ^ Type constructor
                    , tcdTyVars   :: LHsQTyVars   -- ^ Type variables; for an associated type these include outer binders
                                     -- Eg  class T a where
                                     --       type F a :: *
@@ -339,11 +354,11 @@ data TyClDecl -- name
                 , tcdLName :: HsQName -- Located -- ^ Name of the class
                 , tcdHsQTvs :: LHsQTyVars -- HsQTvs -- LHsTyVarBndrs -- HsQName -- HsQTvs
                 , tcdPrefix :: LexicalFixity
-                , tcdEmptyArray :: SomeArray(Foo)
-                , tcdSomeArray :: SomeArray ( IE )
-                , tcdFamilyArray :: SomeArray ( FamilyDecl )
-                , tcdFamilyEqnArray :: SomeArray (TyFamEqn )
-                , tcdEmptyArray2 :: SomeArray(Foo)
+                , tcdEmptyArray :: [HsType]
+                , tcdSomeArray :: [ IE ]
+                , tcdFamilyArray :: [ FamilyDecl ]
+                , tcdFamilyEqnArray :: [TyFamEqn ]
+                , tcdEmptyArray2 :: [HsType]
                 , tcdPlaceHolder :: HsIB
                 
                     -- LHsTyVarBndrs -- ^ Class type variables
@@ -385,6 +400,7 @@ data HsDecl -- id
                     [HsName]
                     HsConDecl
                     [HsQName]
+    | SigD { sigdtype:: HsDecl } --http://hackage.haskell.org/package/template-haskell-2.12.0.0/docs/Language-Haskell-TH-Syntax.html#v:SigD
     | HsClassDecl SrcLoc
                   HsContext
                   HsName
@@ -479,7 +495,7 @@ data ImportDecl = ImportDecl
     , ideclQualified :: Bool -- ^ True => qualified 6
     , ideclImplicit :: Bool -- ^ True => implicit import (of Prelude) 7
     , ideclAs :: AMaybe (ModuleName) -- ^ as Module 8
-    , ideclHiding :: AMaybe (Bool, SomeArray (IE)) -- 9
+    , ideclHiding :: AMaybe (Bool, [IE]) -- 9
 --    , ideclOS :: AMaybe(ClassOpSig)
       -- Located [LIE ]
                                        -- ^ (True => hiding, names)
@@ -501,6 +517,9 @@ data NameSpace
 -- In this context that means:
 -- "classified (i.e. as a type name, value name, etc) but not qualified
 -- and not yet resolved"
+
+occname x = OccName x
+
 data OccName
     = OccName2 { occNameSpace :: !NameSpace
                , occNameFS :: !String }
@@ -514,7 +533,7 @@ data OccName4 =
 -- | We attach SrcSpans to lots of things, so let's have a datatype for it.
 data GenLocated  =
     L SrcSpan 
-    | NoLocationInfo ( SomeArray(Foo) )
+    | NoLocationInfo ( [HsType] )
     deriving (Eq, Ord, Show)
 
 data RealSrcSpan = RealSrcSpan'
@@ -590,7 +609,7 @@ data HsDoc =
 
 -- merge with this
 data IE 
-    = IEVar
+    = IEVar HsQName
     | IEThingAbs HsQName -- HsExportSpec -- IE IE-- IE IE
     | IEThingAll HsQName 
     | IEThingWith
@@ -601,11 +620,12 @@ data IE
     | IEDocNamed String
     | ClassOpSig
       { cos_is_default :: Bool
-      , cos_lnames :: SomeArray (HsQName)
+      , cos_lnames :: [HsQName]
       , cos_sig_ty :: HsIB
       }
     deriving (Eq, Ord, Show)
 
+modulename x = ModuleName x
 --  | IEThingAll name
 data ModuleName =
     ModuleName (String)
@@ -620,21 +640,23 @@ data Blah =
 --   | ANothing
 --     deriving (Eq, Ord, Show)
 
-data SomeArray x =
-    SomeArray [x]
-    | EmptyArray
-  deriving (Eq, Ord, Show)
+--data SomeArray x =
+--    SomeArray [x]
+--    | EmptyArray
+--  deriving (Eq, Ord, Show)
 
 f2 = (AJust ((ModuleName ("Pos.Core.Block.Blockchain"))))
 
 data HsModule =
     HsModule 
-  { module_name      ::    (AMaybe ModuleName) -- 1
-  , module_ie_array  :: (AMaybe (SomeArray (IE )))   -- 2 IE IE
-  , module_imports   :: (SomeArray (ImportDecl))     -- 3 [HsImportDecl]
-  , module_decls     ::  (SomeArray (HsDecl))    --[HsDecl]
-  , m1f :: AMaybe (Foo)
-  , m2f :: AMaybe (Foo)
+  {
+--    sourceline :: AMaybe SourceBlock2,
+    module_name      ::    (AMaybe ModuleName) -- 1
+  , module_ie_array  :: (AMaybe ([ IE ]))   -- 2 IE IE
+  , module_imports   :: ([ImportDecl])     -- 3 [HsImportDecl]
+  , module_decls     ::  ([HsDecl])    --[HsDecl]
+  , m1f :: AMaybe (HsType)
+  , m2f :: AMaybe (HsType)
   }
                 -- Blah
     deriving (Eq, Ord, Show)
@@ -749,12 +771,17 @@ data HsTupleSort = HsUnboxedTuple
 data HsType =
     HsType
     | HsTyVar   Promoted HsQName -- HsName             -- ^ type variable
-    | HsAppsTy (SomeArray (HsAppType)) --  :: SomeArray x0 -> t1
+    | HsAppsTy ([HsAppType]) --  :: SomeArray x0 -> t1
+
+   | HsListTy            (HsType)  -- Element type
+       -- ^ - 'ApiAnnotation.AnnKeywordId' : 'ApiAnnotation.AnnOpen' @'['@,
+       --         'ApiAnnotation.AnnClose' @']'@
+       -- For details on above see note [Api annotations] in ApiAnnotation
 
     | HsTupleTy
       {
         hstys :: HsTupleSort -- HsBoxedOrConstraintTuple -- :: t0 -> EmptyArray -> t41
-      , hstyta ::  SomeArray(Foo) -- [HsType] -- L
+      , hstyta ::  [HsType] -- [HsType] -- L
       }
     | HsBangTy  HsType HsType -- :: t32 -> t35 -> t126HsBangTy :: t32 -> t35 -> t126
     | HsParTy (HsType) --  :: t122 -> t31
@@ -792,10 +819,6 @@ data HsType =
 --   | HsFunTy             (LHsType name)   -- function type
 --                         (LHsType name)
 --       -- ^ - 'ApiAnnotation.AnnKeywordId' : 'ApiAnnotation.AnnRarrow',
---       -- For details on above see note [Api annotations] in ApiAnnotation
---   | HsListTy            (LHsType name)  -- Element type
---       -- ^ - 'ApiAnnotation.AnnKeywordId' : 'ApiAnnotation.AnnOpen' @'['@,
---       --         'ApiAnnotation.AnnClose' @']'@
 --       -- For details on above see note [Api annotations] in ApiAnnotation
 --   | HsPArrTy            (LHsType name)  -- Elem. type of parallel array: [:t:]
 --       -- ^ - 'ApiAnnotation.AnnKeywordId' : 'ApiAnnotation.AnnOpen' @'[:'@,
